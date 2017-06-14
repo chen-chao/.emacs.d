@@ -98,4 +98,15 @@
 ; disable auto save
 (setq auto-save-default nil)
 
+;; automatically split window horizontally
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
+
+;; auto pair
+(electric-pair-mode 1)
+(setq electric-pair-pairs '((?\" . ?\")
+                            (?\{ . ?\}) ))
+
+
 (provide 'general-settings)
+
