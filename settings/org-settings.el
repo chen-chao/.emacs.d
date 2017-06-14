@@ -1,4 +1,7 @@
 ;; org-mode settings
+;; auto expand item tree
+(setq org-startup-folded nil)
+
 (setq org-log-done 'time)
 (setq org-log-done 'note)
 (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED(c!)") ) )
@@ -13,12 +16,17 @@
 ;; global key to capture notes
 (global-set-key "\C-cc" 'org-capture)
 ;; (define-key global-map "\C-cc" 'org-capture)
-;; from org manual
+
+;; capture templates
 (setq org-capture-templates
       '(("t" "TODO" entry (file+headline "~/org/gtd.org" "Tasks")
          "* TODO %?\n %i\n %a")
-        ("j" "journal" entry (file+datetree "~/org/journal.org")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
          "* %?\nEntered on %U\n %i\n %a")
         ) )
 
+;; macro templates
+;; (defcustom org-structure-template-alist '(("p" "#+Begin_SRC python\n\n#+End_SRC" "<src lang=\"?\">\n\n</src>")))
+
 (provide 'org-settings)
+
