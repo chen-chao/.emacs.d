@@ -25,6 +25,25 @@
 ; don't show the scroll bar
 (if window-system (scroll-bar-mode 0))
 
+; load theme
+(setq custom-safe-themes t)
+(load-theme 'deep-blue t t)
+(defun switch-color-theme (frame)
+  (select-frame frame)
+  (if (window-system frame)
+      (enable-theme 'deep-blue)
+    (disable-theme 'deep-blue)))
+(add-hook 'after-make-frame-functions 'switch-color-theme)
+(if window-system (enable-theme 'deep-blue)
+  (disable-theme 'deep-blue))
+;; (if (display-graphic-p) (load-theme 'deep-blue))
+;; (if (daemonp)
+    ;; (add-hook 'after-make-frame-functions
+              ;; (lambda (frame)
+                ;; (with-selected-frame frame
+                  ;; (load-theme 'deep-blue))))
+  ;; (load-theme 'deep-blue))
+
 ; set the minibuffer color
 (set-face-foreground 'minibuffer-prompt "cyan")
 
@@ -36,6 +55,15 @@
 (setq-default truncate-lines 1)
 ; truncate lines even in partial-width windows
 (setq truncate-partial-width-windows 1)
+
+; maximize window at startup
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+; shortcut to move between windows
+(global-set-key (kbd "C-.") 'other-window)
+(global-set-key (kbd "C-,") 'prev-window)
+(defun prev-window ()
+  (interactive)
+  (other-window -1))
 
 ; make end and home keys go to the start/end of buffers
 (global-set-key (kbd "<end>") 'end-of-buffer)
