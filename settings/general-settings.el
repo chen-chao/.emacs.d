@@ -25,28 +25,6 @@
 ; don't show the scroll bar
 (if window-system (scroll-bar-mode 0))
 
-; load theme
-(setq custom-safe-themes t)
-(load-theme 'deep-blue t t)
-(defun switch-color-theme (frame)
-  (select-frame frame)
-  (if (window-system frame)
-      (enable-theme 'deep-blue)
-    (disable-theme 'deep-blue)))
-(add-hook 'after-make-frame-functions 'switch-color-theme)
-(if window-system (enable-theme 'deep-blue)
-  (disable-theme 'deep-blue))
-;; (if (display-graphic-p) (load-theme 'deep-blue))
-;; (if (daemonp)
-    ;; (add-hook 'after-make-frame-functions
-              ;; (lambda (frame)
-                ;; (with-selected-frame frame
-                  ;; (load-theme 'deep-blue))))
-  ;; (load-theme 'deep-blue))
-
-; set the minibuffer color
-(set-face-foreground 'minibuffer-prompt "cyan")
-
 ; number of characters until the fill column 
 (setq-default fill-column 70)
 
