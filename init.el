@@ -38,6 +38,7 @@
 
 (require 'org-settings)
 
+(require 'matlab-settings)
 
  ;; Added by installed packages
  
