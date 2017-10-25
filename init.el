@@ -40,6 +40,8 @@
 
 (require 'matlab-settings)
 
+(require 'markdown-settings)
+
  ;; Added by installed packages
  
 (custom-set-variables
