@@ -34,6 +34,8 @@
 
 (require 'theme-settings)
 
+(require 'avy-settings)
+
 (require 'python-settings)
 
 (require 'org-settings)
