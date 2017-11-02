@@ -27,8 +27,9 @@
                      ("j" "Journal" entry (file+datetree "~/org/journal.org")
                       "* %?\nEntered on %U\n %i\n %a")
                      ))
+             (add-to-list 'org-structure-template-alist
+                          '("p" "#+BEGIN_SRC python\n?\n#+END_SRC"))
              )
-
 
 (provide 'org-settings)
 
