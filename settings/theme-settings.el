@@ -21,4 +21,11 @@
 ;; set the minibuffer color
 (set-face-foreground 'minibuffer-prompt "cyan")
 
+;; shortcuts and C+Mouse to adjust the font size
+;; this is from http://zhuoqiang.me/torture-emacs.html
+(global-set-key (kbd "<C-=>") 'text-scale-increase)
+(global-set-key (kbd "<C-->") 'text-scale-decrease)
+(global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
+(global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
+
 (provide 'theme-settings)
