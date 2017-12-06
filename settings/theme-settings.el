@@ -16,7 +16,7 @@
 (add-hook 'after-make-frame-functions 'switch-color-theme)
 
 (if window-system (enable-theme 'deep-blue)
-  (disable-theme 'deep-blue))
+  (progn (disable-theme 'deep-blue) (setq frame-background-mode 'dark)))
 
 ;; set the minibuffer color
 (set-face-foreground 'minibuffer-prompt "cyan")
