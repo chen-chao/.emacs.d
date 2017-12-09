@@ -41,11 +41,13 @@
 
 (require 'avy-settings)
 
+(require 'org-settings)
+
 (require 'python-settings)
 
 (require 'init-flycheck)
 
-(require 'org-settings)
+(require 'init-pyim)
 
 (require 'matlab-settings)
 
