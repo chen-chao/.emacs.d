@@ -3,6 +3,11 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 
+
+;; proxy
+;; (setq url-gateway-method 'socks)
+;; (setq socks-server '("Default server" "127.0.0.1" 1080 5) ) ;;for socks5
+
 ;; package repository
 (require 'package)
 
@@ -44,22 +49,5 @@
 
 (require 'markdown-settings)
 
- ;; Added by installed packages
- 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   (quote
-    ("~/org/gtd.org" "~/archlinux.log/python.org" "~/work.org")))
- '(package-selected-packages
-   (quote
-    (neotree projectile org-link-minor-mode python-info color-theme-sanityinc-solarized pydoc pydoc-info flycheck jedi org))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq custom-file "~/.emacs.d/settings/custom.el")
+(load custom-file 'noerror)
