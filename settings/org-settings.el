@@ -9,6 +9,7 @@
                     ("C-c c" . org-capture))
 
              :config
+             (require 'org-habit)
              (setq org-startup-folded nil)
              (setq org-log-done 'time)
              (setq org-log-done 'note)
