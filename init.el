@@ -43,6 +43,8 @@
 
 (require 'python-settings)
 
+(require 'init-flycheck)
+
 (require 'org-settings)
 
 (require 'matlab-settings)

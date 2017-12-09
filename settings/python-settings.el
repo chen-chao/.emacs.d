@@ -11,23 +11,6 @@
   (setq jedi:complete-on-dot t)
   )
 
-(use-package flycheck
-  :ensure t
-  :commands global-flycheck-mode
-  :init (global-flycheck-mode)
-  :config
-  (progn
-    (setq flycheck-check-syntax-automatically '(save mode-enabled))
-    (setq flycheck-standard-error-navigation nil)
-    ;; flycheck errors on a tooltip (doesn't work on console)
-    ;; (when (display-graphic-p (selected-frame))
-      ;; (eval-after-load 'flycheck '(custom-set-variables
-                                   ;; '(flycheck-display-errors-function
-                                     ;; #'flycheck-pos-tip-error-messages))))
-    ;; (add-hook 'python-mode-hook 'flycheck-mode)
-    )
-  )
-
 (use-package pydoc)
 
 (use-package pydoc-info)
