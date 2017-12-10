@@ -16,7 +16,7 @@
 
   ;; 双拼
   (setq pyim-default-scheme 'pyim-shuangpin)
-  (setq pyim-dicts '((:name "greatdict" :file "/home/kagami/.emacs.d/pyim/pyim-greatdict.pyim")))
+  (setq pyim-dicts '((:name "greatdict" :file "~/.emacs.d/settings/pyim-greatdict.pyim")))
   ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
   ;; 我自己使用的中英文动态切换规则是：
   ;; 1. 光标只有在注释里面时，才可以输入中文。
