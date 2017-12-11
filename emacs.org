@@ -1,0 +1,22 @@
+* DONE pylintrc config
+  CLOSED: [2017-12-11 Mon 18:27]
+  - CLOSING NOTE [2017-12-11 Mon 18:27] \\
+    flycheck using variable `flycheck-pylintrc' to config the pylintrc, which defaults to `.pylintrc', while pylint package seems to using `~/.pylintrd/pylintrc'.
+
+* evil mode
+
+** TODO setup
+
+* Calendar
+
+** TODO show holiday
+
+** TODO diary
+
+* org
+
+** TODO show pictures
+
+** TODO run codes
+
+** TODO capture
