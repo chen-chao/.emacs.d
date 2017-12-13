@@ -49,6 +49,8 @@
 
 (require 'init-pyim)
 
+(require 'init-ispell)
+
 (require 'matlab-settings)
 
 (require 'markdown-settings)
