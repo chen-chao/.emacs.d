@@ -55,5 +55,7 @@
 
 (require 'markdown-settings)
 
+(require 'init-calendar)
+
 (setq custom-file "~/.emacs.d/settings/custom.el")
 (load custom-file 'noerror)
