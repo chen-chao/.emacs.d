@@ -53,8 +53,8 @@
 (setq-default indent-tabs-mode nil)
 ; indentation styles
 (setq tab-width 4)
-(defvaralias 'c-basic-offset 'tab-width)
-;; (setq c-basic-offset 8)
+;; (defvaralias 'c-basic-offset 'tab-width)
+(setq-default c-basic-offset 4)
 (setq c-default-style (quote (
     (c-mode . "bsd") 
     (java-mode . "java") 
