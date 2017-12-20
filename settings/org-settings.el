@@ -36,7 +36,7 @@
         '(("t" "TODO" entry (file+headline org-gtd-file "Tasks")
            "* TODO %?\n %i\n %a")
           ("j" "Journal" entry (file+datetree org-journal-file)
-           "* %?\nEntered on %U\n %i\n %a")
+           "* %?\nEntered on %U\n %i\n")
           ))
   (add-to-list 'org-structure-template-alist
                '("p" "#+BEGIN_SRC python\n?\n#+END_SRC"))
