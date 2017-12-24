@@ -1,8 +1,9 @@
 (setq python-indent-offset 4)
 
-(when (executable-find "ipython")
-  (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "--simple-prompt -i"))
+(defun ipython ()
+  (interactive)
+  (when (executable-find "ipython")
+    (term "ipython")))
 
 (use-package jedi
   :ensure t
