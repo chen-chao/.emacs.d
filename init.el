@@ -47,6 +47,8 @@
 
 (require 'init-flycheck)
 
+(require 'init-yasnippet)
+
 (require 'init-pyim)
 
 (require 'init-ispell)
