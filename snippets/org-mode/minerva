@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: minerva
+# key: minerva
+# --
+** TODO $1
+   :PROPERTIES:
+   :LOG_INTO_DRAWER: LOGBOOK
+   :LANGUAGE: $2
+   :TOPIC:    $3
+   :PRICE:    $4
+   :END:
+
+
+   
