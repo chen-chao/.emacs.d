@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: argc1
+# key: argc1
+# --
+if (argc == 1) {
+   char *line = NULL;
+   size_t lim = 0;
+   if (getline(&line, &lim, stdin) > 0) {
+      $1;
+   }
+}$2
