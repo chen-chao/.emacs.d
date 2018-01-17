@@ -32,12 +32,14 @@
 ;; mode settings
 (add-to-list 'load-path "~/.emacs.d/settings")
 
-(require 'ido)
-(ido-mode t)
+;; (require 'ido)
+;; (ido-mode t)
 
 (require 'general-settings)
 
 (require 'theme-settings)
+
+(require 'init-ivy)
 
 (require 'avy-settings)
 
