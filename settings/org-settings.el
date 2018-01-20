@@ -2,6 +2,11 @@
 (use-package org
   :ensure t
 
+  :general
+
+  (general-nmap "SPC c" 'org-capture)
+  (general-nmap "SPC a" 'org-agenda)
+  
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c b" . org-iswitchb)
