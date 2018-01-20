@@ -41,6 +41,8 @@
 
 (require 'init-ivy)
 
+(require 'init-evil)
+
 (require 'avy-settings)
 
 (require 'org-settings)
