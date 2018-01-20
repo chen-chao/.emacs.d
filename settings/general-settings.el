@@ -65,12 +65,12 @@
 (setq-default case-fold-search 1)
 
 ; set the keybinding so that you can use f4 for goto line
-(global-set-key [f4] 'goto-line)
+;; (global-set-key [f4] 'goto-line)
 
 ; require final newlines in files when they are saved
 (setq require-final-newline 1)
 ; add a new line when going to the next line
-(setq next-line-add-newlines t)
+;; (setq next-line-add-newlines t)
 
 ; show the current line and column numbers in the stats bar as well
 (line-number-mode 1)
