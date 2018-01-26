@@ -42,9 +42,12 @@
            "* TODO %?\n %i\n %a")
           ("j" "Journal" entry (file+datetree org-journal-file)
            "* %?\nEntered on %U\n %i\n")
+          ("n" "Note" item (file org-notes-file)
+           "* %?\nEntered on %U\n %i\n %a")
           ))
   (add-to-list 'org-structure-template-alist
-               '("p" "#+BEGIN_SRC python\n?\n#+END_SRC"))
+               '("p" "#+BEGIN_SRC python\n?\n#+END_SRC")
+               '("l" "#+BEGIN_SRC shell\n?\n#+END_SRC"))
   )
 
 (provide 'org-settings)
