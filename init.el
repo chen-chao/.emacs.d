@@ -43,6 +43,8 @@
 
 (require 'init-evil)
 
+(require 'init-browser)
+
 (require 'avy-settings)
 
 (require 'org-settings)
