@@ -11,6 +11,8 @@
   :config
   (setq window-numbering-auto-assign-0-to-minibuffer t))
 
+(require 'org-evil)
+
 (defun load-current-buffer ()
   (interactive)
     (load-file (buffer-file-name))
@@ -38,6 +40,26 @@
                       :states '(normal motion insert emacs)
                       "TAB" 'org-cycle)
 
+  (general-define-key :keymaps 'org-mode-map
+                      :states '(normal motion emacs)
+                      "<" 'outline-promote
+                      ">" 'outline-demote)
+
+  (general-define-key :keymaps 'org-mode-map
+                      :states '(normal motion emacs)
+                      :prefix ","
+                      "a" 'org-achive-subtree-default
+                      "d" 'org-deadline
+                      "f" 'org-refile
+                      "m" 'org-schedule-today
+                      "n" 'org-add-note
+                      "o" 'org-open-at-point
+                      "p" 'org-time-stamp-inactive
+                      "s" 'org-schedule
+                      "t" 'org-todo
+                      "y" 'org-todo-yesterday
+                      )
+
   (general-define-key :keymaps 'apropos-mode-map
                       "f" 'apropos-follow)
 
@@ -52,15 +74,17 @@
    "1" 'select-window-1
    "2" 'select-window-2
    "3" 'select-window-3
-   "4" 'select-window-4
-   "5" 'select-window-5
-   "6" 'select-window-6
-   "7" 'select-window-7
-   "8" 'select-window-8
-   "9" 'select-window-9
+   ;; "4" 'select-window-4
+   ;; "5" 'select-window-5
+   ;; "6" 'select-window-6
+   ;; "7" 'select-window-7
+   ;; "8" 'select-window-8
+   ;; "9" 'select-window-9
    "b" '(:ignore t :which-key "Buffer")
    "bb" 'ivy-switch-buffer
+   "bs" 'save-buffer
    "f" '(:ignore t :which-key "Files")
+   "d" 'dired
    "ff" 'counsel-find-file
    "g"  '(:ignore t :which-key "Git")
    "gs" 'magit-status
@@ -87,11 +111,15 @@
    "pi" 'package-install
    "pr" 'package-refreshc-contents
    "pl" 'package-list-packages
+   "s" 'shell
    "w" '(:ignore t :which-key "Windows")
    "wb" 'split-window-below
    "wr" 'split-window-right
    "ww" 'delete-other-windows
    "we" 'balance-windows
+   "y" '(:ignore t :which-key "Yasnippet")
+   "yn" 'yas-new-snippet
+   "yl" 'my-yas-reload-all
    )
   )
 
