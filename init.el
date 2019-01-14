@@ -19,9 +19,6 @@
 
 (package-initialize)
 
-;; when package-archive-contents does not exist, refresh package
-;; (when (not package-archive-contents) (package-refresh-contents))
-
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -29,41 +26,50 @@
 (eval-when-compile (require 'use-package))
 
 
+(defun load-current-file ()
+  (interactive)
+  (load-file (buffer-file-name))
+  )
+
 ;; mode settings
 (add-to-list 'load-path "~/.emacs.d/settings")
 
-;; (require 'ido)
-;; (ido-mode t)
-
-(require 'general-settings)
-
 (require 'theme-settings)
-
-(require 'init-ivy)
-
-(require 'init-evil)
-
-(require 'init-browser)
-
-(require 'avy-settings)
 
 (require 'org-settings)
 
-(require 'python-settings)
+(require 'init-lsp)
 
-(require 'init-flycheck)
+(require 'init-ivy)
 
-(require 'init-yasnippet)
+(require 'init-magit)
 
-(require 'init-pyim)
+(require 'init-projectile)
 
-(require 'init-ispell)
+(require 'init-shell)
 
-(require 'matlab-settings)
+(require 'init-eaf)
 
-(require 'markdown-settings)
+;; (require 'init-evil)
 
-(require 'init-calendar)
+;; (require 'init-browser)
+
+;; (require 'init-flycheck)
+
+;; (require 'init-yasnippet)
+
+;; (require 'init-pyim)
+
+;; (require 'init-ispell)
+
+;; (require 'matlab-settings)
+
+;; (require 'markdown-settings)
+
+;; (require 'init-calendar)
+
 
 (setq custom-file "~/.emacs.d/settings/custom.el")
-(load custom-file 'noerror)
+
+(when (file-exists-p custom-file)
+  (load custom-file))
