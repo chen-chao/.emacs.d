@@ -1,31 +1,44 @@
+;; general settings
+(setq inhibit-startup-screen 1)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+
+;; maximize window at startup
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; auto completion of pairs and quotations
+(electric-pair-mode 1)
+(show-paren-mode 1)
+
+(setq require-final-newline 1)
+
+;; show line numbers in the left margin
+(setq global-display-line-numbers t)
+
+;; theme settings
 (setq custom-safe-themes t)
 
-(use-package color-theme-modern
-             :ensure t
-             :config
-             (load-theme 'deep-blue t t)             
-             )
+(require 'eclipse-theme)
+(load-theme 'eclipse)
 
 ;; enable/disable theme for window-system/terminal
 (defun switch-color-theme (frame)
   (select-frame frame)
   (if (window-system frame)
-      (enable-theme 'deep-blue)
-    (disable-theme 'deep-blue)))
+      (progn
+	(enable-theme 'eclipse)
+	(set-face-foreground 'minibuffer-prompt "medium blue")
+	)
+    (progn
+      (disable-theme 'eclipse)
+      ;; set the minibuffer color
+      (set-face-foreground 'minibuffer-prompt "cyan")
+      )
+    ))
 
 (add-hook 'after-make-frame-functions 'switch-color-theme)
 
-(if window-system (enable-theme 'deep-blue)
-  (progn (disable-theme 'deep-blue) (setq frame-background-mode 'dark)))
-
-;; set the minibuffer color
-(set-face-foreground 'minibuffer-prompt "cyan")
-
-;; shortcuts and C+Mouse to adjust the font size
-;; this is from http://zhuoqiang.me/torture-emacs.html
-(global-set-key (kbd "<C-=>") 'text-scale-increase)
-(global-set-key (kbd "<C-->") 'text-scale-decrease)
-(global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
-(global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
+(if window-system (enable-theme 'eclipse)
+  (progn (disable-theme 'eclipse) (setq frame-background-mode 'dark)))
 
 (provide 'theme-settings)
