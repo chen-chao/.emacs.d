@@ -2,41 +2,45 @@
 
 (use-package company
   :ensure t
-  :init
+  :config
   (add-hook 'after-init-hook 'global-company-mode)
   )
 
 (use-package lsp-mode
   :ensure t
-  :defer t
   :commands lsp
   :config
   (require 'lsp-clients)
-  :init
   (add-hook 'python-mode-hook #'lsp)
   (add-hook 'c++-mode-hook #'lsp)
   )
 
 (use-package lsp-ui
   :ensure t
-  :defer t
   :commands lsp-ui-mode
   :bind
   (:map lsp-ui-mode-map
 	([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
 	([remap xref-find-references] . lsp-ui-peek-find-references)
 	)
-  :init
+  :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+  (setq lsp-ui-doc-use-childframe t)
   )
 
 (use-package company-lsp
   :ensure t
-  :defer t
   :requires company
   :commands company-lsp
-  :init
+  :config
   (push 'company-lsp company-backends)
+  )
+
+(use-package lsp-java
+  :ensure t
+  :after lsp
+  :config
+  (add-hook 'java-mode-hook #'lsp)
   )
 
 (provide 'init-lsp)
