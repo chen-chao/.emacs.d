@@ -26,6 +26,7 @@
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (setq lsp-ui-doc-use-childframe t)
+  (set-face-foreground 'lsp-ui-sideline-code-action "purple")
   )
 
 (use-package company-lsp
@@ -41,6 +42,7 @@
   :after lsp
   :config
   (add-hook 'java-mode-hook #'lsp)
+  ;; (setq lsp-java-server-install-dir "~/.emacs.d/site-lisp/eclipse.jdt.ls/server/")
   )
 
 (provide 'init-lsp)
