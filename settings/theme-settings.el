@@ -36,9 +36,9 @@
       )
     ))
 
-(add-hook 'after-make-frame-functions 'switch-color-theme)
+;; (add-hook 'after-make-frame-functions 'switch-color-theme)
 
-(if window-system (enable-theme 'eclipse)
-  (progn (disable-theme 'eclipse) (setq frame-background-mode 'dark)))
+;; (if window-system (enable-theme 'eclipse)
+;;   (progn (disable-theme 'eclipse) (setq frame-background-mode 'dark)))
 
 (provide 'theme-settings)
