@@ -4,11 +4,13 @@
   :ensure t
   :init
   (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.5)
   )
 
 (use-package ivy
   :ensure t
-  :diminish (ivy-mode . "") ; does not display ivy in the modeline
+  ;; :diminish (ivy-mode . "") ; does not display ivy in the modeline
   :init (ivy-mode 1)        ; enable ivy globally at startup
   :bind
   (:map ivy-mode-map			; bind in the ivy buffer
@@ -24,7 +26,7 @@
 
 (use-package counsel
   :ensure t
-  :bind*                           ; load counsel when pressed
+  :bind                            ; load counsel when pressed
   (("M-x"     . counsel-M-x)       ; M-x use counsel
    ("C-x C-f" . counsel-find-file) ; C-x C-f use counsel-find-file
    ("C-x C-r" . counsel-recentf)   ; search recently edited files
