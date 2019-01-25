@@ -36,6 +36,8 @@
 
 (require 'theme-settings)
 
+(require 'edit-settings)
+
 (require 'org-settings)
 
 (require 'init-lsp)
@@ -58,8 +60,6 @@
 
 ;; (require 'init-yasnippet)
 
-;; (require 'init-pyim)
-
 ;; (require 'init-ispell)
 
 ;; (require 'matlab-settings)
@@ -67,7 +67,6 @@
 ;; (require 'markdown-settings)
 
 ;; (require 'init-calendar)
-
 
 (setq custom-file "~/.emacs.d/settings/custom.el")
 
