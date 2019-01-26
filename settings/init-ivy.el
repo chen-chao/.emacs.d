@@ -32,7 +32,7 @@
    ("C-x C-r" . counsel-recentf)   ; search recently edited files
    ("C-c f"   . counsel-git)       ; search for files in git repo
    ("C-c s"   . counsel-git-grep)  ; search for regexp in git repo
-   ("C-c k"   . counsel-ag)        ; search for regexp in git repo using ag
+   ;; ("C-c k"   . counsel-ag)        ; search for regexp in git repo using ag
    ("C-c l"   . counsel-locate)    ; search for files or else using locate
    ("C-h f"   . counsel-describe-function)
    ("C-h v"   . counsel-describe-variable)

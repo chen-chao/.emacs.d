@@ -45,4 +45,20 @@
   ;; (setq lsp-java-server-install-dir "~/.emacs.d/site-lisp/eclipse.jdt.ls/server/")
   )
 
-(provide 'init-lsp)
+(use-package yasnippet
+  :ensure t
+  :init (yas-global-mode 1)
+  :config
+  ;; (yas-reload-all)
+  ;; (add-hook 'prog-mode-hook #'yas-minor-mode)
+  ;; (add-hook 'latex-mode-hook #'yas-minor-mode)
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  )
+
+(use-package ivy-yasnippet
+  :ensure t
+  :after yasnippet
+  )
+
+
+(provide 'completion-settings)
