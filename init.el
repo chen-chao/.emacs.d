@@ -40,7 +40,7 @@
 
 (require 'org-settings)
 
-(require 'init-lsp)
+(require 'completion-settings)
 
 (require 'init-ivy)
 
@@ -52,21 +52,19 @@
 
 (require 'init-eaf)
 
+(require 'init-dict)
+
 ;; (require 'init-evil)
 
 ;; (require 'init-browser)
 
 ;; (require 'init-flycheck)
 
-;; (require 'init-yasnippet)
-
 ;; (require 'init-ispell)
 
 ;; (require 'matlab-settings)
 
 ;; (require 'markdown-settings)
-
-;; (require 'init-calendar)
 
 (setq custom-file "~/.emacs.d/settings/custom.el")
 
