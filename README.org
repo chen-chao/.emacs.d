@@ -18,7 +18,7 @@ if emacs reports some packages are not found, please start emacs by
 
 #+BEGIN_SRC shell
 emacs -Q
-#+BEGIN_SRC
+#+END_SRC
 
 and run =M-x package-refresh-contents=.
 

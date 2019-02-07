@@ -4,5 +4,5 @@
 # --
 #+BEGIN_SRC shell
 $1
-#+BEGIN_SRC
+#+END_SRC
 $0
