@@ -18,8 +18,10 @@
 ;; theme settings
 (setq custom-safe-themes t)
 
-(require 'eclipse-theme)
-(load-theme 'eclipse)
+(use-package eclipse-theme
+  :ensure t
+  :init (load-theme 'eclipse)
+  )
 
 ;; enable/disable theme for window-system/terminal
 (defun switch-color-theme (frame)
