@@ -40,4 +40,14 @@
 
 (global-set-key (kbd "C-c k") 'kill-current-buffer)
 
+;; avoid Ctrl-Space key binding on Windows
+(when
+    (string-match "Microsoft"
+		  (with-temp-buffer (shell-command "uname -r" t)
+				    (goto-char (point-max))
+				    (delete-char -1)
+				    (buffer-string)))
+  (global-set-key (kbd "C-c SPC") 'set-mark-command)
+  )
+
 (provide 'edit-settings)
