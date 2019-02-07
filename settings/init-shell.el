@@ -20,4 +20,21 @@
   '(define-key term-raw-map (kbd "C-c C-y") 'term-paste)
   )
 
+(defun ipython (&optional other)
+  (interactive "P")
+  (let ((ipython-path (or (executable-find "ipython") (executable-find "ipython3")))
+	(new-window (or other nil))
+	)
+    (if ipython-path
+	(progn
+	  (when new-window
+	    (progn
+	      (split-window-below)
+	      (other-window 1)))
+	  (term ipython-path)
+	)
+      (message "cannot find ipython in the path"))
+    )
+  )
+
 (provide 'init-shell)
