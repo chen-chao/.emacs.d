@@ -77,9 +77,10 @@
       (diary-chinese-anniversary lunar-month lunar-day year mark))
     )
 
+  ;; add anniversaries to org agenda
   (setq org-anni-file "~/org/anniversaries.org")
   (when (and (file-exists-p org-anni-file) (not (member org-anni-file org-agenda-files)))
-    (add-to-list org-agenda-files org-anni-file)
+    (setq org-agenda-files (cons org-anni-file org-agenda-files))
     )
   )
 
