@@ -8,7 +8,7 @@
     (set-process-sentinel
      proc
      `(lambda (process event)
-	(if (string= event "finished\n")
+	(if (or (string= event "finished\n") (string= event "exit\n"))
 	    (kill-buffer ,buff)))
      )
     )
