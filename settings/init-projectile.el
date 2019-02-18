@@ -11,12 +11,15 @@
   :defer t
   :bind
   (:map global-map
-        ("C-c t p"     . treemacs-select-window)
+        ("C-c t p"   . treemacs-select-window)
         ("C-c t 1"   . treemacs-delete-other-windows)
         ("C-c t t"   . treemacs)
         ("C-c t B"   . treemacs-bookmark)
         ("C-c t C-t" . treemacs-find-file)
-        ("C-c t M-t" . treemacs-find-tag))
+        ("C-c t M-t" . treemacs-find-tag)
+	:map treemacs-mode-map
+	([mouse-1]   . treemacs-RET-action)
+	)
   :config
   (treemacs-follow-mode t)
   (treemacs-filewatch-mode t)
@@ -42,7 +45,6 @@
   )
 
 (use-package treemacs-magit
-  :ensure t
   :after treemacs magit
   )
 
