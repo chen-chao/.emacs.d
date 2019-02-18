@@ -84,6 +84,13 @@
     )
   )
 
+
+;; for org html export
+(use-package htmlize
+  :ensure t
+  )
+
+
 ;; holidays and chinese holidays
 (use-package cal-china-x
   :ensure t
