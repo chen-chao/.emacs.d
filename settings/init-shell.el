@@ -1,6 +1,5 @@
 (setq explicite-shell-file-name "/bin/bash")
 
-
 ;; https://oremacs.com/2015/01/01/three-ansi-term-tips/
 (defun kill-term-after-exit ()
   (let* ((buff (current-buffer))
@@ -20,21 +19,32 @@
   '(define-key term-raw-map (kbd "C-c C-y") 'term-paste)
   )
 
-(defun ipython (&optional other)
-  (interactive "P")
-  (let ((ipython-path (or (executable-find "ipython") (executable-find "ipython3")))
+
+;; helper commands for interactive shells
+(defun run-command-in-term (command &optional other)
+  (let ((command-path (executable-find command))
 	(new-window (or other nil))
 	)
-    (if ipython-path
+    (if command-path
 	(progn
 	  (when new-window
 	    (progn
 	      (split-window-below)
 	      (other-window 1)))
-	  (term ipython-path)
+	  (term command-path)
 	)
-      (message "cannot find ipython in the path"))
+      (message "cannot find bash in the path"))
     )
+  )
+
+(defun bash (&optional other)
+  (interactive "P")
+  (run-command-in-term "bash" other)
+  )
+
+(defun ipython (&optional other)
+  (interactive "P")
+  (run-command-in-term "ipython" other)
   )
 
 (provide 'init-shell)
