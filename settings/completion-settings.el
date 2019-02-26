@@ -2,6 +2,7 @@
 
 (use-package company
   :ensure t
+  :diminish company-mode
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   )
@@ -13,6 +14,7 @@
   (require 'lsp-clients)
   (add-hook 'python-mode-hook #'lsp)
   (add-hook 'c++-mode-hook #'lsp)
+  (add-hook 'java-mode-hook #'lsp)
   )
 
 (use-package lsp-ui
@@ -47,6 +49,7 @@
 
 (use-package yasnippet
   :ensure t
+  :diminish yas-minor-mode
   :init (yas-global-mode 1)
   :config
   ;; (yas-reload-all)

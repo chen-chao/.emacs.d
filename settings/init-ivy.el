@@ -2,6 +2,7 @@
 
 (use-package which-key
   :ensure t
+  :diminish which-key-mode
   :init
   (which-key-mode)
   :config
@@ -10,7 +11,7 @@
 
 (use-package ivy
   :ensure t
-  ;; :diminish (ivy-mode . "") ; does not display ivy in the modeline
+  :diminish ivy-mode        ; not display ivy in the modeline
   :init (ivy-mode 1)        ; enable ivy globally at startup
   :bind
   (:map ivy-mode-map			; bind in the ivy buffer
@@ -36,7 +37,7 @@
    ("C-c l"   . counsel-locate)    ; search for files or else using locate
    ("C-h f"   . counsel-describe-function)
    ("C-h v"   . counsel-describe-variable)
-   ("C-h i"   . counsel-info-lookup-symbol)
+   ("C-h s"   . counsel-info-lookup-symbol)
    ("C-h l"   . counsel-find-library)
    ("C-h u"   . counsel-unicode-char)
    )

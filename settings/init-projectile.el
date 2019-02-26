@@ -1,5 +1,6 @@
 (use-package projectile
   :ensure t
+  :delight '(:eval (concat " Proj[" (projectile-project-name) "]"))
   :init
   (projectile-mode 1)
   :bind-keymap
