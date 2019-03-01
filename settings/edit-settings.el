@@ -40,6 +40,30 @@
 
 (global-set-key (kbd "C-c k") 'kill-current-buffer)
 
+
+(defun my-open-line (N)
+  (interactive "*p")
+  (if (> N 0)
+      (progn
+	(move-end-of-line 1)
+	(dotimes (var N)
+	  (newline-and-indent))
+	)
+    (progn
+      (setq N (- 0 N))
+      (back-to-indentation)
+      (dotimes (var N)
+	(newline-and-indent))
+      (dotimes (var N)
+	(previous-line)
+	(indent-for-tab-command))
+      )
+    )
+  )
+
+
+(global-set-key (kbd "C-o") 'my-open-line)
+
 ;; avoid Ctrl-Space key binding on Windows
 (when
     (string-match "Microsoft"
@@ -49,5 +73,8 @@
 				    (buffer-string)))
   (global-set-key (kbd "C-c SPC") 'set-mark-command)
   )
+
+;; enable dired function
+(put 'dired-find-alternate-file 'disabled nil)
 
 (provide 'edit-settings)
