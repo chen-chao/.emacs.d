@@ -1,17 +1,15 @@
 ;; Emacs frontend for weather web service wttr.in
-(use-package wttrin
-  :ensure t
-  :commands (wttrin)
-  :config
-  (setq wttrin-default-cities '("Wuxi" "Sihong"))
-  (setq wttrin-default-accept-language '("Accept-Language" . "en-US"))
 
-  (defun my-wttrin-show-current-city ()
-    (interactive)
-    (delete-other-windows)
-    (wttrin-query "")
-    )
+(add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-wttrin/")
+(require 'wttrin)
+(setq wttrin-default-cities '("Wuxi" "Sihong"))
+(setq wttrin-default-accept-language '("Accept-Language" . "en-US"))
+(defun my-wttrin-show-current-city ()
+  (interactive)
+  (delete-other-windows)
+  (wttrin-query "")
   )
+(wttrin-display-weather-in-mode-line)
 
 ;; Diminished modes are minor modes with no modeline display
 (use-package diminish
@@ -27,9 +25,9 @@
   :ensure t
   )
 
-(use-package display-time
+(use-package time
   :config
   (setq display-time-default-load-average nil)
   )
 
-(provide 'utils)
+(provide 'init-utils)

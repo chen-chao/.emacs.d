@@ -54,6 +54,9 @@
 
 (require 'init-dict)
 
+(require 'init-gnus)
+
+(require 'init-utils)
 ;; (require 'init-evil)
 
 ;; (require 'init-browser)
