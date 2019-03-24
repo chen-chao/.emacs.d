@@ -1,4 +1,10 @@
-(defun join-next-line (&optional N)
+;; auto completion of pairs and quotations
+(electric-pair-mode 1)
+(show-paren-mode 1)
+
+(setq require-final-newline 1)
+
+(defun cc/join-next-line (&optional N)
   "join next lines"
   (interactive "*p")
 
@@ -16,9 +22,9 @@
     )
   )
 
-(global-set-key (kbd "M-j") 'join-next-line)
+(global-set-key (kbd "M-j") 'cc/join-next-line)
 
-(defun copy-current-line (arg)
+(defun cc/copy-current-line (arg)
   (interactive "p")
   (let* ((beg (line-beginning-position))
 	(end (line-end-position arg))
@@ -29,19 +35,19 @@
     )
   )
 
-(global-set-key (kbd "M-k") 'copy-current-line)
+(global-set-key (kbd "M-k") 'cc/copy-current-line)
 
 (global-set-key (kbd "M-;") 'comment-line)
 
 
-(defun kill-current-buffer ()
+(defun cc/kill-current-buffer ()
   (interactive)
   (kill-buffer (current-buffer)))
 
-(global-set-key (kbd "C-c k") 'kill-current-buffer)
+(global-set-key (kbd "C-c k") 'cc/kill-current-buffer)
 
 
-(defun my-open-line (N)
+(defun cc/open-line (N)
   (interactive "*p")
   (if (> N 0)
       (progn
@@ -62,7 +68,7 @@
   )
 
 
-(global-set-key (kbd "C-o") 'my-open-line)
+(global-set-key (kbd "C-o") 'cc/open-line)
 
 ;; avoid Ctrl-Space key binding on Windows
 (when

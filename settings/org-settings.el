@@ -10,7 +10,8 @@
 
 (use-package org
   :ensure t
-
+  ;; fontset for org table
+  :after theme-settings
   :bind
   (("C-c l" . org-store-link)
    ("C-c a" . org-agenda)
@@ -82,6 +83,9 @@
   (when (and (file-exists-p org-anni-file) (not (member org-anni-file org-agenda-files)))
     (setq org-agenda-files (cons org-anni-file org-agenda-files))
     )
+
+  ;; chinese fontset for org-table
+  (set-face-attribute 'org-table nil :fontset (cc/fontset-for-org-table))
   )
 
 
