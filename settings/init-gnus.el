@@ -42,14 +42,11 @@ instead of `nnrss-group-data'"
 
 (defun my-save-crawler-after-make-rss-group (original-fun &rest args)
   "save newly added group to `my-nnrss-download-script-file'"
-  (write-region "begin testing" nil "~/Build/foo.txt" 'append)
   (let ((old-length (length nnrss-group-alist)))
     (apply original-fun args)
     (if (file-exists-p my-nnrss-download-script-file)
 	;; compare old and new nnrss-group-alist to get new added rss groups
 	(unless (= old-length (length nnrss-group-alist))
-	  (write-region "enter post rss grup" nil "~/Build/foo.txt" 'append)
-	  (write-region (car (car nnrss-group-alist)) nil "~/Build/foo.txt" 'append)
 	  (let* ((elem (car nnrss-group-alist))
 		 (xmlname (nnrss-translate-file-chars (concat (car elem) ".xml")))
 		 (url (nth 1 elem))
@@ -129,6 +126,17 @@ for `content:encoded' tag if not given"
 (setq mm-inline-large-images t)                       ;显示内置图片
 (auto-image-file-mode)                                ;自动加载图片
 (add-to-list 'mm-attachment-override-types "image/*") ;附件显示图片
+
+;; fontset for gnus summary
+(require 'theme-settings)
+(dolist (face '(gnus-summary-normal-read
+		gnus-summary-normal-ancient
+		gnus-summary-normal-undownloaded
+		gnus-summary-normal-ticked
+		gnus-summary-normal-unread
+		))
+	(set-face-attribute face nil :fontset (cc/fontset-for-org-table))
+	)
 
 ;; 概要显示设置
 (setq gnus-summary-gather-subject-limit 'fuzzy) ;聚集题目用模糊算法
