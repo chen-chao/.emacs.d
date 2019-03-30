@@ -106,18 +106,19 @@ will also be the width of all other printable characters."
 
 ;; fontset for org table
 ;; from https://zcodes.net/2016/08/22/emacs-notes-config.html
-(defun cc/fontset-for-org-table ()
+(defun cc/fontset-han-twice-width ()
   (let* ((expected-width (* 2 (get-char-font-width-on-screen ?m)))
 	 (cn-fontsize (get-char-font-size-of-width ?中 'han expected-width))
 	 (cn-font (split-string (face-font 'default nil ?中) "-"))
 	 (cn-fontname (nth 2 cn-font))
 	 (fset (frame-parameter nil 'font))
-	 (fset-string (replace-regexp-in-string "-iso.*$" "-fontset-orgtable" fset))
-	 (fset-org-table (create-fontset-from-fontset-spec fset-string))
+	 (fset-string (replace-regexp-in-string "-iso.*$" "-fontset-twice" fset))
+	 (fset-twice (create-fontset-from-fontset-spec fset-string))
 	 )
-    (set-fontset-font-size fset-org-table 'han cn-fontname cn-fontsize)
-    fset-org-table
+    (set-fontset-font-size fset-twice 'han cn-fontname cn-fontsize)
+    fset-twice
     )
   )
+
 
 (provide 'theme-settings)
