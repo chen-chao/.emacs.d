@@ -5,8 +5,10 @@ gui and terminal.
 
 It is tested on:
 
-- GNU/Linux, both gui and terminal.
+- GNU/Linux, both in gui and terminal.
 - emacs-nox on Windows Subsystem for Linux.
+
+emacs 26+ is required.
 
 ** Installation
 
@@ -14,16 +16,8 @@ You can use this config by cloning the repo to your home
 directory(please back up your own config first). Required packages
 will be installed automatically if you have internet access.
 
-if emacs reports some packages are not found, please start emacs by
-
-#+BEGIN_SRC shell
-emacs -Q
-#+END_SRC
-
-and run =M-x package-refresh-contents=.
-
-Note, emacs 26 is required.
-
+if emacs reports some packages are not found, please run
+ =M-x package-refresh-contents= and restart.
 
 ** Theme
 
