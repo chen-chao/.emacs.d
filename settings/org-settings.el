@@ -83,6 +83,9 @@
     (setq org-agenda-files (cons org-anni-file org-agenda-files))
     )
 
+  ;; auto fill mode for org capture
+  (add-hook 'org-capture-mode-hook (lambda () (auto-fill-mode)))
+
   ;; org table attribute
   (set-face-attribute 'org-table nil :fontset (cc/fontset-han-twice-width))
   )

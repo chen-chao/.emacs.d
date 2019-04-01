@@ -26,7 +26,8 @@
 ;; reading epub
 (use-package nov
   :ensure t
-  :init (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+  ;; :init (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+  :mode (("\\.epub\\'" . nov-mode))
   :config
   (setq nov-text-width 80)
   (add-hook 'nov-mode-hook 'visual-line-mode)
