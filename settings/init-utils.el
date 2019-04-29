@@ -1,13 +1,10 @@
 ;; Emacs frontend for weather web service wttr.in
 
 ;; for wttrin
-(use-package xterm-color
-  :ensure t
-  )
 
 (use-package wttrin
   :load-path "site-lisp/emacs-wttrin/"
-  :requires xterm-color
+  :demand t
   :config
   (setq wttrin-default-cities '("Wuxi" "Sihong"))
   (setq wttrin-default-accept-language '("Accept-Language" . "en-US"))
@@ -26,11 +23,26 @@
 ;; reading epub
 (use-package nov
   :ensure t
-  ;; :init (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
   :mode (("\\.epub\\'" . nov-mode))
   :config
   (setq nov-text-width 80)
   (add-hook 'nov-mode-hook 'visual-line-mode)
+  )
+
+;; po files
+(use-package po-mode
+  :load-path "site-lisp/po-mode"
+  :mode (("\\.po\\'" . po-mode))
+  )
+
+(use-package furl
+  :ensure t)
+
+(use-package graphql-mode
+  :ensure t)
+
+(use-package leetcode
+  :load-path "site-lisp/leetcode.el"
   )
 
 ;; Diminished modes are minor modes with no modeline display

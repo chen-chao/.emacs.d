@@ -2,9 +2,17 @@
 
 (use-package company
   :ensure t
+  :demand t
   :diminish company-mode
+  :bind
+  (:map company-active-map
+	(("C-n" . company-select-next)
+	 ("C-p" . company-select-previous)
+	 ("C-d" . company-show-doc-buffer)
+	 ))
   :config
   (add-hook 'after-init-hook 'global-company-mode)
+  (setq company-idle-delay 0.1)
   )
 
 (use-package lsp-mode
