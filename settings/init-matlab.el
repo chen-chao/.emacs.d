@@ -12,5 +12,5 @@
   (add-hook 'octave-mode-hook 'fix-octave-comments)
   )
 
-(provide 'matlab-settings)
+(provide 'init-matlab)
 

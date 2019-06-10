@@ -10,4 +10,4 @@
     )
   )
 
-(provide 'markdown-settings)
+(provide 'init-markdown)

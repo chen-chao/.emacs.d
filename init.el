@@ -4,18 +4,17 @@
 ;; You may delete these explanatory comments.
 
 
-;; proxy
-;; (setq url-gateway-method 'socks)
-;; (setq socks-server '("Default server" "127.0.0.1" 1080 5) ) ;;for socks5
-
 ;; package repository
 (require 'package)
 
-(add-to-list 'package-archives
-             '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
+;; Emacs China ELPA
+;; (add-to-list 'package-archives
+;;              '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
 
-;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;; 			 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+;; TNUA ELPA
+(setq package-archives
+      '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+        ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
 (package-initialize)
 
@@ -25,11 +24,7 @@
 
 (eval-when-compile (require 'use-package))
 
-
-(defun load-current-file ()
-  (interactive)
-  (load-file (buffer-file-name))
-  )
+;; (setq use-package-verbose t)
 
 ;; mode settings
 (add-to-list 'load-path "~/.emacs.d/settings")
@@ -50,24 +45,23 @@
 
 (require 'init-shell)
 
+(require 'init-gnus)
+
 (require 'init-eaf)
 
 (require 'init-dict)
 
-(require 'init-gnus)
-
 (require 'init-utils)
-;; (require 'init-evil)
 
 ;; (require 'init-browser)
 
-;; (require 'init-flycheck)
-
 ;; (require 'init-ispell)
 
-;; (require 'matlab-settings)
+(require 'init-golang)
 
-;; (require 'markdown-settings)
+(require 'init-matlab)
+
+(require 'init-markdown)
 
 (setq custom-file "~/.emacs.d/settings/custom.el")
 

@@ -8,7 +8,7 @@
   :config
   (setq wttrin-default-cities '("Wuxi" "Sihong"))
   (setq wttrin-default-accept-language '("Accept-Language" . "en-US"))
-  
+  (setq wttrin-mode-line-city "Shanghai")
   (when (>= emacs-major-version 26)
     (wttrin-display-weather-in-mode-line)
     )
@@ -45,7 +45,14 @@
   :load-path "site-lisp/leetcode.el"
   )
 
-;; Diminished modes are minor modes with no modeline display
+;; open in other window/frame
+(use-package other-frame-window
+  :ensure t
+  :diminish
+  :init (other-frame-window-mode)
+  )
+
+;; Diminished minor modes without modeline display
 (use-package diminish
   :ensure t
   :config
