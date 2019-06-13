@@ -37,7 +37,10 @@
 		("C-c g a" . go-test-current-project)
 		("C-c g m" . go-test-current-file)
 		("C-c g ." . go-test-current-test)
-		("C-c g x" . go-run)))
+		("C-c g x" . go-run))
+    :config
+    (setq go-test-verbose t)
+    )
 
   (use-package go-gen-test
     :ensure t
