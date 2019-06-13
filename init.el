@@ -47,6 +47,8 @@
 
 (require 'init-gnus)
 
+(require 'init-protobuf)
+
 (require 'init-eaf)
 
 (require 'init-dict)
