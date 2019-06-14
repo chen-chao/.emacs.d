@@ -1,0 +1,13 @@
+* Blogs                                                                :blog:
+** [[https://sgugger.github.io/feeds/all.atom.xml]]
+** [[http://hopehook.com/feed/]]
+** https://laike9m.com/blog/rss/
+** https://blog.golang.org/feed.atom                                 :golang:
+** https://xkcd.com/atom.xml                                           :xkcd:
+** https://pythofnhunter.org/episodes/feed.xml              :python:mustread:
+
+
+* News                                                                 :news:
+** entry-title: \(linux\|linus\|ubuntu\|kde\|gnome\)                  :linux:
+** https://www.solidot.org/index.rss                                :solidot:
+** https://www.archlinux.org/feeds/news/                     :linux:mustread:

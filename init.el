@@ -45,13 +45,15 @@
 
 (require 'init-shell)
 
-(require 'init-gnus)
+;; (require 'init-gnus)
 
 (require 'init-protobuf)
 
 (require 'init-eaf)
 
 (require 'init-dict)
+
+(require 'init-elfeed)
 
 (require 'init-utils)
 
