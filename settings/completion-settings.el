@@ -19,14 +19,15 @@
   :ensure t
   :commands lsp
   :init (setq lsp-auto-guess-root nil)
-  :hook ((python-mode c++-mode go-mode) . (lambda () (lsp)))
+  :hook ((python-mode go-mode) . (lambda () (lsp)))
   :config
   (require 'lsp-clients)
+
+  ;; python
+  ;; Pre-install: pip install python-language-server
   (setq lsp-clients-python-library-directories '("/usr/local/" "/usr/"))
 
-  ;; (add-hook 'python-mode-hook #'lsp)
-  ;; (add-hook 'c++-mode-hook #'lsp)
-
+  ;; golang
   ;; Pre-install:
   ;; go get -u golang.org/x/tools/cmd/gopls
   (lsp-register-client
@@ -71,6 +72,7 @@
   )
 
 ;; C/C++/Objective-C support
+;; Pre-install: ccls in path
 (use-package ccls
   :ensure t
   :defines projectile-project-root-files-top-down-recurring
