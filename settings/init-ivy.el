@@ -25,6 +25,15 @@
   (setq ivy-wrap t)		     ; enable "C-n" "C-p" to cycle past the first and last candidates
   )
 
+;; Correcting words with flyspell via Ivy
+(use-package flyspell-correct-ivy
+  :after flyspell
+  :init (setq flyspell-correct-interface #'flyspell-correct-ivy)
+  :bind (:map flyspell-mode-map
+	      ([remap flyspell-correct-word-before-point] . flyspell-correct-previous-word-generic)
+	      ("C-M-i" . flyspell-correct-wrapper)
+	      ))
+
 (use-package counsel
   :ensure t
   :bind                            ; load counsel when pressed
@@ -32,8 +41,8 @@
    ("C-x C-f" . counsel-find-file) ; C-x C-f use counsel-find-file
    ("C-x C-r" . counsel-recentf)   ; search recently edited files
    ("C-c f"   . counsel-git)       ; search for files in git repo
+   ("C-c r"   . counsel-rg)        ; search for regexp in current folder using rg(ripgrep)
    ("C-c s"   . counsel-git-grep)  ; search for regexp in git repo
-   ;; ("C-c k"   . counsel-ag)        ; search for regexp in git repo using ag
    ("C-c l"   . counsel-locate)    ; search for files or else using locate
    ("C-h f"   . counsel-describe-function)
    ("C-h v"   . counsel-describe-variable)
@@ -53,8 +62,8 @@
   :ensure t
   :bind
   (("C-;" . avy-goto-char-timer)
-   ("C-:" . avy-goto-char)
-   ("C-'" . avy-goto-char-2)
+   ("C-:" . avy-goto-char-2)
+   ;; ("C-'" . avy-goto-char-2)
    ("M-g g" . avy-goto-line)
    ("M-g w" . avy-goto-word-1)
    ("M-g e" . avy-goto-word-0)

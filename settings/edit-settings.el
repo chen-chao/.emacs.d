@@ -4,6 +4,10 @@
 
 (setq require-final-newline 1)
 
+(global-set-key (kbd "M-+") 'text-scale-increase)
+(global-set-key (kbd "M--") 'text-scale-decrease)
+
+
 (defun cc/join-next-line (&optional N)
   "join next lines"
   (interactive "*p")
@@ -70,6 +74,25 @@
 
 (global-set-key (kbd "C-o") 'cc/open-line)
 
+;; from https://github.com/seagle0128/.emacs.d/lisp/init-edit.el
+;; On-the-fly spell checker
+(use-package flyspell
+  :ensure nil
+  :diminish
+  :if (executable-find "aspell")
+  :hook (((text-mode outline-mode) . flyspell-mode)
+         (flyspell-mode . (lambda ()
+                            (dolist (key '("C-;" "C-," "C-."))
+                              (unbind-key key flyspell-mode-map)))))
+  :init
+  (setq flyspell-issue-message-flag nil)
+  (setq ispell-program-name "aspell")
+  (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together")))
+
+
+;; enable dired function
+(put 'dired-find-alternate-file 'disabled nil)
+
 ;; avoid Ctrl-Space key binding on Windows
 (when
     (string-match "Microsoft"
@@ -80,7 +103,13 @@
   (global-set-key (kbd "C-c SPC") 'set-mark-command)
   )
 
-;; enable dired function
-(put 'dired-find-alternate-file 'disabled nil)
+
+;; mac specific settings
+(when (eq system-type 'darwin)
+  (setq mac-option-modifier 'alt)
+  (setq mac-command-modifier 'meta)
+  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+  (add-to-list 'default-frame-alist '(font . "Monaco-20"))
+  )
 
 (provide 'edit-settings)
