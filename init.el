@@ -26,6 +26,11 @@
 
 ;; (setq use-package-verbose t)
 
+(use-package auth-source
+  :init
+  (setenv "GPG_AGENT_INFO" nil)
+  (setq auth-sources '("~/.emacs.d/.authinfo.gpg")))
+
 ;; mode settings
 (add-to-list 'load-path "~/.emacs.d/settings")
 

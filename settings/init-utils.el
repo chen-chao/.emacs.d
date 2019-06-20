@@ -6,17 +6,11 @@
   :load-path "site-lisp/emacs-wttrin/"
   :demand t
   :config
-  (setq wttrin-default-cities '("Wuxi" "Sihong"))
+  (setq wttrin-default-cities '("Shanghai" "Sihong"))
   (setq wttrin-default-accept-language '("Accept-Language" . "en-US"))
   (setq wttrin-mode-line-city "Shanghai")
   (when (>= emacs-major-version 26)
     (wttrin-display-weather-in-mode-line)
-    )
-  
-  (defun my-wttrin-show-current-city ()
-    (interactive)
-    (delete-other-windows)
-    (wttrin-query "")
     )
   )
 
@@ -35,14 +29,16 @@
   :mode (("\\.po\\'" . po-mode))
   )
 
-(use-package furl
-  :ensure t)
-
-(use-package graphql-mode
-  :ensure t)
-
 (use-package leetcode
-  :load-path "site-lisp/leetcode.el"
+  :ensure t
+  :config
+  (let* ((secret (auth-source-user-and-password "leetcode.com"))
+	 (username (car secret))
+	 (password (cadr secret)))
+    (setq leetcode-account username)
+    (setq leetcode-password password)
+    )
+  (setq leetcode-prefer-language "python3")
   )
 
 ;; open in other window/frame
