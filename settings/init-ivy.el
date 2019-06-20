@@ -15,7 +15,7 @@
   :init (ivy-mode 1)        ; enable ivy globally at startup
   :bind
   (:map ivy-mode-map			; bind in the ivy buffer
-	("C-'" . ivy-avy)
+	;; ("C-'" . ivy-avy)
 	("C-c C-r" . ivy-resume)	; recalls completion session
 	)
   :config
@@ -64,7 +64,7 @@
   (("C-;" . avy-goto-char-timer)
    ("C-:" . avy-goto-char-2)
    ;; ("C-'" . avy-goto-char-2)
-   ("M-g g" . avy-goto-line)
+   ("C-'" . avy-goto-line)
    ("M-g w" . avy-goto-word-1)
    ("M-g e" . avy-goto-word-0)
    )
