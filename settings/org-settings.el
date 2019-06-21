@@ -10,7 +10,6 @@
 
 (use-package org
   :ensure t
-  :after theme-settings
   :bind
   (("C-c l" . org-store-link)
    ("C-c a" . org-agenda)
@@ -86,8 +85,8 @@
   ;; auto fill mode for org capture
   (add-hook 'org-capture-mode-hook (lambda () (auto-fill-mode)))
 
-  ;; org table attribute
-  (set-face-attribute 'org-table nil :fontset (cc/fontset-han-twice-width))
+  ;; set org table attribute
+  (push 'org-table zh-align-faces)
   )
 
 

@@ -7,3 +7,6 @@
 [submodule "site-lisp/po-mode"]
 	path = site-lisp/po-mode
 	url = git@github.com:chen-chao/po-mode.git
+[submodule "site-lisp/emacs-zh-align"]
+	path = site-lisp/emacs-zh-align
+	url = git@github.com:chen-chao/emacs-zh-align.git

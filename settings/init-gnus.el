@@ -1,5 +1,4 @@
 (use-package gnus
-  :after theme-settings
   :config
 
   ;; mail sending

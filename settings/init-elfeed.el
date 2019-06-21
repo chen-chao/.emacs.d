@@ -1,13 +1,14 @@
 (use-package elfeed
   :ensure t
   :config
+
+  ;; set face attribute
+  (push 'elfeed-search-title-face zh-align-faces)
+  (push 'elfeed-search-feed-face zh-align-faces)
+
   (use-package elfeed-org :ensure t)
   (setq rmh-elfeed-org-files (list "~/.emacs.d/settings/elfeed.org"))
   (elfeed-org)
-
-  (let ((fset (cc/fontset-han-twice-width)))
-    (set-face-attribute 'elfeed-search-title-face nil :fontset fset)
-    (set-face-attribute 'elfeed-search-feed-face nil :fontset fset))
 
   ;; automatically update feeds
   (defvar elfeed-update-timer nil)
