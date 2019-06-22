@@ -42,6 +42,7 @@
 
 ;; theme
 (use-package eclipse-theme
+  :ensure nil
   :init
   (setq custom-safe-themes t)
   (load-theme 'eclipse)
