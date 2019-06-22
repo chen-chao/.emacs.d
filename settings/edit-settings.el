@@ -74,21 +74,6 @@
 
 (global-set-key (kbd "C-o") 'cc/open-line)
 
-;; from https://github.com/seagle0128/.emacs.d/lisp/init-edit.el
-;; On-the-fly spell checker
-(use-package flyspell
-  :ensure nil
-  :diminish
-  :if (executable-find "aspell")
-  :hook (((text-mode outline-mode) . flyspell-mode)
-         (flyspell-mode . (lambda ()
-                            (dolist (key '("C-;" "C-," "C-."))
-                              (unbind-key key flyspell-mode-map)))))
-  :init
-  (setq flyspell-issue-message-flag nil)
-  (setq ispell-program-name "aspell")
-  (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together")))
-
 
 ;; enable dired function
 (put 'dired-find-alternate-file 'disabled nil)

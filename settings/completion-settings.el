@@ -1,7 +1,6 @@
 ;; lsp mode
 
 (use-package company
-  :ensure t
   :demand t
   :diminish company-mode
   :bind
@@ -16,7 +15,6 @@
   )
 
 (use-package lsp-mode
-  :ensure t
   :commands lsp
   :init (setq lsp-auto-guess-root nil)
   :hook ((python-mode go-mode) . (lambda () (lsp)))
@@ -41,7 +39,6 @@
   )
 
 (use-package lsp-ui
-  :ensure t
   :commands lsp-ui-mode
   :bind
   (:map lsp-ui-mode-map
@@ -65,7 +62,6 @@
   )
 
 (use-package company-lsp
-  :ensure t
   :init (setq company-lsp-cache-candidates 'auto)
   :config
   (push 'company-lsp company-backends)
@@ -74,7 +70,6 @@
 ;; C/C++/Objective-C support
 ;; Pre-install: ccls in path
 (use-package ccls
-  :ensure t
   :defines projectile-project-root-files-top-down-recurring
   :hook ((c-mode c++-mode objc-mode cuda-mode) . (lambda ()
 						   (require 'ccls)
@@ -87,11 +82,9 @@
 		  projectile-project-root-files-top-down-recurring))))
 
 (use-package lsp-java
-  :ensure t
   :hook (java-mode . (lambda () (require 'lsp-java) (lsp))))
 
 (use-package yasnippet
-  :ensure t
   :diminish yas-minor-mode
   :init (yas-global-mode 1)
   :config
@@ -101,10 +94,7 @@
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   )
 
-(use-package ivy-yasnippet
-  :ensure t
-  :after yasnippet
-  )
+(use-package ivy-yasnippet :after yasnippet)
 
 
 (provide 'completion-settings)

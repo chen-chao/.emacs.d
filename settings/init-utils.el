@@ -16,7 +16,6 @@
 
 ;; reading epub
 (use-package nov
-  :ensure t
   :mode (("\\.epub\\'" . nov-mode))
   :config
   (setq nov-text-width 80)
@@ -30,27 +29,23 @@
   )
 
 (use-package leetcode
-  :ensure t
   :config
   (let* ((secret (auth-source-user-and-password "leetcode.com"))
 	 (username (car secret))
 	 (password (cadr secret)))
     (setq leetcode-account username)
-    (setq leetcode-password password)
-    )
+    (setq leetcode-password password))
   (setq leetcode-prefer-language "python3")
   )
 
 ;; open in other window/frame
 (use-package other-frame-window
-  :ensure t
   :diminish
   :init (other-frame-window-mode)
   )
 
 ;; Diminished minor modes without modeline display
 (use-package diminish
-  :ensure t
   :config
   ;; diminish built-in modes
   (diminish 'eldoc-mode)
@@ -58,9 +53,7 @@
   )
 
 ;; same as diminish, but also works for major modes 
-(use-package delight
-  :ensure t
-  )
+(use-package delight)
 
 (use-package time
   :config

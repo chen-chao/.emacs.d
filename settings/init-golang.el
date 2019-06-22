@@ -1,5 +1,4 @@
 (use-package go-mode
-  :ensure t
   :mode (("\\.go\\'" . go-mode))
   :bind (:map go-mode-map
 	      ([remap xref-find-definitions] . godef-jump)
@@ -15,16 +14,15 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
   (setq gofmt-command "goimports")
 
-  (use-package go-dlv :ensure t)
-  (use-package go-guru :ensure t)
-  (use-package go-fill-struct :ensure t)
-  (use-package go-impl :ensure t)
-  (use-package go-rename :ensure t)
-  (use-package golint :ensure t)
-  (use-package govet :ensure t)
+  (use-package go-dlv)
+  (use-package go-guru)
+  (use-package go-fill-struct)
+  (use-package go-impl)
+  (use-package go-rename)
+  (use-package golint)
+  (use-package govet)
 
   (use-package go-tag
-    :ensure t
     :bind (:map go-mode-map
 		("C-c g t" . go-tag-add)
 		("C-c g T" . go-tag-remove))
@@ -32,7 +30,6 @@
     (setq go-tag-args (list "-transform" "camelcase")))
 
   (use-package gotest
-    :ensure t
     :bind (:map go-mode-map
 		("C-c g a" . go-test-current-project)
 		("C-c g m" . go-test-current-file)
@@ -43,16 +40,12 @@
     )
 
   (use-package go-gen-test
-    :ensure t
     :bind (:map go-mode-map
-		("C-c C-t" . go-gen-test-dwim)))
-
-  )
+		("C-c C-t" . go-gen-test-dwim))))
 
   
 ;; Local Golang playground for short snippes
 (use-package go-playground
-  :ensure t
   :diminish go-playground-mode
   :commands go-playground-mode)
 

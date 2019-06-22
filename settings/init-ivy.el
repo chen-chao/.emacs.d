@@ -1,7 +1,6 @@
 ;; init ivy mode
 
 (use-package which-key
-  :ensure t
   :diminish which-key-mode
   :init
   (which-key-mode)
@@ -10,7 +9,6 @@
   )
 
 (use-package ivy
-  :ensure t
   :diminish ivy-mode        ; not display ivy in the modeline
   :init (ivy-mode 1)        ; enable ivy globally at startup
   :bind
@@ -35,7 +33,6 @@
 	      ))
 
 (use-package counsel
-  :ensure t
   :bind                            ; load counsel when pressed
   (("M-x"     . counsel-M-x)       ; M-x use counsel
    ("C-x C-f" . counsel-find-file) ; C-x C-f use counsel-find-file
@@ -53,13 +50,11 @@
   )
 
 (use-package swiper
-  :ensure t
   :bind
   (("C-s" . swiper))
   )
 
 (use-package avy
-  :ensure t
   :bind
   (("C-;" . avy-goto-char-timer)
    ("C-:" . avy-goto-char-2)
@@ -73,7 +68,6 @@
   )
 
 (use-package ace-window
-  :ensure t
   :bind (("M-p" . ace-window))
   :config
   (setq aw-dispatch-always t)
@@ -90,7 +84,6 @@
   "List of actions for `aw-dispatch-default'."))
 
 (use-package window-numbering
-  :ensure t
   :init (window-numbering-mode)
   :config
   (setq window-numbering-auto-assign-0-to-minibuffer t))

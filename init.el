@@ -10,7 +10,7 @@
 ;; TNUA ELPA
 (setq package-archives
       '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-        ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+	("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
 (package-initialize)
 
@@ -20,14 +20,8 @@
 
 (eval-when-compile (require 'use-package))
 
-(setq use-package-verbose t)
-
-(use-package auth-source
-  :init
-  (setenv "GPG_AGENT_INFO" nil)
-  (setq epa-pinentry-mode 'loopback)
-  (setq auth-sources '("~/.emacs.d/.authinfo.gpg")))
-
+;; (setq use-package-verbose t)
+(setq use-package-always-ensure t)
 
 (setq inhibit-startup-screen 1)
 (menu-bar-mode 0)
@@ -36,8 +30,18 @@
 ;; maximize window at startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+(add-to-list 'load-path "~/.emacs.d/settings")
+
+;; auth by gpg
+(use-package auth-source
+  :ensure nil
+  :init
+  (setenv "GPG_AGENT_INFO" nil)
+  (setq epa-pinentry-mode 'loopback)
+  (setq auth-sources '("~/.emacs.d/.authinfo.gpg")))
+
+;; theme
 (use-package eclipse-theme
-  :ensure t
   :init
   (setq custom-safe-themes t)
   (load-theme 'eclipse)
@@ -51,12 +55,64 @@
   (add-hook 'window-setup-hook #'zh-align-set-frame-faces)
   )
 
+;; edit
+(require 'edit-settings)
 (use-package edit-indirect)
 
-;; mode settings
-(add-to-list 'load-path "~/.emacs.d/settings")
+;; git
+(use-package magit
+  :bind (("C-c v" . magit-status)
+	 ("C-c m" . magit-dispatch-popup))
+  )
 
-(require 'edit-settings)
+;; dict
+(use-package youdao-dictionary
+  :bind
+  (("C-c y s" . youdao-dictionary-search-at-point-tooltip)
+   ("C-c y i" . youdao-dictionary-search-from-input)
+   ("C-c y v" . youdao-dictionary-play-voice-at-point))
+  :config
+  (setq url-automatic-caching t)	;enable cache
+  (setq youdao-dictionary-search-history-file "~/.emacs.d/.youdao_hist")
+  )
+
+;; from https://github.com/seagle0128/.emacs.d/lisp/init-edit.el
+(use-package flyspell
+  :ensure nil
+  :diminish
+  :if (executable-find "aspell")
+  :hook (((text-mode outline-mode) . flyspell-mode)
+	 (flyspell-mode . (lambda ()
+			    (dolist (key '("C-;" "C-," "C-."))
+			      (unbind-key key flyspell-mode-map)))))
+  :init
+  (setq flyspell-issue-message-flag nil)
+  (setq ispell-program-name "aspell")
+  (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together")))
+
+
+;; major modes
+
+(use-package protobuf-mode
+  :mode (("\\.proto\\'" . protobuf-mode)))
+
+(use-package octave
+  :mode (("\\.m$" . octave-mode))
+  :config
+  (setq octave-comment-start "%")
+  )
+
+(use-package markdown-mode
+  :mode (("README\\.md\\'" . gfm-mode)
+	 ("\\.md\\'" . markdown-mode)
+	 ("\\.markdown\\'" . markdown-mode))
+  :hook ((markdown-mode . flyspell-mode)
+	 (markdown-mode . auto-fill-mode))
+  :config
+  ;; Pre-install: markdown
+  (when (executable-find "markdown")
+    (setq markdown-command "markdown"))
+  )
 
 (require 'org-settings)
 
@@ -64,19 +120,13 @@
 
 (require 'init-ivy)
 
-(require 'init-magit)
-
 (require 'init-projectile)
 
 (require 'init-shell)
 
 ;; (require 'init-gnus)
 
-(require 'init-protobuf)
-
 (require 'init-eaf)
-
-(require 'init-dict)
 
 (require 'init-elfeed)
 
@@ -84,13 +134,7 @@
 
 ;; (require 'init-browser)
 
-;; (require 'init-ispell)
-
 (require 'init-golang)
-
-(require 'init-matlab)
-
-(require 'init-markdown)
 
 (setq custom-file "~/.emacs.d/settings/custom.el")
 

@@ -1,5 +1,4 @@
 (use-package projectile
-  :ensure t
   :demand t
   :delight '(:eval (concat " Proj[" (projectile-project-name) "]"))
   :init
@@ -9,7 +8,6 @@
   )
 
 (use-package treemacs
-  :ensure t
   :defer t
   :bind
   (:map global-map
@@ -36,12 +34,9 @@
   )
 
 (use-package treemacs-projectile
-  :ensure t
-  :after treemacs projectile
-  )
+  :after treemacs projectile)
 
 (use-package treemacs-icons-dired
-  :ensure t
   :after treemacs dired
   :config (treemacs-icons-dired-mode)
   )

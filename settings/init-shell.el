@@ -8,33 +8,27 @@
      proc
      `(lambda (process event)
 	(if (or (string= event "finished\n") (string= event "exit\n"))
-	    (kill-buffer ,buff)))
-     )
-    )
+	    (kill-buffer ,buff)))))
   )
 
 (add-hook 'term-exec-hook 'kill-term-after-exit)
 
 (eval-after-load "term"
-  '(define-key term-raw-map (kbd "C-c C-y") 'term-paste)
-  )
+  '(define-key term-raw-map (kbd "C-c C-y") 'term-paste))
 
 
 ;; helper commands for interactive shells
 (defun run-command-in-term (command &optional other)
   (let ((command-path (executable-find command))
-	(new-window (or other nil))
-	)
+	(new-window (or other nil)))
     (if command-path
 	(progn
 	  (when new-window
 	    (progn
 	      (split-window-below)
 	      (other-window 1)))
-	  (term command-path)
-	)
-      (message "cannot find bash in the path"))
-    )
+	  (term command-path))
+      (message "cannot find %s in the path" command)))
   )
 
 (defun bash (&optional other)

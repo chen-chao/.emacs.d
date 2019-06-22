@@ -9,7 +9,6 @@
 
 
 (use-package org
-  :ensure t
   :bind
   (("C-c l" . org-store-link)
    ("C-c a" . org-agenda)
@@ -91,14 +90,11 @@
 
 
 ;; for org html export
-(use-package htmlize
-  :ensure t
-  )
+(use-package htmlize)
 
 
 ;; holidays and chinese holidays
 (use-package cal-china-x
-  :ensure t
   :config
   (setq western-general-holidays
 	'((holiday-fixed 2 14 "Valentine's Day")
