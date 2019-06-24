@@ -1,19 +1,5 @@
 ;; lsp mode
 
-(use-package company
-  :demand t
-  :diminish company-mode
-  :bind
-  (:map company-active-map
-	(("C-n" . company-select-next)
-	 ("C-p" . company-select-previous)
-	 ("C-d" . company-show-doc-buffer)
-	 ))
-  :config
-  (add-hook 'after-init-hook 'global-company-mode)
-  (setq company-idle-delay 0.1)
-  )
-
 (use-package lsp-mode
   :commands lsp
   :init (setq lsp-auto-guess-root nil)
@@ -84,17 +70,5 @@
 (use-package lsp-java
   :hook (java-mode . (lambda () (require 'lsp-java) (lsp))))
 
-(use-package yasnippet
-  :diminish yas-minor-mode
-  :init (yas-global-mode 1)
-  :config
-  ;; (yas-reload-all)
-  ;; (add-hook 'prog-mode-hook #'yas-minor-mode)
-  ;; (add-hook 'latex-mode-hook #'yas-minor-mode)
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-  )
 
-(use-package ivy-yasnippet :after yasnippet)
-
-
-(provide 'completion-settings)
+(provide 'init-lsp)

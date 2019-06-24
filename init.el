@@ -60,6 +60,31 @@
 (require 'edit-settings)
 (use-package edit-indirect)
 
+;; completion
+(use-package company
+  :diminish company-mode
+  :init (global-company-mode)
+  :bind (:map company-active-map
+	      (("C-n" . company-select-next)
+	       ("C-p" . company-select-previous)
+	       ("C-d" . company-show-doc-buffer)
+	       ))
+  :config
+  (setq company-idle-delay 0.1)
+  )
+
+;; template
+
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :init (yas-global-mode 1)
+  :config
+  ;; (yas-reload-all)
+  ;; (add-hook 'prog-mode-hook #'yas-minor-mode)
+  ;; (add-hook 'latex-mode-hook #'yas-minor-mode)
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  )
+
 ;; git
 (use-package magit
   :bind (("C-c v" . magit-status)
@@ -117,7 +142,7 @@
 
 (require 'org-settings)
 
-(require 'completion-settings)
+(require 'init-lsp)
 
 (require 'init-ivy)
 

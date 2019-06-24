@@ -11,19 +11,21 @@
     (elfeed-org))
 
   ;; automatically update feeds
-  (defvar elfeed-update-timer nil)
+  (when (>= emacs-major-version 26)
 
-  (defun elfeed-cancel-timer ()
-    (interactive)
-    (and elfeed-update-timer (cancel-timer elfeed-update-timer))
-    (setq elfeed-update-timer nil))
+    (defvar elfeed-update-timer nil)
 
-  (with-eval-after-load 'elfeed
-    ;; (message "load elfeed")
-    (elfeed-cancel-timer)
-    (setq elfeed-update-timer
-	  (run-with-timer 0 3600 (lambda () (make-thread 'elfeed-update))))
-    )
+    (defun elfeed-cancel-timer ()
+      (interactive)
+      (and elfeed-update-timer (cancel-timer elfeed-update-timer))
+      (setq elfeed-update-timer nil))
+
+    (with-eval-after-load 'elfeed
+      ;; (message "load elfeed")
+      (elfeed-cancel-timer)
+      (setq elfeed-update-timer
+	    (run-with-timer 0 3600 (lambda () (make-thread 'elfeed-update))))
+      )
   )
-
+)
 (provide 'init-elfeed)

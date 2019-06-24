@@ -23,6 +23,10 @@
   (setq ivy-wrap t)		     ; enable "C-n" "C-p" to cycle past the first and last candidates
   )
 
+(use-package ivy-yasnippet
+  :after yasnippet
+  :bind ("C-c C-y" . ivy-yasnippet))
+
 ;; Correcting words with flyspell via Ivy
 (use-package flyspell-correct-ivy
   :after flyspell
