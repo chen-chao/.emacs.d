@@ -140,6 +140,10 @@
     (setq markdown-command "markdown"))
   )
 
+(use-package yaml-mode
+  :mode (("\\.yaml\\'" . yaml-mode)
+	 ("\\.yml\\'" . yaml-mode)))
+
 (require 'org-settings)
 
 (require 'init-lsp)
