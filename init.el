@@ -166,6 +166,8 @@
 
 (require 'init-golang)
 
+(require 'init-dired)
+
 (setq custom-file "~/.emacs.d/settings/custom.el")
 
 (when (file-exists-p custom-file)
