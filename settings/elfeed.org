@@ -1,13 +1,14 @@
-* Blogs                                                                :blog:
+* Blogs                                                         :blog:elfeed:
 ** [[https://sgugger.github.io/feeds/all.atom.xml]]
 ** [[http://hopehook.com/feed/]]
 ** https://laike9m.com/blog/rss/
 ** https://blog.golang.org/feed.atom                                 :golang:
-** https://xkcd.com/atom.xml                                           :xkcd:
-** https://pythofnhunter.org/episodes/feed.xml              :python:mustread:
-
-
-* News                                                                 :news:
-** entry-title: \(linux\|linus\|ubuntu\|kde\|gnome\)                  :linux:
-** https://www.solidot.org/index.rss                                :solidot:
-** https://www.archlinux.org/feeds/news/                     :linux:mustread:
+** https://xkcd.com/atom.xml
+** https://pythonhunter.org/episodes/feed.xml                        :python:
+** http://esr.ibiblio.org/?feed=rss
+** http://ppwwyyxx.com/atom.xml
+** https://lightquantum.xyz/index.xml
+** https://farseerfc.me/feeds/atom.xml
+** https://feedly.com/i/subscription/feed/http://xargin.com/rss/     :golang:
+** https://www.solidot.org/index.rss
+** https://www.archlinux.org/feeds/news/                         :linux:news:

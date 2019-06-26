@@ -26,6 +26,6 @@
       (setq elfeed-update-timer
 	    (run-with-timer 0 3600 (lambda () (make-thread 'elfeed-update))))
       )
+    )
   )
-)
 (provide 'init-elfeed)
