@@ -41,14 +41,10 @@
 
   (use-package go-gen-test
     :bind (:map go-mode-map
-		("C-c C-t" . go-gen-test-dwim))))
-
+		("C-c C-t" . go-gen-test-dwim)))
   
-;; Local Golang playground for short snippes
-(use-package go-playground
-  :diminish go-playground-mode
-  :commands go-playground-mode)
-
+  (use-package go-playground :diminish go-playground-mode)
+  )
 
 (provide 'init-golang)
 
