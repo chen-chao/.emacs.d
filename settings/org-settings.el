@@ -9,6 +9,8 @@
 
 
 (use-package org
+  :init
+  (require 'org-protocol)
   :bind
   (("C-c l" . org-store-link)
    ("C-c a" . org-agenda)
@@ -21,9 +23,12 @@
    ("C-c [" . org-agenda-file-to-front)
    ("C-c ]" . org-remove-file)
    ("C-c C-a" . org-archive-subtree)
+   ("C-," . org-cycle-agenda-files)
    )
 
   :config
+  (require 'bind-key)
+  (unbind-key "C-'" org-mode-map)
   (setq org-log-done 'time)
   (setq org-log-done 'note)
   (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED(c!)") ) )
