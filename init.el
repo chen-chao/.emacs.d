@@ -144,6 +144,11 @@
   :mode (("\\.yaml\\'" . yaml-mode)
 	 ("\\.yml\\'" . yaml-mode)))
 
+(use-package asy-mode
+  :load-path "site-lisp/asy"
+  :commands (asy-mode lasy-mode asy-insinuate-latex)
+  :mode (("\\.asy\\'" . asy-mode)))
+
 (require 'org-settings)
 
 (require 'init-lsp)
