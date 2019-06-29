@@ -38,7 +38,10 @@
   :init
   (setenv "GPG_AGENT_INFO" nil)
   (setq epa-pinentry-mode 'loopback)
-  (setq auth-sources '("~/.emacs.d/.authinfo.gpg")))
+  (setq auth-sources '("~/.emacs.d/data/.authinfo.gpg"))
+  (setq auth-source-cache-expiry 86400) ;; All Day
+  (setq auth-source-gpg-encrypt-to "wenbushi@gmail.com")
+  )
 
 ;; theme
 (use-package eclipse-theme
@@ -52,6 +55,7 @@
   :load-path "site-lisp/emacs-zh-align/"
   :demand t
   :init
+  (setq zh-align-charsets '(han kana cjk-misc))
   (add-hook 'after-make-frame-functions #'zh-align-set-frame-faces)
   (add-hook 'window-setup-hook #'zh-align-set-frame-faces)
   )
