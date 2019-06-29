@@ -1,4 +1,4 @@
-* My Emacs config
+#+TITLE: My Emacs config
 
 This is a simple Emacs config. It starts up quickly and works well in
 gui and terminal.
@@ -7,44 +7,74 @@ It is tested on:
 
 - GNU/Linux, both in gui and terminal.
 - emacs-nox on Windows Subsystem for Linux.
+- Emacs-mac on Mac OS X
 
-emacs 26+ is required.
+Emacs 26+ is required for thread support.
 
-** Installation
+* Installation
 
 You can use this config by cloning the repo to your home
 directory(please back up your own config first). Required packages
 will be installed automatically if you have internet access.
 
-if emacs reports some packages are not found, please run
+if Emacs complains some packages are not found, please run
  =M-x package-refresh-contents= and restart.
 
-** Theme
+* Keybindings and Package management
+
+I use Emacs default keybindings. =evil= is also fantastic, but I'm not
+an expert of vim...
+
+To avoid "Emacs pinky", I switch right ALT with right CTRL(I don't use
+it anyway), so I can use right thumb to press CTRL.
+
+Packages are managed by =use-package=.
+
+* Theme
 
 The color theme used in this config is [[https://github.com/abo-abo/eclipse-theme][abo-abo/eclipse-theme]], which is
-light background and works quite well both on gui and terminal.  The
-color theme falls back to dark background with a nice look up in
+light background and works quite well both in gui and terminal. The
+color theme falls back to default dark background with a nice look in
 emacs-nox(since there is bug displaying emacs on WSL, I use
 [[https://github.com/goreliu/wsl-terminal][goreliu/wsl-terminal]] instead of the default terminal).
 
-The config also provides two functions to automatically choose Chinese
-font size to match the English font size:
-=set-twice-en-width-han-font-size= and
-=set-same-en-height-han-font-size=, which are quite useful for aligning
-contents in org-mode tables.
+The config uses =emacs-zh-align= to config =han, kana, cjk-mis= and
+other similar scripts and other charsets' font size to make them be
+compatible with English font size in tabular like environment, see
+[[https://github.com/chen-chao/emacs-zh-align][emacs-zh-align]] for detail.
 
 
-** Completion
+* Completion
 
-=ivy=, =counsel= and =swiper= are used for interactively command
-selection and searching.
+I use =ivy= as the completion frontend, which is simple and very powerful.
+=counsel= and =swiper comes along as interactively command
+selection and searching tools. A few tips:
 
-=company= and =lsp-mode= are used for code highlight, navigation and
-completion.
+- =M-n= and =M-j= in =swiper= could select and expand text under cursor.
+- =M-q= could replace the matching candidates.
+
+=company= are used as the completion backend.
 
 =yasnippet= provides a code template system.
 
-** Project management
+* Major modes
+
+=lsp-mode= are used for code highlight, navigation and completion for:
+
+- golang(gopls)
+- python(pyls)
+- c/c++/object-c via =ccls=
+- java via =lsp-java=
+
+Other support languages or major modes:
+
+- protobuf
+- markdown
+- yaml
+- octave
+- asymptote
+
+* Project management
 
 The config uses these packages for project management:
 
@@ -52,12 +82,12 @@ The config uses these packages for project management:
 - =projectile=, a project interaction library.
 - =treemacs=, a tree-like file and project explorer.
 
-** Org mode
+* Org mode
 
 Config refile targets, capture templates and html export settings for org mode. 
 Integrate Chinese lunar holidays with org agenda using =cal-china-x= package.
 
 
-** Finally...
+* Finally...
 
 Have fun!
