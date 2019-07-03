@@ -67,7 +67,7 @@
    ("M-g w" . avy-goto-word-1)
    ("M-g e" . avy-goto-word-0)
    )
-  :config
+  :init
   (avy-setup-default)
   )
 
