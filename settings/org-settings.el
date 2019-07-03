@@ -90,7 +90,7 @@
   (add-hook 'org-capture-mode-hook (lambda () (auto-fill-mode)))
 
   ;; set org table attribute
-  (push 'org-table zh-align-faces)
+  (zh-align-set-faces '(org-table))
   )
 
 

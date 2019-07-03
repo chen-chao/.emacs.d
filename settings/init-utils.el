@@ -29,6 +29,8 @@
   )
 
 (use-package leetcode
+  :commands leetcode
+  :defer t
   :config
   (let* ((secret (auth-source-user-and-password "leetcode.com"))
 	 (username (car secret))

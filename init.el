@@ -56,8 +56,6 @@
   :demand t
   :init
   (setq zh-align-charsets '(han kana cjk-misc))
-  (add-hook 'after-make-frame-functions #'zh-align-set-frame-faces)
-  (add-hook 'window-setup-hook #'zh-align-set-frame-faces)
   )
 
 ;; edit
@@ -181,3 +179,5 @@
 
 (when (file-exists-p custom-file)
   (load custom-file))
+
+(server-start)
