@@ -1,5 +1,12 @@
 ;; from centaur emacs
 
+(use-package dired
+  :ensure nil
+  :config
+  ;; enable dired functions
+  (put 'dired-find-alternate-file 'disabled nil)
+  )
+
 (use-package dired-rainbow
   :commands dired-rainbow-define dired-rainbow-define-chmod
   :init
