@@ -2,6 +2,8 @@
 (electric-pair-mode 1)
 (show-paren-mode 1)
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (setq require-final-newline 1)
 
 (global-set-key (kbd "M-+") 'text-scale-increase)
@@ -94,7 +96,7 @@
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
-  (add-to-list 'default-frame-alist '(font . "Monaco-20"))
+  (add-to-list 'default-frame-alist '(font . "Menlo-20"))
   )
 
 (provide 'edit-settings)

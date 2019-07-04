@@ -87,9 +87,4 @@
     (?o delete-other-windows))
   "List of actions for `aw-dispatch-default'."))
 
-(use-package window-numbering
-  :init (window-numbering-mode)
-  :config
-  (setq window-numbering-auto-assign-0-to-minibuffer t))
-
 (provide 'init-ivy)
