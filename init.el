@@ -194,4 +194,4 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-(server-start)
+(or (server-running-p) (server-start))
