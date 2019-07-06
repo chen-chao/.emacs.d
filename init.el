@@ -32,6 +32,11 @@
 
 (add-to-list 'load-path "~/.emacs.d/settings")
 
+(use-package exec-path-from-shell
+  :if (memq window-system '(ns mac x))
+  :config
+  (exec-path-from-shell-initialize))
+
 ;; auth by gpg
 (use-package auth-source
   :ensure nil
