@@ -170,6 +170,19 @@
   :commands (asy-mode lasy-mode asy-insinuate-latex)
   :mode (("\\.asy\\'" . asy-mode)))
 
+;; https://github.com/jwiegley/use-package/issues/379#issuecomment-258217014
+(use-package tex
+  :ensure auctex
+  :config
+  (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex --synctex=1%(mode)%' %t" TeX-run-TeX nil t))
+  (setq TeX-command-default "XeLaTeX")
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  ;; (setq TeX-save-query nil)
+  ;; (setq TeX-show-compilation t)
+  (use-package company-auctex :config (company-auctex-init))
+  )
+
 (require 'org-settings)
 
 (require 'init-lsp)
