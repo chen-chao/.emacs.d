@@ -2,7 +2,7 @@
 # name: source
 # key: source
 # --
-#+BEGIN_SRC $1
-$2
+#+BEGIN_SRC $1 $2
+$3
 #+END_SRC
 $0

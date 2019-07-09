@@ -2,7 +2,7 @@
 # name: c
 # key: c
 # --
-#+BEGIN_SRC C
-$1
+#+BEGIN_SRC C $1
+$2
 #+END_SRC
 $0

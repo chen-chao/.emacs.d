@@ -2,8 +2,7 @@
 # name: python
 # key: python
 # --
-#+BEGIN_SRC python
-$1
+#+BEGIN_SRC python $1
+$2
 #+END_SRC
 $0
-

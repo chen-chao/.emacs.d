@@ -2,7 +2,7 @@
 # name: lisp
 # key: lisp
 # --
-#+BEGIN_SRC lisp
-$1
+#+BEGIN_SRC lisp $1
+$2
 #+END_SRC
 $0
