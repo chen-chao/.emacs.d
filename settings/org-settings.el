@@ -40,25 +40,25 @@
 
   ;; refile targets
   (setq org-refile-targets '((nil . (:level . 1))
-                             ("~/org/notes.org" . (:level . 1))
-                             ("~/org/gtd.org" . (:level . 1))))
-  
+			     ("~/org/notes.org" . (:level . 1))
+			     ("~/org/gtd.org" . (:level . 1))))
+
   ;; capture templates
   (setq org-capture-templates
   '(("t" "TODO" entry (file+headline "~/org/gtd.org" "Tasks") "* TODO %?\n %i\n %a")
     ("j" "Journal" entry (file+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
     ("n" "Note" item (file+headline "~/org/notes.org" "Notes") "%?\nEntered on %U\n %i\n %a")))
-  
+
   (add-to-list 'org-structure-template-alist
-               '("p" "#+BEGIN_SRC python\n?\n#+END_SRC")
-               '("l" "#+BEGIN_SRC shell\n?\n#+END_SRC"))
+	       '("p" "#+BEGIN_SRC python\n?\n#+END_SRC")
+	       '("l" "#+BEGIN_SRC shell\n?\n#+END_SRC"))
 
   ;; org html export
   ;; remove xml header
   (setq org-html-xml-declaration
-        '(("html" . "")
-          ("xml" . "<?xml version=\"1.0\" encoding=\"%s\"?>")
-          ("php" . "<?php echo \"<?xml version=\\\"1.0\\\" encoding=\\\"%s\\\" ?>\"; ?>")))
+	'(("html" . "")
+	  ("xml" . "<?xml version=\"1.0\" encoding=\"%s\"?>")
+	  ("php" . "<?php echo \"<?xml version=\\\"1.0\\\" encoding=\\\"%s\\\" ?>\"; ?>")))
   (setq org-html-preamble nil)
   (setq org-html-postamble nil)
 
@@ -67,16 +67,16 @@
 
   ;; from https://emacs-china.org/t/topic/2119/13
   ;; change name to org-chinese-anniversary
-  
+
   (defun org-chinese-anniversary (lunar-month lunar-day &optional year mark)
     (if year
 	(let* ((d-date (diary-make-date lunar-month lunar-day year))
-               (a-date (calendar-absolute-from-gregorian d-date))
-               (c-date (calendar-chinese-from-absolute a-date))
-               (cycle (car c-date))
-               (yy (cadr c-date))
-               (y (+ (* 100 cycle) yy)))
-          (diary-chinese-anniversary lunar-month lunar-day y mark))
+	       (a-date (calendar-absolute-from-gregorian d-date))
+	       (c-date (calendar-chinese-from-absolute a-date))
+	       (cycle (car c-date))
+	       (yy (cadr c-date))
+	       (y (+ (* 100 cycle) yy)))
+	  (diary-chinese-anniversary lunar-month lunar-day y mark))
       (diary-chinese-anniversary lunar-month lunar-day year mark))
     )
 
@@ -91,6 +91,18 @@
 
   ;; set org table attribute
   (zh-align-set-faces '(org-table))
+
+  ;; org babel
+  (org-babel-do-load-languages 'org-babel-load-languages
+			       '((emacs-lisp . t)
+				 (python . t)
+				 (shell . t)
+				 (C . t)
+				 (asymptote . t)
+				 (octave . t)
+				 (latex . t)
+				 (ruby . t)
+				 (org . t)))
   )
 
 
@@ -109,7 +121,7 @@
 	  (holiday-fixed 10 31 "Halloween")
 	  (holiday-fixed 12 25 "Christmas"))
 	)
-  
+
   (setq cal-china-x-general-holidays
 	'((holiday-lunar 1 15 "元宵节" 0)
 	  (holiday-fixed 3 8 "妇女节")
@@ -120,11 +132,10 @@
 	  (holiday-lunar 9 9 "重阳节" 0)
 	  )
 	)
-  
+
   (setq calendar-holidays (append cal-china-x-chinese-holidays
 				  cal-china-x-general-holidays
 				  western-general-holidays))
   )
 
 (provide 'org-settings)
-
