@@ -77,8 +77,7 @@
 	 ("M-4" . winum-select-window-4)
 	 ("M-5" . winum-select-window-5)
 	 ("M-6" . winum-select-window-6)
-	 ("M-7" . winum-select-window-7)
-	 )
+	 ("M-7" . winum-select-window-7))
   )
 
 ;; completion
@@ -187,6 +186,8 @@
   ;; (setq TeX-show-compilation t)
   (use-package company-auctex :config (company-auctex-init))
   )
+
+(use-package json-mode)
 
 (require 'org-settings)
 
