@@ -3,25 +3,12 @@
 (use-package lsp-mode
   :commands lsp
   :init (setq lsp-auto-guess-root nil)
-  :hook ((python-mode go-mode) . (lambda () (lsp)))
+  :hook ((python-mode) . (lambda () (lsp)))
   :config
   (require 'lsp-clients)
-
   ;; python
   ;; Pre-install: pip install python-language-server
   (setq lsp-clients-python-library-directories '("/usr/local/" "/usr/"))
-
-  ;; golang
-  ;; Pre-install:
-  ;; go get -u golang.org/x/tools/cmd/gopls
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection "gopls")
-		    :major-modes '(go-mode)
-		    :priority 0
-		    :initialization-options 'lsp-clients-go--make-init-options
-		    :server-id 'gopls
-		    :library-folders-fn (lambda (_workspace)
-					  lsp-clients-go-library-directories)))
   )
 
 (use-package lsp-ui
