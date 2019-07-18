@@ -1,4 +1,4 @@
-* Blogs                                                         :blog:elfeed:
+* Blogs                                                              :elfeed:
 ** [[https://sgugger.github.io/feeds/all.atom.xml]]
 ** [[http://hopehook.com/feed/]]
 ** https://laike9m.com/blog/rss/
@@ -12,3 +12,4 @@
 ** https://feedly.com/i/subscription/feed/http://xargin.com/rss/     :golang:
 ** https://www.solidot.org/index.rss
 ** https://www.archlinux.org/feeds/news/                         :linux:news:
+** http://feeds.feedburner.com/TheKitchinResearchGroup
