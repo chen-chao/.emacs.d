@@ -34,12 +34,6 @@
   (set-face-foreground 'lsp-ui-sideline-code-action "purple")
   )
 
-(use-package company-lsp
-  :init (setq company-lsp-cache-candidates 'auto)
-  :config
-  (push 'company-lsp company-backends)
-  )
-
 ;; C/C++/Objective-C support
 ;; Pre-install: ccls in path
 (use-package ccls
