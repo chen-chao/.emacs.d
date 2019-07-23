@@ -39,7 +39,9 @@
   ;; dependency
   ;; go get -u github.com/lukehoban/go-outline
   ;; CAVEAT: lsp-mode also set up `imenu-create-index-function'
-  (use-package go-imenu)
+  (use-package go-imenu
+    :config
+    (add-hook 'lsp-after-open-hook (lambda () (when (derived-mode-p 'go-mode) (go-imenu-setup)))))
 
   (use-package go-tag
     :bind (:map go-mode-map
