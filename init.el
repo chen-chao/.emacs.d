@@ -99,8 +99,8 @@
   ;; lsp backend
   (use-package company-lsp
     :init (setq company-lsp-cache-candidates 'auto)
-    ;; :config
-    ;; (add-to-list 'company-backends #'company-lsp)
+    :config
+    (add-to-list 'company-backends #'company-lsp)
     )
 
   ;; tabnine backend
@@ -155,6 +155,7 @@
   (unbind-key "M-2" magit-mode-map)
   (unbind-key "M-3" magit-mode-map)
   (unbind-key "M-4" magit-mode-map)
+  ;; (setq magit-diff-refine-hunk t)
   )
 
 ;; dict
