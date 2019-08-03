@@ -28,6 +28,20 @@
   :mode (("\\.po\\'" . po-mode))
   )
 
+;; Pre-install: mpv
+(use-package mpv
+  :requires ffap
+  :commands mpv-play-at-point
+  :defer t
+  :config
+  (defun mpv-play-at-point ()
+    (interactive)
+    (let ((guess (ffap-guess-file-name-at-point)))
+      (if (stringp guess)
+	  (mpv-start guess)
+	(message "no invalid url"))))
+  )
+
 (use-package leetcode
   :commands leetcode
   :defer t
@@ -54,7 +68,7 @@
   (diminish 'auto-revert-mode)
   )
 
-;; same as diminish, but also works for major modes 
+;; same as diminish, but also works for major modes
 (use-package delight)
 
 (use-package time
