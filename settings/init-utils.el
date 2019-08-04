@@ -34,12 +34,24 @@
   :commands mpv-play-at-point
   :defer t
   :config
+  ;; prevent mpv from showing art cover
+  (add-to-list 'mpv-default-options "--no-audio-display")
+
+  (defun mpv-guess-url-at-point ()
+    (let (guess)
+      (when (derived-mode-p 'dired-mode)
+	(setq guess (dired-get-filename)))
+      ;; TODO: org mode links
+      (or guess (ffap-guess-file-name-at-point)))
+    )
+
   (defun mpv-play-at-point ()
     (interactive)
-    (let ((guess (ffap-guess-file-name-at-point)))
+    (let ((guess (mpv-guess-url-at-point)))
       (if (stringp guess)
 	  (mpv-start guess)
-	(message "no invalid url"))))
+	(message "invalid url")))
+    )
   )
 
 (use-package leetcode
