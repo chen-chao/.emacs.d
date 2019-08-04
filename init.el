@@ -249,6 +249,8 @@
 
 (require 'init-utils)
 
+(require 'init-mail)
+
 ;; (require 'init-browser)
 
 (require 'init-golang)
