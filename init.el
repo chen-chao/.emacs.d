@@ -35,7 +35,10 @@
 (use-package exec-path-from-shell
   :if (memq window-system '(ns mac x))
   :config
-  (exec-path-from-shell-initialize))
+  (add-to-list 'exec-path-from-shell-variables "GOPATH")
+  (add-to-list 'exec-path-from-shell-variables "WORK_HOME")
+  (exec-path-from-shell-initialize)
+  )
 
 ;; auth by gpg
 (use-package auth-source
@@ -226,6 +229,21 @@
   ;; (setq TeX-save-query nil)
   ;; (setq TeX-show-compilation t)
   (use-package company-auctex :config (company-auctex-init))
+  )
+
+(use-package python
+  :ensure nil
+  :after init-lsp
+  :hook (python-mode . lsp)
+  :config
+  ;; Pre-install: pip install python-language-server
+  (setq lsp-clients-python-library-directories '("/usr/local/" "/usr/"))
+
+  (use-package virtualenvwrapper
+    :config
+    (venv-initialize-interactive-shells)
+    (venv-initialize-eshell)
+    (setq venv-location (getenv "WORK_HOME")))
   )
 
 (use-package json-mode)

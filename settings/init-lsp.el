@@ -3,12 +3,8 @@
 (use-package lsp-mode
   :commands lsp
   :init (setq lsp-auto-guess-root nil)
-  :hook ((python-mode) . (lambda () (lsp)))
   :config
   (require 'lsp-clients)
-  ;; python
-  ;; Pre-install: pip install python-language-server
-  (setq lsp-clients-python-library-directories '("/usr/local/" "/usr/"))
   )
 
 (use-package lsp-ui
