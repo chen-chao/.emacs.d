@@ -32,6 +32,15 @@
 
 (add-to-list 'load-path "~/.emacs.d/settings")
 
+;; mac specific settings
+(when (eq system-type 'darwin)
+  (setq mac-option-modifier 'alt)
+  (setq mac-command-modifier 'meta)
+  ;; sets fn-delete to be right-delete
+  (global-set-key [kp-delete] 'delete-char)
+  (add-to-list 'default-frame-alist '(font . "Menlo-20"))
+  )
+
 (use-package exec-path-from-shell
   :if (memq window-system '(ns mac x))
   :config

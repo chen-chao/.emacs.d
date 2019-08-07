@@ -63,12 +63,12 @@
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
-;; mac specific settings
-(when (eq system-type 'darwin)
-  (setq mac-option-modifier 'alt)
-  (setq mac-command-modifier 'meta)
-  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
-  (add-to-list 'default-frame-alist '(font . "Menlo-20"))
+(use-package multiple-cursors
+  :bind
+  (("C-c e" . mc/edit-lines)
+   ("C-c >" . mc/mark-next-like-this)
+   ("C-c <" . mc/mark-previous-like-this)
+   ("C-c C-<" . mc/mark-all-like-this))
   )
 
 (provide 'edit-settings)
