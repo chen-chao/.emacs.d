@@ -162,8 +162,7 @@
 (use-package youdao-dictionary
   :bind
   (("C-c y s" . youdao-dictionary-search-at-point-tooltip)
-   ("C-c y i" . youdao-dictionary-search-from-input)
-   ("C-c y v" . youdao-dictionary-play-voice-at-point))
+   ("C-c y i" . youdao-dictionary-search-from-input))
   :config
   (setq url-automatic-caching t)	;enable cache
   (setq youdao-dictionary-search-history-file "~/.emacs.d/.youdao_hist")
@@ -230,6 +229,30 @@
   )
 
 (use-package json-mode)
+
+(use-package js
+  :ensure nil
+  :hook (js-mode . lsp)
+  )
+
+(use-package web-mode
+  :mode (("\\.phtml\\'" . web-mode)
+	 ("\\.tpl\\.php\\'" . web-mode)
+	 ("\\.[agj]sp\\'" . web-mode)
+	 ("\\.as[cp]x\\'" . web-mode)
+	 ("\\.erb\\'" . web-mode)
+	 ("\\.mustache\\'" . web-mode)
+	 ("\\.djhtml\\'" . web-mode)
+	 ("\\.html?\\'" . web-mode)
+	 ("\\.api\\'" . web-mode))
+  :config
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-style-padding 1)
+  (setq web-mode-script-padding 1)
+  (setq web-mode-block-padding 0)
+  )
 
 (require 'org-settings)
 
