@@ -59,7 +59,7 @@
 (global-set-key (kbd "C-c k") 'cc/kill-current-buffer)
 (global-set-key (kbd "C-o") 'cc/open-line)
 
-(add-hook 'before-save-hook #'whitespace-cleanup)
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 ;; mac specific settings
 (when (eq system-type 'darwin)
