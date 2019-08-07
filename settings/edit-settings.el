@@ -58,6 +58,8 @@
 (global-set-key (kbd "M-;") 'comment-line)
 (global-set-key (kbd "C-c k") 'cc/kill-current-buffer)
 (global-set-key (kbd "C-o") 'cc/open-line)
+(global-set-key (kbd "C->") 'forward-list)
+(global-set-key (kbd "C-<") 'backward-list)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
