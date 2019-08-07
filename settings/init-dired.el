@@ -45,4 +45,14 @@
   ;; highlight executable files, but not directories
   (dired-rainbow-define-chmod executable-unix "green" "-[rw-]+x.*"))
 
+(use-package dired-filter)
+
+(use-package dired-narrow)
+
+(use-package wdired
+  :bind
+  (:map wdired-mode-map
+	("C-c C-k" . wdired-abort-changes))
+  )
+
 (provide 'init-dired)
