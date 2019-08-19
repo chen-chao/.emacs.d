@@ -36,19 +36,22 @@
   (use-package golint)
   (use-package govet)
 
-  ;; dependency
+  ;; Pre-install:
   ;; go get -u github.com/lukehoban/go-outline
   ;; CAVEAT: lsp-mode also set up `imenu-create-index-function'
   (use-package go-imenu
     :config
     (add-hook 'lsp-after-open-hook (lambda () (when (derived-mode-p 'go-mode) (go-imenu-setup)))))
 
+  ;; Pre-install:
+  ;; go get -u github.com/fatih/gomodifytags
   (use-package go-tag
     :bind (:map go-mode-map
 		("C-c g t" . go-tag-add)
 		("C-c g T" . go-tag-remove))
     :config
-    (setq go-tag-args (list "-transform" "camelcase")))
+    (setq go-tag-args (list "-transform" "snakecase"))
+    )
 
   (use-package gotest
     :bind (:map go-mode-map

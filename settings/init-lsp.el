@@ -2,9 +2,9 @@
 
 (use-package lsp-mode
   :commands lsp
-  :init (setq lsp-auto-guess-root nil)
   :config
   (require 'lsp-clients)
+  (setq lsp-auto-guess-root t)
   )
 
 (use-package lsp-ui
@@ -21,7 +21,6 @@
 	lsp-ui-doc-position 'top
 	lsp-ui-doc-use-webkit t
 	lsp-ui-doc-border (face-foreground 'default)
-
 	lsp-ui-sideline-enable nil
 	lsp-ui-sideline-ignore-duplicate t)
   :config
