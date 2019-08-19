@@ -120,6 +120,16 @@
     :config
     (add-to-list 'company-backends #'company-tabnine))
 
+  ;; disable tabnine prompt to pay
+  ;; @see https://emacs-china.org/t/tabnine/9988/51
+  (defadvice company-echo-show (around disable-tabnine-upgrade-message activate)
+  (let ((company-message-func (ad-get-arg 0)))
+    (when (and company-message-func
+               (stringp (funcall company-message-func)))
+      (unless (string-match "The free version of TabNine only indexes up to" (funcall company-message-func))
+        ad-do-it))))
+
+  ;; @see https://emacs-china.org/t/tabnine/9988/40
   (defun company//sort-by-tabnine (candidates)
     (if (or (functionp company-backend)
 	    (not (and (listp company-backend) (memq 'company-tabnine company-backend))))
@@ -152,9 +162,6 @@
   :diminish yas-minor-mode
   :init (yas-global-mode 1)
   :config
-  ;; (yas-reload-all)
-  ;; (add-hook 'prog-mode-hook #'yas-minor-mode)
-  ;; (add-hook 'latex-mode-hook #'yas-minor-mode)
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   )
 
@@ -227,7 +234,7 @@
   :commands (asy-mode lasy-mode asy-insinuate-latex)
   :mode (("\\.asy\\'" . asy-mode)))
 
-;; https://github.com/jwiegley/use-package/issues/379#issuecomment-258217014
+;; @see https://github.com/jwiegley/use-package/issues/379#issuecomment-258217014
 (use-package tex
   :ensure auctex
   :config
