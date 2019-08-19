@@ -63,13 +63,18 @@
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
+(use-package recentf
+  :config
+  (setq recentf-max-saved-items 100)
+  )
+
 (use-package multiple-cursors
   :bind
   (("C-c C->" . mc/edit-lines)
-   ("C-c C-i" . mc/insert-numbers)
    ("C-c >" . mc/mark-next-like-this)
    ("C-c <" . mc/mark-previous-like-this)
-   ("C-c C-<" . mc/mark-all-like-this))
+   ("C-c C-<" . mc/mark-all-like-this)
+   ("C-c C-n" . mc/insert-numbers))
   )
 
 (provide 'edit-settings)
