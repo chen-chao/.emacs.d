@@ -1,10 +1,15 @@
 ;; lsp mode
 
 (use-package lsp-mode
-  :commands lsp
+  :diminish lsp-mode
+  :hook (prog-mode . lsp-deferred)
+  :bind (:map lsp-mode-map
+	      ("C-c C-d" . lsp-describe-thing-at-point))
   :config
-  (require 'lsp-clients)
   (setq lsp-auto-guess-root t)
+  (use-package lsp-clients
+    :ensure nil
+    :init (setq lsp-clients-python-library-directories '("/usr/local/" "/usr/")))
   )
 
 (use-package lsp-ui
@@ -46,5 +51,33 @@
 (use-package lsp-java
   :hook (java-mode . (lambda () (require 'lsp-java) (lsp))))
 
+;; Debug
+;; @see https://github.com/seagle0128/.emacs.d/blob/3245953ac5d3e69cdb8a8c2fbfb861e7addb48b6/lisp/init-lsp.el#L99
+(use-package dap-mode
+  :diminish
+  :functions dap-hydra/nil
+  :bind (:map lsp-mode-map
+	      ("C-c d" . dap-debug)
+	      ("C-c h" . dap-hydra))
+  :hook ((after-init . dap-mode)
+	 (dap-mode . dap-ui-mode)
+	 (dap-session-created . (lambda (&_rest) (dap-hydra)))
+	 (dap-terminated . (lambda (&_rest) (dap-hydra/nil)))
+
+	 ;; Pre-install:
+	 ;; pip install "ptvsd>=4.2"
+	 (python-mode . (lambda () (require 'dap-python)))
+
+	 (ruby-mode . (lambda () (require 'dap-ruby)))
+
+	 ;; Pre-install:
+	 ;; go get -u github.com/go-delve/delve/cmd/dlv
+	 (go-mode . (lambda () (require 'dap-go)))
+
+	 (java-mode . (lambda () (require 'dap-java)))
+	 ((c-mode c++-mode objc-mode swift) . (lambda () (require 'dap-lldb)))
+	 (php-mode . (lambda () (require 'dap-php)))
+	 (elixir-mode . (lambda () (require 'dap-elixir)))
+	 ((js-mode js2-mode) . (lambda () (require 'dap-chrome)))))
 
 (provide 'init-lsp)

@@ -249,12 +249,7 @@
 
 (use-package python
   :ensure nil
-  :after init-lsp
-  :hook (python-mode . lsp)
   :config
-  ;; Pre-install: pip install python-language-server
-  (setq lsp-clients-python-library-directories '("/usr/local/" "/usr/"))
-
   (use-package virtualenvwrapper
     :config
     (venv-initialize-interactive-shells)
