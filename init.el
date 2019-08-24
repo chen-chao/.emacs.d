@@ -38,7 +38,8 @@
   (setq mac-command-modifier 'meta)
   ;; sets fn-delete to be right-delete
   (global-set-key [kp-delete] 'delete-char)
-  (add-to-list 'default-frame-alist '(font . "Menlo-20"))
+  (set-face-attribute 'default nil :height 200)
+  ;; (add-to-list 'default-frame-alist '(font . "Menlo-20"))
   )
 
 (use-package exec-path-from-shell
@@ -217,12 +218,13 @@
   :mode (("README\\.md\\'" . gfm-mode)
 	 ("\\.md\\'" . markdown-mode)
 	 ("\\.markdown\\'" . markdown-mode))
-  :hook ((markdown-mode . flyspell-mode)
-	 (markdown-mode . auto-fill-mode))
+  :hook ((markdown-mode . flyspell-mode))
   :config
   ;; Pre-install: markdown
   (when (executable-find "markdown")
     (setq markdown-command "markdown"))
+  ;; set faces
+  (zh-align-set-faces '(markdown-table-face))
   )
 
 (use-package yaml-mode
