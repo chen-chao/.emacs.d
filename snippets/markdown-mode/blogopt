@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: blogopt
+# key: blogopt
+# --
+---
+layout: ${1:post}
+title: $2
+categories: $3
+---
+$0
