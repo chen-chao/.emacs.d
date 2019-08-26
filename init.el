@@ -285,6 +285,33 @@
   (setq web-mode-block-padding 0)
   )
 
+;; built-in package
+(use-package sql
+  :ensure nil
+  :defer t
+  ;; truncate long lines
+  :hook ((sql-interactive-mode . (lambda () (toggle-truncate-lines t))))
+  :config
+  (defun database-info (dbtype loginname database)
+    (let* ((secret (auth-source-user-and-password loginname))
+	   (username (car secret))
+	   (password (cadr secret))
+	   (datainfo (auth-source-user-and-password database))
+	   (name (car datainfo))
+	   (db (cadr datainfo))
+	   (port 3306))
+      `(,(make-symbol loginname)
+	(sql-product (quote ,dbtype))
+	(sql-user ,username)
+	(sql-port ,port)
+	(sql-server ,name)
+	(sql-password ,password)
+	(sql-database ,db))))
+
+  (push (database-info 'mysql "localtest" "localdb") sql-connection-alist)
+  (push (database-info 'mysql "splayer" "splayerdb") sql-connection-alist)
+  )
+
 (require 'org-settings)
 
 (require 'init-lsp)
