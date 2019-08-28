@@ -6,6 +6,21 @@
 
 (setq require-final-newline 1)
 
+;; override built-in fixup-whitespace for cjk support
+(defun fixup-whitespace-for-cjk ()
+  "Fixup white space between objects around point.
+Leave one space or none, according to the context."
+  (interactive "*")
+  (save-excursion
+    (delete-horizontal-space)
+    (if (or (looking-at "^\\|$\\|\\s)\\|\\cc\\|\\cj\\|\\ch") ; Note: the char after point
+	    (save-excursion (forward-char -1)
+			    (looking-at "$\\|\\s(\\|\\s'\\|\\cc\\|\\cj\\|\\ch")))  ; Note: the char before point
+	nil
+      (insert ?\s))))
+
+(advice-add 'fixup-whitespace :override #'fixup-whitespace-for-cjk)
+
 (defun cc/join-next-line (&optional N)
   "join next lines"
   (interactive "*p")
