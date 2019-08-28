@@ -175,6 +175,10 @@
   (unbind-key "M-2" magit-mode-map)
   (unbind-key "M-3" magit-mode-map)
   (unbind-key "M-4" magit-mode-map)
+  (unbind-key "M-1" diff-mode-map)
+  (unbind-key "M-2" diff-mode-map)
+  (unbind-key "M-3" diff-mode-map)
+  (unbind-key "M-4" diff-mode-map)
   ;; (setq magit-diff-refine-hunk t)
   )
 
@@ -303,9 +307,9 @@
       `(,(make-symbol loginname)
 	(sql-product (quote ,dbtype))
 	(sql-user ,username)
+	(sql-password ,password)
 	(sql-port ,port)
 	(sql-server ,name)
-	(sql-password ,password)
 	(sql-database ,db))))
 
   (push (database-info 'mysql "localtest" "localdb") sql-connection-alist)
