@@ -182,6 +182,10 @@
   ;; (setq magit-diff-refine-hunk t)
   )
 
+(use-package forge
+  :after magit
+  )
+
 ;; dict
 (use-package youdao-dictionary
   :bind
