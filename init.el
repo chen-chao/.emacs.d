@@ -316,8 +316,10 @@
 	(sql-server ,name)
 	(sql-database ,db))))
 
-  (push (database-info 'mysql "localtest" "localdb") sql-connection-alist)
-  (push (database-info 'mysql "splayer" "splayerdb") sql-connection-alist)
+  (setq sql-connection-alist `(,(database-info 'mysql "localtest" "localdb")
+			       ,(database-info 'mysql "splayer" "splayerdb")
+			       ,(database-info 'mysql "splayerprod" "splayerproddb")
+			       ))
   )
 
 (require 'org-settings)
