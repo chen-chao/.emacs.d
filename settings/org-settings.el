@@ -9,8 +9,8 @@
 
 
 (use-package org
-  :init
-  (require 'org-protocol)
+  :init (require 'org-protocol)
+  :hook ((org-capture-mode . auto-fill-mode))
   :bind
   (("C-c l" . org-store-link)
    ("C-c a" . org-agenda)
@@ -23,12 +23,11 @@
    ("C-c [" . org-agenda-file-to-front)
    ("C-c ]" . org-remove-file)
    ("C-c C-a" . org-archive-subtree)
-   ("C-," . org-cycle-agenda-files)
-   )
+   ("C-," . org-cycle-agenda-files))
 
   :config
-  (require 'bind-key)
   (unbind-key "C-'" org-mode-map)
+
   (setq org-log-done 'time)
   (setq org-log-done 'note)
   (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED(c!)") ) )
@@ -47,13 +46,14 @@
   (setq org-capture-templates
   '(("t" "TODO" entry (file+headline "~/org/gtd.org" "Tasks") "* TODO %?\n %i\n %a")
     ("j" "Journal" entry (file+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
-    ("n" "Note" item (file+headline "~/org/notes.org" "Notes") "%?\nEntered on %U\n %i\n %a")))
+    ("n" "Note" entry (file+headline "~/org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")))
 
   (add-to-list 'org-structure-template-alist
 	       '("p" "#+BEGIN_SRC python\n?\n#+END_SRC")
 	       '("l" "#+BEGIN_SRC shell\n?\n#+END_SRC"))
 
-  ;; org html export
+  ;; for org html export
+  (use-package htmlize)
   ;; remove xml header
   (setq org-html-xml-declaration
 	'(("html" . "")
@@ -65,9 +65,7 @@
   ;; show holidays and anniversaries in org agenda
   (setq org-agenda-include-diary t)
 
-  ;; from https://emacs-china.org/t/topic/2119/13
-  ;; change name to org-chinese-anniversary
-
+  ;; @see https://emacs-china.org/t/topic/2119/13
   (defun org-chinese-anniversary (lunar-month lunar-day &optional year mark)
     (if year
 	(let* ((d-date (diary-make-date lunar-month lunar-day year))
@@ -77,14 +75,12 @@
 	       (yy (cadr c-date))
 	       (y (+ (* 100 cycle) yy)))
 	  (diary-chinese-anniversary lunar-month lunar-day y mark))
-      (diary-chinese-anniversary lunar-month lunar-day year mark))
-    )
+      (diary-chinese-anniversary lunar-month lunar-day year mark)))
 
   ;; add anniversaries to org agenda
   (setq org-anni-file "~/org/anniversaries.org")
   (when (and (file-exists-p org-anni-file) (not (member org-anni-file org-agenda-files)))
-    (setq org-agenda-files (cons org-anni-file org-agenda-files))
-    )
+    (setq org-agenda-files (cons org-anni-file org-agenda-files)))
 
   ;; auto fill mode for org capture
   (add-hook 'org-capture-mode-hook (lambda () (auto-fill-mode)))
@@ -102,40 +98,20 @@
 				 (octave . t)
 				 (latex . t)
 				 (ruby . t)
-				 (org . t)))
-  )
+				 (org . t))))
 
-
-;; for org html export
-(use-package htmlize)
-
-
-;; holidays and chinese holidays
-(use-package cal-china-x
+(use-package org-download
+  :after org
+  :bind (:map org-mode-map
+	      ("C-c d" . org-download-screenshot))
   :config
-  (setq western-general-holidays
-	'((holiday-fixed 2 14 "Valentine's Day")
-	  (holiday-fixed 4 1 "April Fools' Day")
-	  (holiday-float 5 0 2 "Mother's Day")
-	  (holiday-float 6 0 3 "Father's Day")
-	  (holiday-fixed 10 31 "Halloween")
-	  (holiday-fixed 12 25 "Christmas"))
-	)
-
-  (setq cal-china-x-general-holidays
-	'((holiday-lunar 1 15 "元宵节" 0)
-	  (holiday-fixed 3 8 "妇女节")
-	  (holiday-fixed 5 4 "青年节")
-	  (holiday-fixed 6 1 "儿童节")
-	  (holiday-fixed 9 10 "教师节")
-	  (holiday-lunar 7 7 "七夕" 0)
-	  (holiday-lunar 9 9 "重阳节" 0)
-	  )
-	)
-
-  (setq calendar-holidays (append cal-china-x-chinese-holidays
-				  cal-china-x-general-holidays
-				  western-general-holidays))
+  (setq org-download-method 'attach)
+  (setq org-download-backend "curl \"%s\" -o \"%s\"")
+  (when (eq system-type 'darwin)
+    (setq org-download-screenshot-method "screencapture -i %s"))
+  (when (eq system-type 'linux)
+    (setq org-download-screenshot-method "scrot -s %s"))
+  (org-download-enable)
   )
 
 (provide 'org-settings)
