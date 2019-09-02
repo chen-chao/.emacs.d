@@ -46,7 +46,7 @@
   :if (memq window-system '(ns mac x))
   :config
   (add-to-list 'exec-path-from-shell-variables "GOPATH")
-  (add-to-list 'exec-path-from-shell-variables "WORK_HOME")
+  (add-to-list 'exec-path-from-shell-variables "WORKON_HOME")
   (exec-path-from-shell-initialize)
   )
 
@@ -260,7 +260,7 @@
     :config
     (venv-initialize-interactive-shells)
     (venv-initialize-eshell)
-    (setq venv-location (getenv "WORK_HOME")))
+    (setq venv-location (getenv "WORKON_HOME")))
   )
 
 (use-package json-mode)
