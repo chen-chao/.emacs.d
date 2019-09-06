@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: ipythonheader
+# key: ipythonheader
+# --
+
+#+BEGIN_SRC ipython :session :results raw drawer
+  ${1:%matplotlib inline
+  %config InlineBackend.figure_format = 'svg'
+  import matplotlib.pyplot as plt
+  import numpy as np}
+  $0
+#+END_SRC

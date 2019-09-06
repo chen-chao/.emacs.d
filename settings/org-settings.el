@@ -92,13 +92,16 @@
   (org-babel-do-load-languages 'org-babel-load-languages
 			       '((emacs-lisp . t)
 				 (python . t)
+				 (ein . t) ;; ein
+				 (ipython . t)   ;; ob-ipython
 				 (shell . t)
 				 (C . t)
 				 (asymptote . t)
 				 (octave . t)
 				 (latex . t)
 				 (ruby . t)
-				 (org . t))))
+				 (org . t)))
+  )
 
 (use-package org-download
   :after org

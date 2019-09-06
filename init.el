@@ -158,7 +158,6 @@
   )
 
 ;; template
-
 (use-package yasnippet
   :diminish yas-minor-mode
   :init (yas-global-mode 1)
@@ -182,9 +181,10 @@
   ;; (setq magit-diff-refine-hunk t)
   )
 
+(use-package git-timemachine)
+
 (use-package forge
-  :after magit
-  )
+  :after magit)
 
 ;; dict
 (use-package youdao-dictionary
@@ -212,7 +212,6 @@
 
 
 ;; major modes
-
 (use-package protobuf-mode
   :mode (("\\.proto\\'" . protobuf-mode)))
 
@@ -255,16 +254,6 @@
   ;; (setq TeX-save-query nil)
   ;; (setq TeX-show-compilation t)
   (use-package company-auctex :config (company-auctex-init))
-  )
-
-(use-package python
-  :ensure nil
-  :config
-  (use-package virtualenvwrapper
-    :config
-    (venv-initialize-interactive-shells)
-    (venv-initialize-eshell)
-    (setq venv-location (getenv "WORKON_HOME")))
   )
 
 (use-package json-mode)
@@ -321,6 +310,8 @@
 			       ,(database-info 'mysql "splayerprod" "splayerproddb")
 			       ))
   )
+
+(require 'init-python)
 
 (require 'org-settings)
 
