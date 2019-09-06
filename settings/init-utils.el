@@ -26,6 +26,7 @@
   )
 
 ;; Pre-install: mpv
+;; play music or audio
 (use-package mpv
   :requires ffap
   :commands mpv-play-at-point
@@ -50,6 +51,9 @@
 	(message "invalid url")))
     )
   )
+
+;; searching
+(use-package google-this)
 
 (use-package leetcode
   :commands leetcode
