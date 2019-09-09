@@ -44,10 +44,6 @@ Leave one space or none, according to the context."
     (message "%d line%s copied" lines (if (= 1 lines) "" "s")))
   )
 
-(defun cc/kill-current-buffer ()
-  (interactive)
-  (kill-buffer (current-buffer)))
-
 (defun cc/open-line (N)
   (interactive "*p")
   (if (> N 0)
@@ -71,7 +67,6 @@ Leave one space or none, according to the context."
 (global-set-key (kbd "M-j") 'cc/join-next-line)
 (global-set-key (kbd "M-k") 'cc/copy-current-line)
 (global-set-key (kbd "M-;") 'comment-line)
-(global-set-key (kbd "C-c k") 'cc/kill-current-buffer)
 (global-set-key (kbd "C-o") 'cc/open-line)
 (global-set-key (kbd "C->") 'forward-list)
 (global-set-key (kbd "C-<") 'backward-list)
