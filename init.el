@@ -62,11 +62,17 @@
   )
 
 ;; theme
-(use-package eclipse-theme
-  :ensure nil
+;; (use-package eclipse-theme
+;;   :ensure nil
+;;   :init
+;;   (setq custom-safe-themes t)
+;;   (load-theme 'eclipse)
+;;   )
+
+(use-package doom-themes
   :init
   (setq custom-safe-themes t)
-  (load-theme 'eclipse)
+  (load-theme 'doom-one)
   )
 
 (use-package zh-align
