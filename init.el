@@ -125,16 +125,6 @@
 (use-package forge
   :after magit)
 
-;; dict
-(use-package youdao-dictionary
-  :bind
-  (("C-c y s" . youdao-dictionary-search-at-point-tooltip)
-   ("C-c y i" . youdao-dictionary-search-from-input))
-  :config
-  (setq url-automatic-caching t)	;enable cache
-  (setq youdao-dictionary-search-history-file "~/.emacs.d/.youdao_hist")
-  )
-
 ;; @see https://github.com/seagle0128/.emacs.d/lisp/init-edit.el
 (use-package flyspell
   :ensure nil

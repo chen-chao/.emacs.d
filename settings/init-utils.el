@@ -55,6 +55,16 @@
 ;; searching
 (use-package google-this)
 
+;; dict
+(use-package youdao-dictionary
+  :bind
+  (("C-c y s" . youdao-dictionary-search-at-point-tooltip)
+   ("C-c y i" . youdao-dictionary-search-from-input))
+  :config
+  (setq url-automatic-caching t)	;enable cache
+  (setq youdao-dictionary-search-history-file "~/.emacs.d/.youdao_hist")
+  )
+
 (use-package leetcode
   :commands leetcode
   :defer t
