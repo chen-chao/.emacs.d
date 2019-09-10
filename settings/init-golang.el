@@ -6,12 +6,7 @@
 	      ("C-c g r" . go-remove-unused-imports)
 	      ("<f1>" . godoc-at-point))
   :config
-
-  (when (setq gopath (or (getenv "GOPATH")
-			 (if (file-directory-p "~/go") "~/go"
-			   nil)))
-    (add-to-list 'exec-path (concat (file-name-as-directory gopath) "bin"))
-    )
+  ;; require $GOPATH
 
   (add-hook 'before-save-hook 'gofmt-before-save)
   (setq gofmt-command "goimports")
@@ -23,6 +18,16 @@
   (use-package go-rename)
   (use-package golint)
   (use-package govet)
+
+    ;; Pre-install: golangci-lint
+  (use-package flycheck-golangci-lint
+    :if (executable-find "golangci-lint")
+    :config
+    (setq flycheck-golangci-lint-enable-all t)
+    (add-hook 'lsp-after-open-hook
+	      (lambda () (when (derived-mode-p 'go-mode)
+			   (flycheck-golangci-lint-setup))))
+    )
 
   ;; Pre-install:
   ;; go get -u github.com/lukehoban/go-outline
@@ -48,7 +53,8 @@
 		("C-c g ." . go-test-current-test)
 		("C-c g x" . go-run))
     :config
-    (setq go-test-verbose t))
+    (setq go-test-verbose t)
+    )
 
   (use-package go-gen-test
     :bind (:map go-mode-map

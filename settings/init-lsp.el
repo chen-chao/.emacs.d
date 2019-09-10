@@ -7,9 +7,12 @@
 	      ("C-c C-d" . lsp-describe-thing-at-point))
   :config
   (setq lsp-auto-guess-root t)
+  (setq lsp-prefer-flymake nil)
+
   (use-package lsp-clients
     :ensure nil
     :init (setq lsp-clients-python-library-directories '("/usr/local/" "/usr/")))
+
   (defun lsp-select-root()
     (interactive)
     (setq-local lsp-auto-guess-root nil)

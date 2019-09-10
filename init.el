@@ -26,6 +26,7 @@
 (setq inhibit-startup-screen 1)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+(toggle-scroll-bar 0)
 
 ;; maximize window at startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -102,6 +103,12 @@
 ;; completion
 (require 'init-company)
 
+(require 'init-lsp)
+
+(require 'init-ivy)
+
+(require 'init-projectile)
+
 ;; template
 (use-package yasnippet
   :diminish yas-minor-mode
@@ -113,7 +120,7 @@
 ;; git
 (use-package magit
   :bind (("C-c v" . magit-status)
-	 ("C-c m" . magit-dispatch-popup))
+	 ("C-c m" . magit-dispatch))
   :config
   (unbind-key "M-1" magit-mode-map)
   (unbind-key "M-2" magit-mode-map)
@@ -131,6 +138,34 @@
 (use-package forge
   :after magit)
 
+;; syntax checking
+;; Pre-install: pip install pylint
+(use-package flycheck
+  :hook (after-init . global-flycheck-mode)
+  :config
+  (setq flycheck-emacs-lisp-load-path 'inherit)
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
+  ;; only check at saving or opening
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq flycheck-indication-mode 'right-fringe)
+  ;; Set fringe style
+  (setq flycheck-indication-mode 'right-fringe)
+  (when (fboundp 'define-fringe-bitmap)
+    (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
+      [16 48 112 240 112 48 16] nil nil 'center))
+
+  (if (display-graphic-p)
+      (use-package flycheck-posframe
+	:hook (flycheck-mode . flycheck-posframe-mode)
+	:config
+	(add-to-list 'flycheck-posframe-inhibit-functions
+		     #'(lambda () (bound-and-true-p company-backend)))
+	))
+
+  )
+
+;; spell checking
 ;; @see https://github.com/seagle0128/.emacs.d/lisp/init-edit.el
 (use-package flyspell
   :ensure nil
@@ -246,15 +281,15 @@
 			       ))
   )
 
+;; docker
+(use-package docker)
+
+(use-package dockerfile-mode
+  :mode ("Dockerfile\\'" . dockerfile-mode))
+
 (require 'init-python)
 
 (require 'org-settings)
-
-(require 'init-lsp)
-
-(require 'init-ivy)
-
-(require 'init-projectile)
 
 (require 'init-shell)
 
