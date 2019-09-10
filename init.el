@@ -109,6 +109,9 @@
 
 (require 'init-projectile)
 
+;; git
+(require 'init-magit)
+
 ;; template
 (use-package yasnippet
   :diminish yas-minor-mode
@@ -116,27 +119,6 @@
   :config
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   )
-
-;; git
-(use-package magit
-  :bind (("C-c v" . magit-status)
-	 ("C-c m" . magit-dispatch))
-  :config
-  (unbind-key "M-1" magit-mode-map)
-  (unbind-key "M-2" magit-mode-map)
-  (unbind-key "M-3" magit-mode-map)
-  (unbind-key "M-4" magit-mode-map)
-  (unbind-key "M-1" diff-mode-map)
-  (unbind-key "M-2" diff-mode-map)
-  (unbind-key "M-3" diff-mode-map)
-  (unbind-key "M-4" diff-mode-map)
-  ;; (setq magit-diff-refine-hunk t)
-  )
-
-(use-package git-timemachine)
-
-(use-package forge
-  :after magit)
 
 ;; syntax checking
 ;; Pre-install: pip install pylint
