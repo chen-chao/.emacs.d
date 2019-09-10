@@ -5,6 +5,8 @@
   :config
   ;; enable dired functions
   (put 'dired-find-alternate-file 'disabled nil)
+  (when (eq system-type 'darwin)
+    (setq dired-ls-use-dired nil))
   )
 
 (use-package dired-rainbow
