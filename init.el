@@ -40,7 +40,6 @@
   ;; sets fn-delete to be right-delete
   (global-set-key [kp-delete] 'delete-char)
   (set-face-attribute 'default nil :height 200)
-  ;; (add-to-list 'default-frame-alist '(font . "Menlo-20"))
   )
 
 (use-package exec-path-from-shell
@@ -119,6 +118,22 @@
   :config
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   )
+
+(use-package format-all
+  ;; Pre-install:
+  ;; black(python) tidy(html) prettier(js/ts, yaml, angular/vue, css)
+  ;; clang-format(c/c++/object-c, java, protobuf) sqlformat(sql)
+  :diminish format-all-mode
+  :hook ((python-mode
+	  js-mode
+	  web-mode
+	  sql-mode
+	  css-mode
+	  yaml-mode
+	  cc-mode
+	  c++-mode
+	  objc-mode
+	  emacs-lisp-mode) . format-all-mode))
 
 ;; syntax checking
 ;; Pre-install: pip install pylint
@@ -209,11 +224,6 @@
   )
 
 (use-package json-mode)
-
-(use-package js
-  :ensure nil
-  :hook (js-mode . lsp)
-  )
 
 (use-package web-mode
   :mode (("\\.phtml\\'" . web-mode)
