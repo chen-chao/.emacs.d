@@ -33,10 +33,14 @@
 
 (add-to-list 'load-path "~/.emacs.d/settings")
 
+;; linux
+(when (eq system-type 'gnu/linux)
+  (set-face-attribute 'default nil :height 140))
+
 ;; mac specific settings
 (when (eq system-type 'darwin)
-  (setq mac-option-modifier 'alt)
-  (setq mac-command-modifier 'meta)
+  (setq-default mac-option-modifier 'alt)
+  (setq-default mac-command-modifier 'meta)
   ;; sets fn-delete to be right-delete
   (global-set-key [kp-delete] 'delete-char)
   (set-face-attribute 'default nil :height 200)
