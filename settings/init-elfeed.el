@@ -8,19 +8,21 @@
   :config
   ;; set face attribute
   (zh-align-set-faces '(elfeed-search-title-face
-			      elfeed-search-feed-face))
+			elfeed-search-feed-face))
   (use-package elfeed-org
     :config
     (setq rmh-elfeed-org-files (list "~/.emacs.d/settings/elfeed.org"))
     (elfeed-org))
 
   (defun elfeed-show-render-html ()
+    (interactive)
     (read-only-mode -1)
     (save-excursion
-      (beginning-of-buffer)
+      (goto-char (point-min))
       (re-search-forward "Link:.*\n\n")
       (shr-render-region (point) (point-max))
       )
     (read-only-mode 1))
   )
+
 (provide 'init-elfeed)
