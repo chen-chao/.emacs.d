@@ -81,9 +81,6 @@
   (when (and (file-exists-p org-anni-file) (not (member org-anni-file org-agenda-files)))
     (setq org-agenda-files (cons org-anni-file org-agenda-files)))
 
-  ;; auto fill mode for org capture
-  (add-hook 'org-capture-mode-hook (lambda () (auto-fill-mode)))
-
   ;; set org table attribute
   (zh-align-set-faces '(org-table))
 
