@@ -279,9 +279,12 @@
 (use-package dockerfile-mode
   :mode ("Dockerfile\\'" . dockerfile-mode))
 
+;; crontab
+(use-package crontab-mode)
+
 (require 'init-python)
 
-(require 'org-settings)
+(require 'init-org)
 
 (require 'init-shell)
 

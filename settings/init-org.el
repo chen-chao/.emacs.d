@@ -12,8 +12,7 @@
   :init (require 'org-protocol)
   :hook ((org-capture-mode . auto-fill-mode))
   :bind
-  (("C-c l" . org-store-link)
-   ("C-c a" . org-agenda)
+  (("C-c a" . org-agenda)
    ("C-c b" . org-iswitchb)
    ("C-c c" . org-capture)
    :map org-mode-map
@@ -44,9 +43,9 @@
 
   ;; capture templates
   (setq org-capture-templates
-  '(("t" "TODO" entry (file+headline "~/org/gtd.org" "Tasks") "* TODO %?\n %i\n %a")
-    ("j" "Journal" entry (file+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
-    ("n" "Note" entry (file+headline "~/org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")))
+	'(("t" "TODO" entry (file+headline "~/org/gtd.org" "Tasks") "* TODO %?\n %i\n %a")
+	  ("j" "Journal" entry (file+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
+	  ("n" "Note" entry (file+headline "~/org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")))
 
   (add-to-list 'org-structure-template-alist
 	       '("p" "#+BEGIN_SRC python\n?\n#+END_SRC")
@@ -117,4 +116,15 @@
   (org-download-enable)
   )
 
-(provide 'org-settings)
+(use-package org-ref
+  :after org
+  :config
+  (setq reftex-default-bibliography '("~/org/bibliography/references.bib"))
+
+  ;; see org-ref for use of these variables
+  (setq org-ref-bibliography-notes "~/org/bibliography/notes.org"
+	org-ref-default-bibliography '("~/org/bibliography/references.bib")
+	org-ref-pdf-directory "~/org/bibliography/bibtex-pdfs/")
+  )
+
+(provide 'init-org)
