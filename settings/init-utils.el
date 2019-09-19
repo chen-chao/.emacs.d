@@ -99,6 +99,10 @@
   (setq display-time-default-load-average nil)
   )
 
+;; transmission
+(use-package transmission
+  :if (executable-find "transmission-daemon"))
+
 ;; holidays and chinese holidays
 (use-package cal-china-x
   :config
