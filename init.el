@@ -252,6 +252,9 @@
   (setq web-mode-block-padding 0)
   )
 
+(use-package cmake-mode)
+
+
 ;; built-in package
 (use-package sql
   :ensure nil

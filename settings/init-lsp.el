@@ -41,20 +41,6 @@
   (set-face-foreground 'lsp-ui-sideline-code-action "purple")
   )
 
-;; C/C++/Objective-C support
-;; Pre-install: ccls in path
-(use-package ccls
-  :defines projectile-project-root-files-top-down-recurring
-  :hook ((c-mode c++-mode objc-mode cuda-mode) . (lambda ()
-						   (require 'ccls)
-						   (lsp)))
-  :config
-  (with-eval-after-load 'projectile
-    (setq projectile-project-root-files-top-down-recurring
-	  (append '("compile_commands.json"
-		    ".ccls")
-		  projectile-project-root-files-top-down-recurring))))
-
 (use-package lsp-java
   :hook (java-mode . (lambda () (require 'lsp-java) (lsp))))
 
