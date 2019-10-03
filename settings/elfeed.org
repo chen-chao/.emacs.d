@@ -13,5 +13,4 @@
 ** https://www.solidot.org/index.rss
 ** https://www.archlinux.org/feeds/news/                         :linux:news:
 ** http://feeds.feedburner.com/TheKitchinResearchGroup
-** https://feeds.feedburner.com/ContinuousBlog/                     :jenkins:
 ** https://grpc.io/feed.xml

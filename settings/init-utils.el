@@ -94,6 +94,8 @@
 ;; same as diminish, but also works for major modes
 (use-package delight)
 
+(use-package rfc-mode)
+
 (use-package time
   :config
   (setq display-time-default-load-average nil)
