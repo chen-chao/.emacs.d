@@ -23,6 +23,9 @@
 ;; (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
+;; gc threshold, 10 Mb
+(setq gc-cons-threshold (* 10 1000 1000))
+
 (setq inhibit-startup-screen 1)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -42,6 +45,13 @@
   (set-face-attribute 'default nil :height 200)
   )
 
+
+(use-package benchmark-init
+  :if nil
+  :config
+  ;; To disable collection of benchmark data after init is done.
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
 (use-package exec-path-from-shell
   :if (memq window-system '(ns mac x))
   :config
@@ -55,7 +65,7 @@
   :ensure nil
   :init
   (setenv "GPG_AGENT_INFO" nil)
-  (setq epa-pinentry-mode 'loopback)
+  (setq-default epa-pinentry-mode 'loopback)
   (setq auth-sources '("~/.emacs.d/data/.authinfo.gpg"))
   (setq auth-source-cache-expiry 86400) ;; All Day
   (setq auth-source-gpg-encrypt-to "wenbushi@gmail.com")
@@ -166,10 +176,8 @@
 ;; @see https://github.com/seagle0128/.emacs.d/lisp/init-edit.el
 (use-package flyspell
   :ensure nil
-  :diminish
   :if (executable-find "aspell")
-  :hook (((text-mode outline-mode) . flyspell-mode)
-	 (flyspell-mode . (lambda ()
+  :hook ((flyspell-mode . (lambda ()
 			    (dolist (key '("C-;" "C-," "C-."))
 			      (unbind-key key flyspell-mode-map)))))
   :init
@@ -192,7 +200,7 @@
   :mode (("README\\.md\\'" . gfm-mode)
 	 ("\\.md\\'" . markdown-mode)
 	 ("\\.markdown\\'" . markdown-mode))
-  :hook ((markdown-mode . flyspell-mode))
+  ;; :hook ((markdown-mode . flyspell-mode))
   :config
   ;; Pre-install: markdown
   (when (executable-find "markdown")

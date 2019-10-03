@@ -1,19 +1,10 @@
 ;; org-mode settings
 
-(defun prepare-org-files ()
-  (unless (file-directory-p "~/org/") (make-directory "~/org/"))
-  (unless (file-exists-p "~/org/notes.org") (write-region "" nil "~/org/notes.org"))
-  (unless (file-exists-p "~/org/gtd.org") (write-region "" nil "~/org/gtd.org"))
-  (unless (file-exists-p "~/org/journal.org") (write-region "" nil "~/org/journal.org"))
-  )
-
-
 (use-package org
-  :init (require 'org-protocol)
-  :hook ((org-capture-mode . auto-fill-mode))
+  ;; :init (require 'org-protocol)
+  ;; :hook ((org-capture-mode . auto-fill-mode))
   :bind
   (("C-c a" . org-agenda)
-   ("C-c b" . org-iswitchb)
    ("C-c c" . org-capture)
    :map org-mode-map
    ("C-c z" . org-add-note)
@@ -33,8 +24,6 @@
 
   (require 'org-habit)
   ;; (add-to-list 'org-modules 'org-habit)
-
-  (prepare-org-files)
 
   ;; refile targets
   (setq org-refile-targets '((nil . (:level . 1))
@@ -115,6 +104,7 @@
 
 (use-package org-ref
   :after org
+  :defer t
   :config
   (setq reftex-default-bibliography '("~/org/bibliography/references.bib"))
 

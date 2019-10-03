@@ -24,6 +24,7 @@
   )
 
 ;; jupyter notebook
-(use-package ein)
+(use-package ein
+  :defer t)
 
 (provide 'init-python)
