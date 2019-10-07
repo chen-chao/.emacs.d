@@ -13,3 +13,6 @@
 [submodule "site-lisp/lpy"]
 	path = site-lisp/lpy
 	url = https://github.com/abo-abo/lpy.git
+[submodule "site-lisp/elispfl"]
+	path = site-lisp/elispfl
+	url = https://github.com/cireu/elispfl.git
