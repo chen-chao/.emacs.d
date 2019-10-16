@@ -13,7 +13,6 @@
   :init (ivy-mode 1)        ; enable ivy globally at startup
   :bind
   (:map ivy-mode-map			; bind in the ivy buffer
-	;; ("C-'" . ivy-avy)
 	("C-c C-r" . ivy-resume)	; recalls completion session
 	)
   :config
@@ -39,6 +38,7 @@
 (use-package counsel
   :bind
   (("M-x"     . counsel-M-x)
+   ("M-y"     . counsel-yank-pop)
    ("C-x C-f" . counsel-find-file)
    ("C-x C-r" . counsel-recentf)
    ("C-c f"   . counsel-git)
