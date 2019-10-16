@@ -13,3 +13,6 @@
 [submodule "site-lisp/lpy"]
 	path = site-lisp/lpy
 	url = https://github.com/abo-abo/lpy.git
+[submodule "site-lisp/jieba"]
+	path = site-lisp/jieba
+	url = https://github.com/cireu/jieba.el.git

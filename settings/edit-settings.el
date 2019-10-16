@@ -78,6 +78,14 @@ Leave one space or none, according to the context."
   (setq recentf-max-saved-items 100)
   )
 
+;; split Chinese words
+;; Pre-install: nodejieba
+(use-package jsonrpc)
+(use-package jieba
+  :requires jsonrpc
+  :load-path "site-lisp/jieba"
+  :commands jieba-mode)
+
 (use-package multiple-cursors
   :bind
   (("C-c C->" . mc/edit-lines)
