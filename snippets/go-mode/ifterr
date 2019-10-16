@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: ifterr
+# key: ifterr
+# --
+if err != ${1:nil} {
+   t.Fatal(${2:err})
+}
+$0
