@@ -5,10 +5,10 @@
   :config
   (setq wttrin-default-cities '("Shanghai" "Sihong"))
   (setq wttrin-default-accept-language '("Accept-Language" . "en-US"))
-  (setq wttrin-mode-line-city "Shanghai")
-  (when (>= emacs-major-version 26)
-    (wttrin-display-weather-in-mode-line)
-    )
+  ;; (setq wttrin-mode-line-city "Shanghai")
+  ;; (when (>= emacs-major-version 26)
+  ;;   (wttrin-display-weather-in-mode-line)
+  ;;   )
   )
 
 ;; reading epub
@@ -103,6 +103,7 @@
 
 ;; transmission
 (use-package transmission
+  :defer t
   :if (executable-find "transmission-daemon"))
 
 ;; holidays and chinese holidays

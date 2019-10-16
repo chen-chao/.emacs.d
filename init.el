@@ -189,8 +189,11 @@
   (setq ispell-program-name "aspell")
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together")))
 
-
 ;; major modes
+(use-package elispfl
+  :load-path "site-lisp/elispfl/"
+  :hook (emacs-lisp-mode . elispfl-mode))
+
 (use-package protobuf-mode
   :mode (("\\.proto\\'" . protobuf-mode)))
 

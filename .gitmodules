@@ -16,3 +16,6 @@
 [submodule "site-lisp/jieba"]
 	path = site-lisp/jieba
 	url = https://github.com/cireu/jieba.el.git
+[submodule "site-lisp/elispfl"]
+	path = site-lisp/elispfl
+	url = https://github.com/cireu/elispfl.git
