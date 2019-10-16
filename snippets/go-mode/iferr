@@ -3,6 +3,6 @@
 # key: iferr
 # --
 if err != ${1:nil} {
-   ${2:t.Fatal(err)}
+   $2
 }
 $0
