@@ -44,6 +44,10 @@
 (use-package lsp-java
   :hook (java-mode . (lambda () (require 'lsp-java) (lsp))))
 
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp))))
+
 ;; Debug
 ;; @see https://github.com/seagle0128/.emacs.d/blob/3245953ac5d3e69cdb8a8c2fbfb861e7addb48b6/lisp/init-lsp.el#L99
 (use-package dap-mode
