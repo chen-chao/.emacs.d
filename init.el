@@ -291,6 +291,8 @@
 			       ))
   )
 
+(use-package typescript-mode)
+
 ;; docker
 (use-package docker)
 
