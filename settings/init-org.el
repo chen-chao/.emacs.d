@@ -19,7 +19,7 @@
 
   (setq org-log-done 'time)
   (setq org-log-done 'note)
-  (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED(c!)") ) )
+  (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "SUSPEND" "CANCELED(c!)")))
 
   (require 'org-habit)
 
@@ -31,7 +31,7 @@
   ;; capture templates
   (setq-default org-capture-templates
 		'(("t" "TODO" entry (file+headline "~/org/gtd.org" "Tasks") "* TODO %?\n %i\n %a")
-		  ("j" "Journal" entry (file+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
+		  ("j" "Journal" entry (file+olp+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
 		  ("n" "Note" entry (file+headline "~/org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")))
 
   (add-to-list 'org-structure-template-alist
@@ -68,6 +68,10 @@
 	     (not (member "~/org/anniversaries.org" org-agenda-files)))
     (setq org-agenda-files (cons "~/org/anniversaries.org" org-agenda-files)))
 
+  (setq-default org-agenda-start-day "-1d")
+  (setq-default org-agenda-span 7)
+  (setq-default org-agenda-start-on-weekday nil)
+
   ;; set org table attribute
   (zh-align-set-faces '(org-table))
 
@@ -76,7 +80,7 @@
 			       '((emacs-lisp . t)
 				 (python . t)
 				 (ein . t) ;; ein
-				 (ipython . t)   ;; ob-ipython
+				 ;; (ipython . t)   ;; ob-ipython
 				 (shell . t)
 				 (C . t)
 				 (asymptote . t)
@@ -87,6 +91,7 @@
   )
 
 (use-package org-download
+  :if nil
   :after org
   :bind (:map org-mode-map
 	      ("C-c d" . org-download-screenshot))
@@ -101,7 +106,7 @@
   )
 
 (use-package org-ref
-  :after org
+  :if nil
   :config
   (setq-default reftex-default-bibliography '("~/org/bibliography/references.bib"))
 
