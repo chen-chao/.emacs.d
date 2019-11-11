@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ruby
+# key: ruby
+# --
+<ruby> $1<rp>(</rp><rt> $2 </rt><rp>)</rp></ruby> $0
