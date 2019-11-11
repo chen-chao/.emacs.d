@@ -133,26 +133,12 @@
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   )
 
-(use-package format-all
-  ;; Pre-install:
-  ;; black(python) tidy(html) prettier(js/ts, yaml, angular/vue, css)
-  ;; clang-format(c/c++/object-c, java, protobuf) sqlformat(sql)
-  :diminish format-all-mode
-  :hook ((python-mode
-	  js-mode
-	  web-mode
-	  sql-mode
-	  css-mode
-	  yaml-mode
-	  cc-mode
-	  c++-mode
-	  objc-mode
-	  emacs-lisp-mode) . format-all-mode))
-
 ;; syntax checking
 ;; Pre-install: pip install pylint
 (use-package flycheck
   :hook (after-init . global-flycheck-mode)
+  :bind-keymap
+  ("C-c f" . flycheck-command-map)
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
