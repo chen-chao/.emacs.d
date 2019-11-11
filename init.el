@@ -31,6 +31,9 @@
 (tool-bar-mode 0)
 (toggle-scroll-bar 0)
 
+;; resize window combinations proportionally
+(setq window-combination-resize t)
+
 ;; maximize window at startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
