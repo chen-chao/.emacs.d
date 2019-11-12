@@ -11,7 +11,8 @@
 
   (use-package lsp-clients
     :ensure nil
-    :init (setq lsp-clients-python-library-directories '("/usr/local/" "/usr/")))
+    :config
+    (setq lsp-clients-python-library-directories '("/usr/local/" "/usr/")))
 
   (defun lsp-select-root()
     (interactive)
@@ -20,13 +21,15 @@
   )
 
 (use-package lsp-ui
+  :after lsp-mode
+  :hook (lsp-mode . lsp-ui-mode)
   :commands lsp-ui-mode
   :bind
   (:map lsp-ui-mode-map
 	([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
 	([remap xref-find-references] . lsp-ui-peek-find-references)
 	("C-c u" . lsp-ui-imenu))
-  :init
+  :config
   (setq lsp-ui-doc-enable t
 	lsp-ui-doc-header t
 	lsp-ui-doc-include-signature t
@@ -34,10 +37,9 @@
 	lsp-ui-doc-use-webkit t
 	lsp-ui-doc-border (face-foreground 'default)
 	lsp-ui-sideline-enable nil
-	lsp-ui-sideline-ignore-duplicate t)
-  :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-  (setq lsp-ui-doc-use-childframe t)
+	lsp-ui-sideline-ignore-duplicate t
+	lsp-ui-doc-use-childframe t)
+
   (set-face-foreground 'lsp-ui-sideline-code-action "purple")
   )
 
@@ -51,6 +53,7 @@
 ;; Debug
 ;; @see https://github.com/seagle0128/.emacs.d/blob/3245953ac5d3e69cdb8a8c2fbfb861e7addb48b6/lisp/init-lsp.el#L99
 (use-package dap-mode
+  :if nil
   :diminish
   :functions dap-hydra/nil
   :bind (:map lsp-mode-map

@@ -1,7 +1,8 @@
 ;; completion
 (use-package company
   :diminish company-mode
-  :init (global-company-mode)
+  ;; :init (global-company-mode)
+  :hook (prog-mode . company-mode)
   :bind (:map company-active-map
 	      (("C-n" . company-select-next)
 	       ("C-p" . company-select-previous)
@@ -16,10 +17,9 @@
 
   ;; lsp backend
   (use-package company-lsp
-    :init (setq company-lsp-cache-candidates 'auto)
     :config
-    (add-to-list 'company-backends #'company-lsp)
-    )
+    (setq company-lsp-cache-candidates 'auto)
+    (add-to-list 'company-backends #'company-lsp))
 
   ;; tabnine backend
   (use-package company-tabnine

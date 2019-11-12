@@ -79,8 +79,6 @@
   (org-babel-do-load-languages 'org-babel-load-languages
 			       '((emacs-lisp . t)
 				 (python . t)
-				 (ein . t) ;; ein
-				 ;; (ipython . t)   ;; ob-ipython
 				 (shell . t)
 				 (C . t)
 				 (asymptote . t)
@@ -91,8 +89,7 @@
   )
 
 (use-package org-download
-  :if nil
-  :after org
+  :defer t
   :bind (:map org-mode-map
 	      ("C-c d" . org-download-screenshot))
   :config
@@ -106,7 +103,7 @@
   )
 
 (use-package org-ref
-  :if nil
+  :defer t
   :config
   (setq-default reftex-default-bibliography '("~/org/bibliography/references.bib"))
 

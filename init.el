@@ -283,7 +283,8 @@
 (use-package typescript-mode)
 
 ;; docker
-(use-package docker)
+(use-package docker
+  :defer t)
 
 (use-package dockerfile-mode
   :mode ("Dockerfile\\'" . dockerfile-mode))
