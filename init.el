@@ -139,7 +139,7 @@
 ;; syntax checking
 ;; Pre-install: pip install pylint
 (use-package flycheck
-  :hook (after-init . global-flycheck-mode)
+  :hook (prog-mode . global-flycheck-mode)
   :bind-keymap
   ("C-c f" . flycheck-command-map)
   :config
@@ -173,7 +173,7 @@
   :hook ((flyspell-mode . (lambda ()
 			    (dolist (key '("C-;" "C-," "C-."))
 			      (unbind-key key flyspell-mode-map)))))
-  :init
+  :config
   (setq flyspell-issue-message-flag nil)
   (setq ispell-program-name "aspell")
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together")))
@@ -306,7 +306,7 @@
 
 (require 'init-utils)
 
-(require 'init-mail)
+;; (require 'init-mail)
 
 ;; (require 'init-browser)
 

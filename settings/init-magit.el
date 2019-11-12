@@ -22,8 +22,6 @@
       (magit-log-current nil `(,optstr))))
     )
 
-(use-package git-timemachine)
-
 (use-package forge
   :after magit)
 
