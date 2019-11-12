@@ -41,7 +41,7 @@
    ("M-y"     . counsel-yank-pop)
    ("C-x C-f" . counsel-find-file)
    ("C-x C-r" . counsel-recentf)
-   ("C-c f"   . counsel-git)
+   ("C-c g"   . counsel-git)
    ("C-c j"   . counsel-file-jump)
    ("C-c r"   . counsel-rg)
    ("C-c s"   . counsel-git-grep)
