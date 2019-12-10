@@ -102,6 +102,14 @@
   (org-download-enable)
   )
 
+(use-package pdf-tools
+  :commands (pdf-tools-enable-minor-modes)
+  :mode (("\\.pdf\\'" . pdf-view-mode))
+  :bind (:map pdf-view-mode-map
+	      ("C-s" . isearch-forward))
+  :config
+  (add-hook 'pdf-view-mode-hook 'pdf-tools-enable-minor-modes))
+
 (use-package org-ref
   :defer t
   :config
