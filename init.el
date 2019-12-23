@@ -93,11 +93,7 @@
   )
 
 (use-package zh-align
-  :load-path "site-lisp/emacs-zh-align/"
-  :demand t
-  :init
-  (setq zh-align-charsets '(han kana cjk-misc))
-  )
+  :load-path "site-lisp/zh-align.el/")
 
 ;; edit
 (require 'edit-settings)
