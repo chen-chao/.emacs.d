@@ -86,6 +86,10 @@
 				 (latex . t)
 				 (ruby . t)
 				 (org . t)))
+
+  ;; clocking
+  (setq-default org-clock-persist 'history)
+  (org-clock-persistence-insinuate)
   )
 
 (use-package org-download
