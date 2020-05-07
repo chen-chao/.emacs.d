@@ -279,6 +279,8 @@
 
 (use-package typescript-mode)
 
+(use-package racket-mode)
+
 ;; docker
 (use-package docker
   :defer t)

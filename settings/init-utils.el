@@ -1,4 +1,6 @@
 ;; weather web service wttr.in
+(use-package xterm-color)
+
 (use-package wttrin
   :load-path "site-lisp/emacs-wttrin/"
   :demand t
@@ -129,5 +131,9 @@
   (setq calendar-holidays (append cal-china-x-chinese-holidays
 				  cal-china-x-general-holidays
 				  western-general-holidays)))
+
+(use-package hledger-mode
+  :if (executable-find "hledger")
+  :mode ("\\.journal\\'" . hledger-mode))
 
 (provide 'init-utils)
