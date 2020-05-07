@@ -3,14 +3,13 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 
+;; load custom file
+(setq custom-file "~/.emacs.d/settings/custom.el")
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; package repository
 (require 'package)
-
-;; TNUA ELPA
-(setq package-archives
-      '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-	("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
 (package-initialize)
 
@@ -29,7 +28,8 @@
 (setq inhibit-startup-screen 1)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(toggle-scroll-bar 0)
+(if (display-graphic-p)
+    (scroll-bar-mode 0))
 
 ;; resize window combinations proportionally
 (setq window-combination-resize t)
@@ -278,6 +278,8 @@
 
 (use-package typescript-mode)
 
+(use-package racket-mode)
+
 ;; docker
 (use-package docker
   :defer t)
@@ -309,11 +311,6 @@
 (require 'init-golang)
 
 (require 'init-dired)
-
-(setq custom-file "~/.emacs.d/settings/custom.el")
-
-(when (file-exists-p custom-file)
-  (load custom-file))
 
 (require 'server)
 (or (server-running-p) (server-start))
