@@ -19,7 +19,7 @@
 
   (setq org-log-done 'time)
   (setq org-log-done 'note)
-  (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "SUSPEND" "CANCELED(c!)")))
+  (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED(c!)")))
 
   (require 'org-habit)
 
