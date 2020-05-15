@@ -65,6 +65,7 @@
   :config
   (add-to-list 'exec-path-from-shell-variables "GOPATH")
   (add-to-list 'exec-path-from-shell-variables "WORKON_HOME")
+  (add-to-list 'exec-path-from-shell-variables "LEDGER_FILE")
   (exec-path-from-shell-initialize)
   )
 

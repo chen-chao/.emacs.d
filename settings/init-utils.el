@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; weather web service wttr.in
 (use-package xterm-color)
 
@@ -53,9 +55,6 @@
 	(message "invalid url")))
     )
   )
-
-;; searching
-(use-package google-this)
 
 ;; dict
 (use-package youdao-dictionary
@@ -134,6 +133,12 @@
 
 (use-package hledger-mode
   :if (executable-find "hledger")
-  :mode ("\\.journal\\'" . hledger-mode))
+  :mode ("\\.journal\\'" . (lambda () (hledger-mode) (company-mode)))
+  :bind (:map hledger-mode-map
+	      ("C-c h" . hledger-run-command))
+  :config
+  (add-to-list 'company-backends #'hledger-company)
+  (setq hledger-jfile (getenv "LEDGER_FILE"))
+  (setq hledger-currency-string "¥"))
 
 (provide 'init-utils)
