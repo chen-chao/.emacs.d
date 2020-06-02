@@ -19,8 +19,15 @@
 
 (eval-when-compile (require 'use-package))
 
+(use-package quelpa
+  :config
+  (setq quelpa-update-melpa-p nil))
+
+(use-package quelpa-use-package)
+
 ;; (setq use-package-verbose t)
 (setq use-package-always-ensure t)
+(setq use-package-ensure-function 'quelpa)
 
 ;; gc threshold, 10 Mb
 (setq gc-cons-threshold (* 10 1000 1000))

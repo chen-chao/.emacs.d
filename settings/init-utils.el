@@ -95,8 +95,6 @@
 ;; same as diminish, but also works for major modes
 (use-package delight)
 
-(use-package rfc-mode)
-
 (use-package time
   :config
   (setq display-time-default-load-average nil)
@@ -140,5 +138,17 @@
   (add-to-list 'company-backends #'hledger-company)
   (setq hledger-jfile (getenv "LEDGER_FILE"))
   (setq hledger-currency-string "¥"))
+
+
+(use-package calibredb
+  :quelpa
+  (calibredb :repo "chenyanming/calibredb.el" :fetcher github)
+  :config
+  (setq sql-sqlite-program (executable-find "sqlite3"))
+  (setq calibredb-root-dir (expand-file-name "~/Documents/calibre"))
+  (setq calibredb-db-dir (concat calibredb-root-dir "/metadata.db"))
+  (setq calibredb-program (executable-find "calibredb"))
+  (setq calibredb-library-alist '(("~/Documents/calibre/")))
+)
 
 (provide 'init-utils)
