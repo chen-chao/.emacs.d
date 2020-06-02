@@ -34,10 +34,6 @@
 		  ("j" "Journal" entry (file+olp+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
 		  ("n" "Note" entry (file+headline "~/org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")))
 
-  (add-to-list 'org-structure-template-alist
-	       '("p" "#+BEGIN_SRC python\n?\n#+END_SRC")
-	       '("l" "#+BEGIN_SRC shell\n?\n#+END_SRC"))
-
   ;; for org html export
   (use-package htmlize)
   ;; remove xml header
@@ -113,16 +109,5 @@
 	      ("C-s" . isearch-forward))
   :config
   (add-hook 'pdf-view-mode-hook 'pdf-tools-enable-minor-modes))
-
-(use-package org-ref
-  :defer t
-  :config
-  (setq-default reftex-default-bibliography '("~/org/bibliography/references.bib"))
-
-  ;; see org-ref for use of these variables
-  (setq-default org-ref-bibliography-notes "~/org/bibliography/notes.org"
-		org-ref-default-bibliography '("~/org/bibliography/references.bib")
-		org-ref-pdf-directory "~/org/bibliography/bibtex-pdfs/")
-  )
 
 (provide 'init-org)

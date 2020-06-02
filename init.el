@@ -297,17 +297,11 @@
 
 (require 'init-shell)
 
-;; (require 'init-gnus)
-
 (require 'init-eaf)
 
 (require 'init-elfeed)
 
 (require 'init-utils)
-
-;; (require 'init-mail)
-
-;; (require 'init-browser)
 
 (require 'init-golang)
 
