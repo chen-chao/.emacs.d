@@ -19,15 +19,8 @@
 
 (eval-when-compile (require 'use-package))
 
-(use-package quelpa
-  :config
-  (setq quelpa-update-melpa-p nil))
-
-(use-package quelpa-use-package)
-
 ;; (setq use-package-verbose t)
 (setq use-package-always-ensure t)
-(setq use-package-ensure-function 'quelpa)
 
 ;; gc threshold, 10 Mb
 (setq gc-cons-threshold (* 10 1000 1000))
@@ -74,25 +67,6 @@
   (add-to-list 'exec-path-from-shell-variables "LEDGER_FILE")
   (exec-path-from-shell-initialize)
   )
-
-;; auth by gpg
-(use-package auth-source
-  :ensure nil
-  :init
-  (setenv "GPG_AGENT_INFO" nil)
-  (setq-default epa-pinentry-mode 'loopback)
-  (setq auth-sources '("~/.emacs.d/data/.authinfo.gpg"))
-  (setq auth-source-cache-expiry 86400) ;; All Day
-  (setq auth-source-gpg-encrypt-to "wenbushi@gmail.com")
-  )
-
-;; theme
-;; (use-package eclipse-theme
-;;   :ensure nil
-;;   :init
-;;   (setq custom-safe-themes t)
-;;   (load-theme 'eclipse)
-;;   )
 
 (use-package doom-themes
   :init
@@ -253,36 +227,6 @@
   )
 
 (use-package cmake-mode)
-
-
-;; built-in package
-(use-package sql
-  :ensure nil
-  :defer t
-  ;; truncate long lines
-  :hook ((sql-interactive-mode . (lambda () (toggle-truncate-lines t))))
-  :config
-  (defun database-info (dbtype loginname database)
-    (let* ((secret (auth-source-user-and-password loginname))
-	   (username (car secret))
-	   (password (cadr secret))
-	   (datainfo (auth-source-user-and-password database))
-	   (name (car datainfo))
-	   (db (cadr datainfo))
-	   (port 3306))
-      `(,(make-symbol loginname)
-	(sql-product (quote ,dbtype))
-	(sql-user ,username)
-	(sql-password ,password)
-	(sql-port ,port)
-	(sql-server ,name)
-	(sql-database ,db))))
-
-  (setq sql-connection-alist `(,(database-info 'mysql "localtest" "localdb")
-			       ,(database-info 'mysql "splayer" "splayerdb")
-			       ,(database-info 'mysql "splayerprod" "splayerproddb")
-			       ))
-  )
 
 (use-package typescript-mode)
 

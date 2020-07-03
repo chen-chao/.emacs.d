@@ -70,13 +70,7 @@
   :commands leetcode
   :defer t
   :config
-  (let* ((secret (auth-source-user-and-password "leetcode.com"))
-	 (username (car secret))
-	 (password (cadr secret)))
-    (setq leetcode-account username)
-    (setq leetcode-password password))
-  (setq leetcode-prefer-language "python3")
-  )
+  (setq leetcode-prefer-language "python3"))
 
 ;; open in other window/frame
 (use-package other-frame-window
@@ -139,16 +133,5 @@
   (setq hledger-jfile (getenv "LEDGER_FILE"))
   (setq hledger-currency-string "¥"))
 
-
-(use-package calibredb
-  :quelpa
-  (calibredb :repo "chenyanming/calibredb.el" :fetcher github)
-  :config
-  (setq sql-sqlite-program (executable-find "sqlite3"))
-  (setq calibredb-root-dir (expand-file-name "~/Documents/calibre"))
-  (setq calibredb-db-dir (concat calibredb-root-dir "/metadata.db"))
-  (setq calibredb-program (executable-find "calibredb"))
-  (setq calibredb-library-alist '(("~/Documents/calibre/")))
-)
 
 (provide 'init-utils)
