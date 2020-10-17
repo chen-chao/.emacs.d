@@ -1,9 +1,3 @@
-[submodule "site-lisp/emacs-application-framework"]
-	path = site-lisp/emacs-application-framework
-	url = https://github.com/manateelazycat/emacs-application-framework.git
-[submodule "site-lisp/emacs-wttrin"]
-	path = site-lisp/emacs-wttrin
-	url = git@github.com:chen-chao/emacs-wttrin.git
 [submodule "site-lisp/po-mode"]
 	path = site-lisp/po-mode
 	url = git@github.com:chen-chao/po-mode.git
@@ -19,3 +13,6 @@
 [submodule "site-lisp/elispfl"]
 	path = site-lisp/elispfl
 	url = https://github.com/cireu/elispfl.git
+[submodule "site-lisp/whicher"]
+	path = site-lisp/whicher
+	url = https://github.com/abo-abo/whicher.git
