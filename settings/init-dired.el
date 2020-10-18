@@ -1,14 +1,5 @@
 ;; from centaur emacs
 
-(use-package dired
-  :ensure nil
-  :config
-  ;; enable dired functions
-  (put 'dired-find-alternate-file 'disabled nil)
-  (when (eq system-type 'darwin)
-    (setq dired-ls-use-dired nil))
-  )
-
 (use-package dired-rainbow
   :commands dired-rainbow-define dired-rainbow-define-chmod
   :init
@@ -50,11 +41,5 @@
 (use-package dired-filter)
 
 (use-package dired-narrow)
-
-(use-package wdired
-  :bind
-  (:map wdired-mode-map
-	("C-c C-k" . wdired-abort-changes))
-  )
 
 (provide 'init-dired)

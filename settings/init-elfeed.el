@@ -23,6 +23,11 @@
       (shr-render-region (point) (point-max))
       )
     (read-only-mode 1))
+
+  (defun elfeed-enable-socks-proxy (&optional host)
+    (interactive)
+    (let ((host (or host "127.0.0.1:1080")))
+      (setf elfeed-curl-extra-arguments `("--socks5-hostname" ,host))))
   )
 
 (provide 'init-elfeed)

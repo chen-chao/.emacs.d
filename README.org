@@ -96,7 +96,6 @@ The config uses these packages for project management:
 
 - =magit=, a =git= interface for emacs for version control.
 - =projectile=, a project interaction library.
-- =treemacs=, a tree-like file and project explorer.
 
 * Utilities
 

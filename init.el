@@ -40,6 +40,34 @@
 
 (require 'init-ivy)
 
+;; edit
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(electric-pair-mode 1)
+(show-paren-mode 1)
+
+(setq require-final-newline 1)
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
+
+(defun copy-current-line (arg)
+  (interactive "p")
+  (let* ((beg (line-beginning-position))
+	 (end (line-end-position arg))
+	 (lines (count-lines beg end)))
+    (kill-ring-save beg end)
+    (message "%d line%s copied" lines (if (= 1 lines) "" "s"))))
+
+(global-set-key (kbd "M-+") 'text-scale-increase)
+(global-set-key (kbd "M--") 'text-scale-decrease)
+(global-set-key (kbd "M-k") 'copy-current-line)
+(global-set-key (kbd "M-j") 'join-line)
+(global-set-key (kbd "M-;") 'comment-line)
+(global-set-key (kbd "C->") 'forward-list)
+(global-set-key (kbd "C-<") 'backward-list)
+
+(use-package edit-indirect)
+
+
 ;; template
 (use-package yasnippet
   :init (yas-global-mode 1)
@@ -59,11 +87,7 @@
 (use-package zh-align
   :load-path "site-lisp/zh-align.el/")
 
-;; edit
-(require 'edit-settings)
-(use-package edit-indirect)
-
-;; programming
+;; project
 (use-package company
   :hook ((prog-mode hledger-mode) . company-mode)
   :bind (:map company-active-map
@@ -78,8 +102,13 @@
   (use-package lsp-ui
     :config (setq lsp-ui-sideline-enable nil)))
 
+(use-package projectile
+  :bind-keymap ("C-c p" . projectile-command-map)
+  :config
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-mode-line-prefix "Proj"))
+
 ;; syntax checking
-;; Pre-install: pip install pylint
 (use-package flycheck
   :hook (prog-mode . global-flycheck-mode)
   :bind-keymap
@@ -110,98 +139,24 @@
 ;; spell checking
 ;; @see https://github.com/seagle0128/.emacs.d/lisp/init-edit.el
 (use-package flyspell
-  :ensure nil
-  :if (executable-find "aspell")
   :hook ((flyspell-mode . (lambda ()
 			    (dolist (key '("C-;" "C-," "C-."))
 			      (unbind-key key flyspell-mode-map)))))
   :config
   (setq flyspell-issue-message-flag nil)
-  (setq ispell-program-name "aspell")
+  (setq ispell-program-name (whicher "aspell"))
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together")))
 
 ;; major modes
-(use-package lsp-java
-  :hook (java-mode . #'lsp))
-
-(use-package elispfl
-  :load-path "site-lisp/elispfl/"
-  :hook (emacs-lisp-mode . elispfl-mode))
-
-(use-package protobuf-mode
-  :mode (("\\.proto\\'" . protobuf-mode)))
-
-(use-package octave
-  :mode (("\\.m$" . octave-mode))
-  :config
-  (setq octave-comment-start "%"))
-
-(use-package markdown-mode
-  :mode (("README\\.md\\'" . gfm-mode)
-	 ("\\.md\\'" . markdown-mode)
-	 ("\\.markdown\\'" . markdown-mode))
-  :config
-  ;; Pre-install: markdown
-  (setq markdown-command (whicher "markdown"))
-  ;; set faces
-  (zh-align-set-faces '(markdown-table-face)))
-
-(use-package yaml-mode
-  :mode (("\\.yaml\\'" . yaml-mode)
-	 ("\\.yml\\'" . yaml-mode)))
-
-(use-package asy-mode
-  :load-path "site-lisp/asy"
-  :commands (asy-mode lasy-mode asy-insinuate-latex)
-  :mode (("\\.asy\\'" . asy-mode)))
-
-;; @see https://github.com/jwiegley/use-package/issues/379#issuecomment-258217014
-(use-package tex
-  :ensure auctex
-  :config
-  (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex --synctex=1%(mode)%' %t" TeX-run-TeX nil t))
-  (setq TeX-command-default "XeLaTeX")
-  (setq TeX-auto-save t)
-  (setq TeX-parse-self t)
-  ;; (setq TeX-save-query nil)
-  ;; (setq TeX-show-compilation t)
-  (use-package company-auctex :config (company-auctex-init))
-  )
-
-(use-package json-mode)
-
-(use-package cmake-mode)
-
-(use-package typescript-mode)
-
-(use-package racket-mode)
-
-(use-package sml-mode)
-
-;; docker
-(use-package docker :defer t)
-
-(use-package dockerfile-mode
-  :mode ("Dockerfile\\'" . dockerfile-mode))
-
-;; crontab
-(use-package crontab-mode)
-
-(require 'init-python)
+(require 'prog-lang)
 
 (require 'init-org)
 
 (require 'init-shell)
 
-(require 'init-eaf)
-
 (require 'init-elfeed)
 
 (require 'init-utils)
 
-(require 'init-golang)
-
 (require 'init-dired)
-
-(require 'server)
-(or (server-running-p) (server-start))
+(put 'dired-find-alternate-file 'disabled nil)

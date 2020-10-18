@@ -30,22 +30,14 @@
 	      ))
 
 (use-package counsel
-  :bind
-  (("M-x"     . counsel-M-x)
-   ("M-y"     . counsel-yank-pop)
-   ("C-x C-f" . counsel-find-file)
-   ("C-x C-r" . counsel-recentf)
-   ("C-c g"   . counsel-git)
-   ("C-c j"   . counsel-file-jump)
-   ("C-c r"   . counsel-rg)
-   ("C-c s"   . counsel-git-grep)
-   ("C-c l"   . counsel-locate)
-   ("C-h f"   . counsel-describe-function)
-   ("C-h v"   . counsel-describe-variable)
-   ("C-h s"   . counsel-info-lookup-symbol)
-   ("C-h l"   . counsel-find-library)
-   ("C-h u"   . counsel-unicode-char))
-  )
+  :bind (("M-x"     . counsel-M-x)
+	 ("M-y"     . counsel-yank-pop)
+	 ("C-x C-f" . counsel-find-file)
+	 ("C-x C-r" . counsel-recentf)
+	 ("C-c g"   . counsel-git)
+	 ("C-c j"   . counsel-file-jump)
+	 ("C-c r"   . counsel-rg)))
+
 
 (use-package swiper :bind (("C-s" . swiper)))
 

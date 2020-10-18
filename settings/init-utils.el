@@ -43,15 +43,15 @@
 				    western-general-holidays))))
 
 (use-package hledger-mode
+  :mode (("\\.journal\\'" . hledger-mode))
   :bind (:map hledger-mode-map
 	      ("C-c h" . hledger-run-command))
   :config
   (add-to-list 'company-backends #'hledger-company)
-  (setq hledger-jfile (getenv "LEDGER_FILE"))
+  (setq hledger-jfile "~/org/finance/current.journal")
   (setq hledger-currency-string "¥")
   (setq hledger-reporting-day 10)
-  (setq hledger-year-of-birth 1991)
-  )
+  (setq hledger-year-of-birth 1991))
 
 
 (provide 'init-utils)
