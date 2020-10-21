@@ -1,15 +1,26 @@
 ;;; prog-lang.el --- major modes for programming languages
 
-(require 'init-python)
-
 (require 'init-golang)
+
+(use-package lpy)
+
+;; Pre-install: pip install virtualenvwrapper
+(use-package virtualenvwrapper
+  :defer t
+  :config
+  (venv-initialize-interactive-shells)
+  (venv-initialize-eshell)
+  (setq venv-location (getenv "WORKON_HOME")))
+
+(use-package csharp-mode
+  :mode (("\\.csproj\\'" . nxml-mode))
+  :hook (csharp-mode . (lambda () (setq indent-tabs-mode nil))))
 
 (use-package lsp-java
   :hook (java-mode . #'lsp))
 
-(use-package elispfl
-  :load-path "site-lisp/elispfl/"
-  :hook (emacs-lisp-mode . elispfl-mode))
+(use-package powershell
+  :if (eq system-type 'windows-nt))
 
 (use-package protobuf-mode
   :mode (("\\.proto\\'" . protobuf-mode)))
@@ -27,7 +38,8 @@
   ;; Pre-install: markdown
   (setq markdown-command (whicher "markdown"))
   ;; set faces
-  (zh-align-set-faces '(markdown-table-face)))
+  ;; (zh-align-set-faces '(markdown-table-face))
+  )
 
 (use-package yaml-mode
   :mode (("\\.yaml\\'" . yaml-mode)
@@ -66,6 +78,6 @@
 (use-package dockerfile-mode
   :mode ("Dockerfile\\'" . dockerfile-mode))
 
-(use-package crontab-mode)
+(use-package crontab-mode :if (eq system-type 'windows-nt))
 
 (provide 'prog-lang)

@@ -4,11 +4,10 @@
   :init
   (which-key-mode)
   :config
-  (setq which-key-idle-delay 0.5)
-  )
+  (setq which-key-idle-delay 0.5))
 
 (use-package ivy
-  :init (ivy-mode 1)
+  :init (ivy-mode)
   :bind (:map ivy-mode-map
 	("C-c C-r" . ivy-resume))
   :config
@@ -51,9 +50,7 @@
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
-(use-package ace-link
-  :config
-  (ace-link-setup-default))
+(use-package ace-link :config (ace-link-setup-default))
 
 
 (provide 'init-ivy)

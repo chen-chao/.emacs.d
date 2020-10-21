@@ -1,9 +1,11 @@
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
+
 ;; paths
 (add-to-list 'load-path "~/.emacs.d/settings")
-(setq custom-file "~/.emacs.d/settings/custom.el")
+(when (file-exists-p (setq custom-file "~/.emacs.d/settings/custom.el"))
+  (load-file custom-file))
 
 ;; package repository
 (require 'package)
@@ -24,7 +26,7 @@
 
 (setq window-combination-resize t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(set-face-attribute 'default nil :family "Cascadia Code" :height 140)
+(set-face-attribute 'default nil :family "Cascadia Code" :height 130)
 
 (use-package doom-themes
   :init
@@ -70,6 +72,7 @@
 
 ;; template
 (use-package yasnippet
+  :ensure t
   :init (yas-global-mode 1)
   :config
   (setq yas-snippet-dirs '("~/.emacs.d/snippets")))
@@ -80,15 +83,22 @@
   :load-path "site-lisp/whicher/")
 
 (use-package magit
-  :bind (("C-c v" . magit-status))
+  :ensure t
+  :bind (("C-c v" . magit-status)
+	 ("C-c m" . magit-dispatch))
   :config
+  (when (eq system-type 'windows-nt)
+    (setenv "GIT_ASKPASS" "git-gui--askpass")
+    (setenv "SSH_ASKPASS" "git-gui--askpass"))
   (use-package forge))
 
-(use-package zh-align
-  :load-path "site-lisp/zh-align.el/")
+
+;; (use-package zh-align
+;;   :load-path "site-lisp/zh-align.el/")
 
 ;; project
 (use-package company
+  :ensure t
   :hook ((prog-mode hledger-mode) . company-mode)
   :bind (:map company-active-map
 	      (("C-n" . company-select-next)
@@ -97,12 +107,14 @@
   (setq company-idle-delay 0))
 
 (use-package lsp-mode
-  :hook ((go-mode python-mode c-mode c++-mode) . lsp-deferred)
+  :ensure t
+  :hook ((go-mode python-mode c-mode c++-mode csharp-mode) . lsp-deferred)
   :config
   (use-package lsp-ui
     :config (setq lsp-ui-sideline-enable nil)))
 
 (use-package projectile
+  :ensure t
   :bind-keymap ("C-c p" . projectile-command-map)
   :config
   (setq projectile-completion-system 'ivy)
@@ -160,3 +172,4 @@
 
 (require 'init-dired)
 (put 'dired-find-alternate-file 'disabled nil)
+(put 'narrow-to-region 'disabled nil)

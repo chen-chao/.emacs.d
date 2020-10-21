@@ -4,9 +4,7 @@
   :mode (("\\.epub\\'" . nov-mode)))
 
 ;; po files
-(use-package po-mode
-  :load-path "site-lisp/po-mode"
-  :mode (("\\.po\\'" . po-mode)))
+(use-package po-mode :mode (("\\.po\\'" . po-mode)))
 
 ;; dict
 (use-package youdao-dictionary

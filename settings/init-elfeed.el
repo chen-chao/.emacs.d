@@ -7,8 +7,9 @@
 
   :config
   ;; set face attribute
-  (zh-align-set-faces '(elfeed-search-title-face
-			elfeed-search-feed-face))
+  ;; (zh-align-set-faces '(elfeed-search-title-face
+  ;; 			elfeed-search-feed-face))
+
   (use-package elfeed-org
     :config
     (setq rmh-elfeed-org-files (list "~/.emacs.d/settings/elfeed.org"))
