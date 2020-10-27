@@ -54,10 +54,49 @@
 	      ("C-c h" . hledger-run-command))
   :config
   (add-to-list 'company-backends #'hledger-company)
-  (setq hledger-jfile "~/org/finance/current.journal")
+  (setq hledger-jfile "~/org/finance/2020.journal")
   (setq hledger-currency-string "¥")
   (setq hledger-reporting-day 10)
   (setq hledger-year-of-birth 1991))
 
+(use-package pdf-tools
+  :commands (pdf-tools-enable-minor-modes)
+  :mode (("\\.pdf\\'" . pdf-view-mode))
+  :hook (pdf-view-mode . pdf-tools-enable-minor-modes)
+  :bind (:map pdf-view-mode-map
+	      ("C-s" . isearch-forward)))
+
+(use-package elfeed
+  :commands (elfeed elfeed-update)
+  :bind (:map elfeed-search-mode-map
+	      ("g" . elfeed-update)
+	      :map elfeed-show-mode-map
+	      ("h" . elfeed-show-render-html))
+
+  :config
+  ;; set face attribute
+  ;; (zh-align-set-faces '(elfeed-search-title-face
+  ;; 			elfeed-search-feed-face))
+
+  (use-package elfeed-org
+    :config
+    (setq rmh-elfeed-org-files (list "~/.emacs.d/settings/elfeed.org"))
+    (elfeed-org))
+
+  (defun elfeed-show-render-html ()
+    (interactive)
+    (read-only-mode -1)
+    (save-excursion
+      (goto-char (point-min))
+      (re-search-forward "Link:.*\n\n")
+      (shr-render-region (point) (point-max))
+      )
+    (read-only-mode 1))
+
+  (defun elfeed-enable-socks-proxy (&optional host)
+    (interactive)
+    (let ((host (or host "127.0.0.1:1080")))
+      (setf elfeed-curl-extra-arguments `("--socks5-hostname" ,host))))
+  )
 
 (provide 'init-utils)

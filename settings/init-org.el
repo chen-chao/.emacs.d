@@ -17,20 +17,17 @@
   :config
   (unbind-key "C-'" org-mode-map)
 
-  (setq org-log-done 'time)
   (setq org-log-done 'note)
-  (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED(c!)")))
+  (setq org-todo-keywords '((sequence "TODO" "STAGING(s)" "|" "DONE" "CANCELED(c!)")))
 
   (require 'org-habit)
 
   ;; refile targets
-  (setq org-refile-targets '((nil . (:level . 1))
-			     ("~/org/notes.org" . (:level . 1))
-			     ("~/org/gtd.org" . (:level . 1))))
+  (setq org-refile-targets '((org-agenda-files . (:maxlevel . 1))))
 
   ;; capture templates
   (setq-default org-capture-templates
-		'(("t" "TODO" entry (file+headline "~/org/gtd.org" "Tasks") "* TODO %?\n %i\n %a")
+		'(("t" "TODO" entry (file "~/org/gtd.org") "* TODO %?\n %i\n %a")
 		  ("j" "Journal" entry (file+olp+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
 		  ("n" "Note" entry (file+headline "~/org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")))
 
@@ -69,7 +66,7 @@
   (setq-default org-agenda-start-on-weekday nil)
 
   ;; set org table attribute
-  (zh-align-set-faces '(org-table))
+  ;; (zh-align-set-faces '(org-table))
 
   ;; org babel
   (org-babel-do-load-languages 'org-babel-load-languages
@@ -87,27 +84,5 @@
   (setq-default org-clock-persist 'history)
   (org-clock-persistence-insinuate)
   )
-
-(use-package org-download
-  :defer t
-  :bind (:map org-mode-map
-	      ("C-c d" . org-download-screenshot))
-  :config
-  (setq org-download-method 'attach)
-  (setq org-download-backend "curl \"%s\" -o \"%s\"")
-  (when (eq system-type 'darwin)
-    (setq org-download-screenshot-method "screencapture -i %s"))
-  (when (eq system-type 'linux)
-    (setq org-download-screenshot-method "scrot -s %s"))
-  (org-download-enable)
-  )
-
-(use-package pdf-tools
-  :commands (pdf-tools-enable-minor-modes)
-  :mode (("\\.pdf\\'" . pdf-view-mode))
-  :bind (:map pdf-view-mode-map
-	      ("C-s" . isearch-forward))
-  :config
-  (add-hook 'pdf-view-mode-hook 'pdf-tools-enable-minor-modes))
 
 (provide 'init-org)
