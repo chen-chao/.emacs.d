@@ -6,13 +6,18 @@
 ** https://xkcd.com/atom.xml
 ** https://pythonhunter.org/episodes/feed.xml                        :python:
 ** http://esr.ibiblio.org/?feed=rss
-** http://ppwwyyxx.com/atom.xml
+** [[http://ppwwyyxx.com/atom.xml][Yuxin's Blog]]
 ** https://lightquantum.xyz/index.xml
 ** https://farseerfc.me/feeds/atom.xml
 ** https://feedly.com/i/subscription/feed/http://xargin.com/rss/     :golang:
-** https://www.solidot.org/index.rss
+** [[https://www.solidot.org/index.rss][Solidot]]
 ** https://www.archlinux.org/feeds/news/                         :linux:news:
 ** http://feeds.feedburner.com/TheKitchinResearchGroup
 ** https://grpc.io/feed.xml
-** https://chriszheng.science/atom.xml
-** http://hawstein.com/feed.xml
+** [[https://chriszheng.science/atom.xml][M-x Chris-An-Emacser]]
+** [[http://hawstein.com/feed.xml][Hawstein's Blog]]
+** [[https://www.imwzk.com/feed.xml][无辄的栈]]
+** [[https://draveness.me/feed.xml][面向信仰编程]]
+** [[http://blog.jiayuanzhang.com/index.xml][Jiayuan Thoughts]]
+** [[https://devblogs.microsoft.com/oldnewthing/feed][The Old New Thing]]
+** [[https://blog.yoitsu.moe/feeds/all.atom.xml][约伊兹的萌狼乡手札]]
