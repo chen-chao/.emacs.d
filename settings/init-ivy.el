@@ -48,7 +48,8 @@
 (use-package ace-window
   :bind (("C-x o" . ace-window))
   :config
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (setq aw-ignore-on nil))
 
 (use-package ace-link :config (ace-link-setup-default))
 

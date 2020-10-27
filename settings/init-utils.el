@@ -6,6 +6,14 @@
 ;; po files
 (use-package po-mode :mode (("\\.po\\'" . po-mode)))
 
+(use-package pdf-tools
+  :if (not (eq system-type 'windows-nt))
+  :commands (pdf-tools-enable-minor-modes)
+  :mode (("\\.pdf\\'" . pdf-view-mode))
+  :hook (pdf-view-mode . pdf-tools-enable-minor-modes)
+  :bind (:map pdf-view-mode-map
+	      ("C-s" . isearch-forward)))
+
 ;; dict
 (use-package youdao-dictionary
   :bind (("C-c y s" . youdao-dictionary-search-at-point-posframe)
