@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: column
+# key: column
+# --
+#+COLUMNS: %40ITEM(Task) %Effort{:} %CLOCKSUM
