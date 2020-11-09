@@ -1,19 +1,19 @@
 * Blogs                                                              :elfeed:
-** [[https://sgugger.github.io/feeds/all.atom.xml]]
+** [[https://sgugger.github.io/feeds/all.atom.xml][Another data science student's blog]]
 ** [[http://hopehook.com/feed/]]
-** https://laike9m.com/blog/rss/
-** https://blog.golang.org/feed.atom                                 :golang:
-** https://xkcd.com/atom.xml
-** https://pythonhunter.org/episodes/feed.xml                        :python:
-** http://esr.ibiblio.org/?feed=rss
+** [[https://laike9m.com/blog/rss/][laike9m's blog]]
+** [[https://blog.golang.org/feed.atom][The Go Programming Language Blog]]                                  :golang:
+** [[https://xkcd.com/atom.xml][xkcd.com]]
+** [[https://pythonhunter.org/episodes/feed.xml][捕蛇者说]]
+** [[http://esr.ibiblio.org/?feed=rss][Armed and Dangerous]]
 ** [[http://ppwwyyxx.com/atom.xml][Yuxin's Blog]]
 ** https://lightquantum.xyz/index.xml
-** https://farseerfc.me/feeds/atom.xml
-** https://feedly.com/i/subscription/feed/http://xargin.com/rss/     :golang:
+** [[https://farseerfc.me/feeds/atom.xml][Farseerfc的小窩]]
+** [[http://xargin.com/rss/][No Headback]]                                                       :golang:
 ** [[https://www.solidot.org/index.rss][Solidot]]
-** https://www.archlinux.org/feeds/news/                         :linux:news:
+** [[https://www.archlinux.org/feeds/news/][Arch Linux: Recent news update]]
 ** http://feeds.feedburner.com/TheKitchinResearchGroup
-** https://grpc.io/feed.xml
+** [[https://grpc.io/feed.xml][The gRPC blog]]
 ** [[https://chriszheng.science/atom.xml][M-x Chris-An-Emacser]]
 ** [[http://hawstein.com/feed.xml][Hawstein's Blog]]
 ** [[https://www.imwzk.com/feed.xml][无辄的栈]]
@@ -21,3 +21,4 @@
 ** [[http://blog.jiayuanzhang.com/index.xml][Jiayuan Thoughts]]
 ** [[https://devblogs.microsoft.com/oldnewthing/feed][The Old New Thing]]
 ** [[https://blog.yoitsu.moe/feeds/all.atom.xml][约伊兹的萌狼乡手札]]
+** [[https://hacks.mozilla.org/feed/][Mozilla Hacks]]
