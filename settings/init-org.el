@@ -18,7 +18,7 @@
   (unbind-key "C-'" org-mode-map)
 
   (setq org-log-done 'note)
-  (setq org-todo-keywords '((sequence "TODO" "STAGING(s)" "|" "DONE" "CANCELED(c!)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "PENDING(p@/!)" "|" "DONE" "CANCELED(c@)")))
 
   (require 'org-habit)
 
@@ -26,10 +26,10 @@
   (setq org-refile-targets '((org-agenda-files . (:maxlevel . 1))))
 
   ;; capture templates
-  (setq-default org-capture-templates
-		'(("t" "TODO" entry (file "~/org/gtd.org") "* TODO %?\n %i\n %a")
-		  ("j" "Journal" entry (file+olp+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
-		  ("n" "Note" entry (file+headline "~/org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")))
+  ;; (setq-default org-capture-templates
+  ;; 		'(("t" "TODO" entry (file "~/org/gtd.org") "* TODO %?\n %i\n %a")
+  ;; 		  ("j" "Journal" entry (file+olp+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
+  ;; 		  ("n" "Note" entry (file+headline "~/org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")))
 
   ;; for org html export
   (use-package htmlize)
@@ -55,11 +55,6 @@
 	       (y (+ (* 100 cycle) yy)))
 	  (diary-chinese-anniversary lunar-month lunar-day y mark))
       (diary-chinese-anniversary lunar-month lunar-day year mark)))
-
-  ;; add anniversaries to org agenda
-  (when (and (file-exists-p "~/org/anniversaries.org")
-	     (not (member "~/org/anniversaries.org" org-agenda-files)))
-    (setq org-agenda-files (cons "~/org/anniversaries.org" org-agenda-files)))
 
   (setq-default org-agenda-start-day "-1d")
   (setq-default org-agenda-span 7)

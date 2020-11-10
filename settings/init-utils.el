@@ -99,4 +99,7 @@
       (setf elfeed-curl-extra-arguments `("--socks5-hostname" ,host))))
   )
 
+(use-package keyfreq
+  :init (progn (keyfreq-mode 1) (keyfreq-autosave-mode)))
+
 (provide 'init-utils)

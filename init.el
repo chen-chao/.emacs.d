@@ -164,10 +164,6 @@
 
 (require 'init-org)
 
-(require 'init-shell)
-
-(require 'init-elfeed)
-
 (require 'init-utils)
 
 (require 'init-dired)
