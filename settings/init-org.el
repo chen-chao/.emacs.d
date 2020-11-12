@@ -26,10 +26,10 @@
   (setq org-refile-targets '((org-agenda-files . (:maxlevel . 1))))
 
   ;; capture templates
-  ;; (setq-default org-capture-templates
-  ;; 		'(("t" "TODO" entry (file "~/org/gtd.org") "* TODO %?\n %i\n %a")
-  ;; 		  ("j" "Journal" entry (file+olp+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
-  ;; 		  ("n" "Note" entry (file+headline "~/org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")))
+  (setq-default org-capture-templates
+		'(("t" "TODO" entry (file "~/org/gtd.org") "* TODO %?\n %i\n %a")
+		  ("j" "Journal" entry (file+olp+datetree "~/org/journal.org") "* %?\nEntered on %U\n %i\n")
+		  ("n" "Note" entry (file+headline "~/org/notes.org" "Notes") "* %?\nEntered on %U\n %i\n %a")))
 
   ;; for org html export
   (use-package htmlize)
