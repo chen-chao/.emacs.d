@@ -22,3 +22,5 @@
 ** [[https://devblogs.microsoft.com/oldnewthing/feed][The Old New Thing]]
 ** [[https://blog.yoitsu.moe/feeds/all.atom.xml][约伊兹的萌狼乡手札]]
 ** [[https://hacks.mozilla.org/feed/][Mozilla Hacks]]
+** [[https://kaieconblog.wordpress.com/feed/][经济笔记 - 郭凯]]
+** [[https://manateelazycat.github.io/feed.xml][manateelazycat.github.io]]
