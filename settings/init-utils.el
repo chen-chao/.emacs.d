@@ -70,6 +70,7 @@
   :commands (elfeed elfeed-update)
   :bind (:map elfeed-search-mode-map
 	      ("g" . elfeed-update)
+	      ("m" . elfeed-mark-read)
 	      :map elfeed-show-mode-map
 	      ("h" . elfeed-show-render-html))
 
@@ -93,11 +94,30 @@
       )
     (read-only-mode 1))
 
+  (defun elfeed-mark-read (entry)
+    (interactive (list (elfeed-search-selected :ignore-region)))
+    (when (elfeed-entry-p entry)
+      (elfeed-untag entry 'unread)
+      (elfeed-search-update-entry entry)
+      (unless elfeed-search-remain-on-entry (forward-line))))
+
   (defun elfeed-enable-socks-proxy (&optional host)
     (interactive)
     (let ((host (or host "127.0.0.1:1080")))
       (setf elfeed-curl-extra-arguments `("--socks5-hostname" ,host))))
   )
+
+(use-package rime
+  :if (and (eq system-type 'gnu/linux)
+	   (display-graphic-p))
+  :custom (default-input-method "rime")
+  :config
+  (setq rime-show-candidate 'posframe)
+  (setq rime-disable-predicates '(rime-predicate-after-alphabet-char-p
+				  rime-predicate-ace-window-p
+				  rime-predicate-hydra-p
+				  rime-predicate-in-code-string-p
+				  rime-predicate-tex-math-or-command-p)))
 
 (use-package keyfreq
   :init (progn (keyfreq-mode 1) (keyfreq-autosave-mode)))
