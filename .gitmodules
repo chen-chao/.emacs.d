@@ -7,3 +7,6 @@
 [submodule "site-lisp/valign"]
 	path = site-lisp/valign
 	url = https://github.com/casouri/valign.git
+[submodule "site-lisp/calibredb.el"]
+	path = site-lisp/calibredb.el
+	url = https://github.com/chenyanming/calibredb.el.git
