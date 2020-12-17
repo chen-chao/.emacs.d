@@ -70,7 +70,7 @@
   :commands (elfeed elfeed-update)
   :bind (:map elfeed-search-mode-map
 	      ("g" . elfeed-update)
-	      ("m" . elfeed-mark-read)
+	      ("m" . elfeed-search-mark-read)
 	      :map elfeed-show-mode-map
 	      ("h" . elfeed-show-render-html))
 
@@ -94,7 +94,7 @@
       )
     (read-only-mode 1))
 
-  (defun elfeed-mark-read (entry)
+  (defun elfeed-search-mark-read (entry)
     (interactive (list (elfeed-search-selected :ignore-region)))
     (when (elfeed-entry-p entry)
       (elfeed-untag entry 'unread)

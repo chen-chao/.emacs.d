@@ -27,6 +27,8 @@
 (setq window-combination-resize t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (set-face-attribute 'default nil :family "Cascadia Code" :height 130)
+(when (eq system-type 'windows-nt)
+  (set-fontset-font t 'han (font-spec :family "NSimSun")))
 
 (use-package doom-themes
   :init
