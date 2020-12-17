@@ -1,5 +1,8 @@
-;; from centaur emacs
+(put 'dired-find-alternate-file 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+(setq dired-listing-switches "-alh --group-directories-first")
 
+;; from centaur emacs
 (use-package dired-rainbow
   :commands dired-rainbow-define dired-rainbow-define-chmod
   :init
