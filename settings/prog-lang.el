@@ -80,4 +80,8 @@
 
 (use-package crontab-mode :if (eq system-type 'windows-nt))
 
+(use-package kotlin-mode)
+
+(use-package lua-mode)
+
 (provide 'prog-lang)

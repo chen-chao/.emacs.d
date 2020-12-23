@@ -80,4 +80,7 @@
   (org-clock-persistence-insinuate)
   )
 
+(use-package valign)
+
+
 (provide 'init-org)

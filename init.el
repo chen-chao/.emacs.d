@@ -26,7 +26,7 @@
 
 (setq window-combination-resize t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(set-face-attribute 'default nil :family "Cascadia Code" :height 130)
+(set-face-attribute 'default nil :family "Source Code Pro" :height 120)
 
 (use-package doom-themes
   :init
@@ -89,8 +89,7 @@
   :config
   (when (eq system-type 'windows-nt)
     (setenv "GIT_ASKPASS" "git-gui--askpass")
-    (setenv "SSH_ASKPASS" "git-gui--askpass"))
-  (use-package forge))
+    (setenv "SSH_ASKPASS" "git-gui--askpass")))
 
 
 ;; (use-package zh-align
