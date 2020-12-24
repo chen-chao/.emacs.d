@@ -17,15 +17,6 @@
   :after yasnippet
   :bind ("C-c C-y" . ivy-yasnippet))
 
-;; Correcting words with flyspell via Ivy
-(use-package flyspell-correct-ivy
-  :after flyspell
-  :init (setq flyspell-correct-interface #'flyspell-correct-ivy)
-  :bind (:map flyspell-mode-map
-	      ([remap flyspell-correct-word-before-point] . flyspell-correct-previous-word-generic)
-	      ("C-M-i" . flyspell-correct-wrapper)
-	      ))
-
 (use-package counsel
   :bind (("M-x"     . counsel-M-x)
 	 ("M-y"     . counsel-yank-pop)
@@ -33,8 +24,11 @@
 	 ("C-x C-r" . counsel-recentf)
 	 ("C-c g"   . counsel-git)
 	 ("C-c j"   . counsel-file-jump)
-	 ("C-c r"   . counsel-rg)))
+	 ("C-c r"   . counsel-rg)
+	 ("C-c z"   . counsel-fzf)))
 
+(use-package counsel-fd
+  :bind (("C-c f" . counsel-fd-file-jump)))
 
 (use-package swiper :bind (("C-s" . swiper)))
 

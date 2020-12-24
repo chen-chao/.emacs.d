@@ -27,6 +27,8 @@
 (setq window-combination-resize t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (set-face-attribute 'default nil :family "Source Code Pro" :height 120)
+(when (eq system-type 'windows-nt)
+  (set-fontset-font t 'han (font-spec :family "NSimSun")))
 
 (use-package doom-themes
   :init
@@ -80,6 +82,7 @@
 
 ;; external command management
 (use-package whicher
+  :commands whicher
   :load-path "site-lisp/whicher/")
 
 (use-package magit
@@ -123,7 +126,7 @@
 (use-package flycheck
   :hook (prog-mode . global-flycheck-mode)
   :bind-keymap
-  ("C-c f" . flycheck-command-map)
+  ("C-c C-f" . flycheck-command-map)
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
@@ -147,17 +150,6 @@
 
   )
 
-;; spell checking
-;; @see https://github.com/seagle0128/.emacs.d/lisp/init-edit.el
-(use-package flyspell
-  :hook ((flyspell-mode . (lambda ()
-			    (dolist (key '("C-;" "C-," "C-."))
-			      (unbind-key key flyspell-mode-map)))))
-  :config
-  (setq flyspell-issue-message-flag nil)
-  (setq ispell-program-name (whicher "aspell"))
-  (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together")))
-
 ;; major modes
 (require 'prog-lang)
 
@@ -166,5 +158,3 @@
 (require 'init-utils)
 
 (require 'init-dired)
-(put 'dired-find-alternate-file 'disabled nil)
-(put 'narrow-to-region 'disabled nil)
