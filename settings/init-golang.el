@@ -60,7 +60,6 @@
     :bind (:map go-mode-map
 		("C-c C-t" . go-gen-test-dwim)))
 
-  (use-package go-playground :diminish go-playground-mode)
-  )
+  (use-package go-playground))
 
 (provide 'init-golang)
