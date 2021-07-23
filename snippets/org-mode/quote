@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: quote
+# key: quote
+# --
+#+BEGIN_SRC quote
+$0
+#+END_SRC

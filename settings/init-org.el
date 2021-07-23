@@ -29,12 +29,12 @@
   ;; for org html export
   (use-package htmlize)
   ;; remove xml header
-  (setq-default org-html-xml-declaration
+  (setq org-html-xml-declaration
 		'(("html" . "")
 		  ("xml" . "<?xml version=\"1.0\" encoding=\"%s\"?>")
 		  ("php" . "<?php echo \"<?xml version=\\\"1.0\\\" encoding=\\\"%s\\\" ?>\"; ?>")))
-  (setq-default org-html-preamble nil)
-  (setq-default org-html-postamble nil)
+  (setq org-html-preamble nil)
+  (setq org-html-postamble nil)
 
   ;; show holidays and anniversaries in org agenda
   (setq-default org-agenda-include-diary nil)
@@ -73,7 +73,7 @@
 				 (org . t)))
 
   ;; clocking
-  (setq-default org-clock-persist 'history)
+  (setq org-clock-persist 'history)
   (org-clock-persistence-insinuate)
   )
 
@@ -83,5 +83,12 @@
 
 (use-package valign)
 
+(use-package org-roam
+  :ensure t
+  :hook (after-init org-roam-mode)
+  :config
+  (setq org-roam-directory "~/Sync/emacs/org-roam/")
+  (setq org-roam-db-location "~/Sync/emacs/org-roam.db")
+  (setq org-roam-completion-system 'ivy))
 
 (provide 'init-org)
