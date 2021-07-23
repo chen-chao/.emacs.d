@@ -4,7 +4,10 @@
 
 ;; paths
 (add-to-list 'load-path "~/.emacs.d/settings")
-(when (file-exists-p (setq custom-file "~/.emacs.d/settings/custom.el"))
+(when (file-exists-p
+       (setq custom-file
+	     (expand-file-name
+	      (concat (system-name) ".el") "~/Sync/emacs/custom/")))
   (load-file custom-file))
 
 ;; package repository
@@ -26,14 +29,8 @@
 
 (setq window-combination-resize t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(set-face-attribute 'default nil :family "Source Code Pro" :height 120)
 (when (eq system-type 'windows-nt)
   (set-fontset-font t 'han (font-spec :family "NSimSun")))
-
-(use-package doom-themes
-  :init
-  (setq custom-safe-themes t)
-  (load-theme 'doom-one))
 
 ;; mac specific settings
 (when (eq system-type 'darwin)

@@ -127,8 +127,8 @@
                                title-width
                                elfeed-search-title-max-width)
                         :left))
-	 (align-to (* (+ date-width 2 (min title-width elfeed-search-title-max-width))
-		      (default-font-width))))
+	 (align-to (* (+ date-width 2 (max elfeed-search-title-min-width (min title-width elfeed-search-title-max-width)))
+		      (window-font-width))))
     (insert (propertize date 'face 'elfeed-search-date-face) " ")
     (insert (propertize title-column 'face title-faces 'kbd-help title) " ")
     (valign--put-overlay (1- (point)) (point) 'display (valign--space align-to))
@@ -153,13 +153,32 @@
 				  rime-predicate-tex-math-or-command-p)))
 
 
+(use-package zh-align
+  :load-path "~/.emacs.d/site-lisp/zh-align.el/")
+
 (use-package calibredb
   :config
-  (setq calibredb-root-dir "~/Documents/calibre/")
+  (setq calibredb-root-dir "~/Sync/calibre/")
   (setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
   ;; let the seearching and jumping tool know the current directory
-  (advice-add #'calibredb :after
-	      (lambda () (setq default-directory calibredb-root-dir))))
+  ;; (advice-add #'calibredb :after
+  ;;	      (lambda () (setq-local default-directory calibredb-root-dir)))
+  (zh-align-set-faces '(calibredb-id-face
+			calibredb-author-face
+			calibredb-title-face
+			calibredb-comment-face
+			calibredb-language-face
+			calibredb-date-face
+			calibredb-file-face
+			calibredb-favorite-face
+			calibredb-highlight-face
+			calibredb-tag-face
+			calibredb-publisher-face
+			calibredb-mouse-face
+			calibredb-edit-annotation-header-title-face
+			calibredb-search-header-highlight-face))
+  )
+
 
 (use-package keyfreq
   :init (progn (keyfreq-mode 1) (keyfreq-autosave-mode)))
@@ -168,7 +187,11 @@
   :config
   (setq rcirc-server-alist
 	'(("irc.freenode.net" :port 6697 :encryption tls
-	   :channels ("#emacs" "#archlinux-cn"))))
-  (rcirc-track-minor-mode))
+	   :channels ("#emacs" "#archlinux-cn")))))
+
+
+(when (eq system-type 'windows-nt)
+  (setq browse-url-browser-function 'browse-url-generic
+	browse-url-generic-program (whicher "c:/Program Files/Mozilla Firefox/firefox.exe")))
 
 (provide 'init-utils)
