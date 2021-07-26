@@ -1,12 +1,3 @@
 [submodule "site-lisp/zh-align.el"]
 	path = site-lisp/zh-align.el
 	url = git@github.com:chen-chao/zh-align.el.git
-[submodule "site-lisp/whicher"]
-	path = site-lisp/whicher
-	url = https://github.com/abo-abo/whicher.git
-[submodule "site-lisp/valign"]
-	path = site-lisp/valign
-	url = https://github.com/casouri/valign.git
-[submodule "site-lisp/calibredb.el"]
-	path = site-lisp/calibredb.el
-	url = https://github.com/chenyanming/calibredb.el.git

@@ -157,12 +157,12 @@
   :load-path "~/.emacs.d/site-lisp/zh-align.el/")
 
 (use-package calibredb
+  :defer t
+
   :config
   (setq calibredb-root-dir "~/Sync/calibre/")
   (setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
-  ;; let the seearching and jumping tool know the current directory
-  ;; (advice-add #'calibredb :after
-  ;;	      (lambda () (setq-local default-directory calibredb-root-dir)))
+
   (zh-align-set-faces '(calibredb-id-face
 			calibredb-author-face
 			calibredb-title-face
@@ -188,10 +188,5 @@
   (setq rcirc-server-alist
 	'(("irc.freenode.net" :port 6697 :encryption tls
 	   :channels ("#emacs" "#archlinux-cn")))))
-
-
-(when (eq system-type 'windows-nt)
-  (setq browse-url-browser-function 'browse-url-generic
-	browse-url-generic-program (whicher "c:/Program Files/Mozilla Firefox/firefox.exe")))
 
 (provide 'init-utils)
