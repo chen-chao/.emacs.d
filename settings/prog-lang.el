@@ -74,7 +74,7 @@
 (use-package dockerfile-mode
   :mode ("Dockerfile\\'" . dockerfile-mode))
 
-(use-package crontab-mode :if (eq system-type 'windows-nt))
+(use-package crontab-mode :if (eq system-type 'windows-nt) :defer t)
 
 (use-package kotlin-mode :defer t)
 
